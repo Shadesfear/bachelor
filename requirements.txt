@@ -1,0 +1,3 @@
+bohrium==0.10.1.post89
+bohrium-api==0.10.1.post89
+numpy==1.16.1
