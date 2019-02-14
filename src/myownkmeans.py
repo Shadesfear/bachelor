@@ -17,13 +17,13 @@ def mykmeans(data, k, epsilon = 0):
     plt.scatter(*zip(*centroids), marker = 'x', s = 600)
     plt.pause(0.9)
 
-    norm = sum([eucDistance(centroids[i],centroids_old[i]) for i in range(k)])
+    diff = sum([eucDistance(centroids[i],centroids_old[i]) for i in range(k)])
 
-    while norm > epsilon:
+    while diff > epsilon:
 
-        iterations += 1
+        iterations += 1 #keep track of how many times we had to iterate
 
-        norm = sum([eucDistance(centroids[i],centroids_old[i]) for i in range(k)])
+        diff = sum([eucDistance(centroids[i],centroids_old[i]) for i in range(k)])
         centroids_old =  centroids
 
         for p_i, point in enumerate(data):
