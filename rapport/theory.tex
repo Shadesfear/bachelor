@@ -1,0 +1,36 @@
+\section{Theory}
+\label{sec:label}
+
+\subsection{K-Means}
+\label{subsec:kmeans}
+
+K-means clustering is a way of partitioning a set of points in a d-dimensional space. The algorithm takes n points and k number of clusters, it returns points split up into these clusters where an assignment has been made for each point to a given cluster. This problem is what is called a NP-hard problem this means that it's computationally hard.
+
+\subsection{Lloyd's Algorithm}
+\label{subsec:lloyds}
+
+The most common implementation of k-means is the so called Lloyd's Algorithm that uses an iterative refinement approach. To start of some initial centroids as the center of each cluster is called, is chosen at random, then at each iteration of the algorithm two steps are executed. And repeated until the individual clusters does not change anymore, or is terminated by an upper bound of iterations. There are many methods for choosing the initial centroids, a common method is the Forgy method, where k random points of the input data set is chosen as the centroid. This is the methods we will use in this project. The two steps for each iteration can be outlined as such: \\
+
+\textbf{Assignment:} For each data point, compute all distances to all centroids, and find the nearest one. assign this point to the cluster.\\
+\textbf{Update:} For each cluster calculate the mean of all the assigned point to the cluster and move the cluster to this new mean\\
+
+The algorithm has some problems, it has to compute the distance from each point to each cluster in each iteration, this takes time. To compute the distance between to points we have to do the following computation:
+
+\begin{equation}
+  L = ||s - q||^2 = (s_1 - q_1)^2 +...+(s_d - q_d)^2
+\end{equation}
+Where L is the distance between the points and d is the dimension of each point.
+This gives d subtractions, d multiplications and d-1 sums, and then for comparison with the previous cluster calculate the following: $d_{min} > d$ \\
+This evaluates to $3\cdot d$ calculations for each point and cluster. Thus for each iteration we would need to execute $3d \cdot n \cdot k$ operations.
+
+\subsection{Vectorization}
+\label{subsec:vectorization}
+
+The point of vectorization is to generalize operations on scalars to apply on vectors, matrices and also higher-dimensional arrays. The idea is to do operations on an entire set of values instead of each single item in the set. As en example the operation of adding two arrays together in a scalar function would look like this implemented in python
+\begin{lstlisting}[language=Python]
+  for (i=0; i < n; i++)
+      for (j = 0; j < n; j++)
+          a[index_a][index_b] += b[index_a][index_b]
+\end{lstlisting}
+
+This can now be generalized to $a=a+b$ in Python using Numpy. Vectorized operations are typically faster than doing operations as standard loops, and allows for computations on GPU's. Loop vectorization transforms a program so a single operation is performed at the same time on several vector elements. This means instead of running n-times, we now run n/4 times

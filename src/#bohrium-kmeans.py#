@@ -1,5 +1,5 @@
 
-import numpy as np
+import bohrium as np
 import matplotlib.pyplot as plt
 import time
 
@@ -12,10 +12,9 @@ class bohrium_kmeans:
 
     def init_random_centroids(self, points, k):
 
-        # Initializes random points, indexing with arrays is not
-        # Available in Bohrium. Maybe write a user-kernel. But since it's only
-        # Initialized once, is there a reason?
+
         row_i = np.random.choice(points.shape[0], k)
+
         # print('Initialized ', k, ' random points, it took:', '{:.2e}'.format(end-start))
         self.init_clusters = points[row_i]
 
@@ -70,26 +69,8 @@ class bohrium_kmeans:
 
     def move_centroids(self, points, closest, centroids, k):
 
+
         return np.array([points[closest==k].mean(axis=0) for k in range(k)])
-
-        kernel = r'''
-
-        #include <stdint.h>
-        #include <stdio.h>
-        
-
-        void execute(double *points, double *closest, double *centroids, int *) {
-            for (i=0, i<)
-        
-        }
-
-
-
-'''
-
-        #
-        # May not be possible in Bohrium, but seems to give faster speeds that before
-        #
 
         # sums = np.zeros((closest.max()+1,points.shape[1]),dtype=float)
         # np.add.at(sums,closest,points)
@@ -122,54 +103,48 @@ class bohrium_kmeans:
 
 if __name__ == "__main__":
 
-    my_kmeans = bohrium_kmeans('bohrium')
+    # my_kmeans = bohrium_kmeans('bohrium')
     points = np.loadtxt('datasets/birchgrid.txt')
 
-    print('# of points', len(points))
+    # print('# of points', len(points))
 
 
     # closest, centroids, iteraions = my_kmeans.kmeans_vectorized(points, 100)
-
-
-
-
-
-
 
 
     with open('move_centroids.c', 'r') as content_file:
         kernel = content_file.read()
 
 
+    closest = np.zeros(4, np.int)
+    closest[0] = 0
+    closest[1] = 1
+    closest[2] = 1
+    closest[3] = 1
+    # points = np.ones(4, np.double)
+    points = np.arange(10)
+    points = points.reshape(2,5)
+    points = points.astype(float)
+    centroids = np.zeros(2, np.double)
 
-
-    a = np.zeros(3, np.double)
-    b = np.zeros(4, np.double)
-    c = np.zeros(1, np.double)
     k = np.zeros(1, np.int)
-    k[0]=1
+    g = np.zeros(1, np.int)
+    g[0] = len(closest)
+    k[0]=2
 
     # a = np.ones(100, np.double)
     # b = np.ones(100, np.double)
     # print(a)
     # res = bh.empty_like(a)
     # bh.user_kernel.execute(kernel, [a, b, res])
+    # print(closestccccc)
+    # print(k)
+    np.user_kernel.execute(kernel, [k, centroids, closest, points, g])
+    # print(a)
 
-    # np.user_kernel.execute(kernel, [k, c])
-    # print(c)
-    points = np.array([[0,0], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]])
-    my_kmeans.init_plus_plus(points[:10], 3)
-    # print(iteraions)
-
+    # my_kmeans.init_plus_plus(points[:10], 3)
 
     # print('{:.2e}'.format(end-start))
 
-    plt.scatter(points[:10,0], points[:10,1],c='r')
-    plt.scatter(points[0,0], points[0,1], c='b')
-    plt.scatter(points[7,0], points[7,1], c='b')
-    plt.scatter(points[3,0], points[3,1], c='b')
-    # plt.scatter(points[:,0],points[:,1], c=closest)
     # plt.scatter(centroids[:,0], centroids[:,1], marker = "X", s=400, c = 'r')
     # plt.scatter(my_kmeans.init_clusters[:,0], my_kmeans.init_clusters[:,1], marker = "X", s=100, c = 'k')
-
-    plt.show()

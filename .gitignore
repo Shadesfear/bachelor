@@ -3,6 +3,8 @@
 ## Python
 bachelor-venv/
 contracts/
+src/datasets
+src/.#*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -22,3 +24,7 @@ contracts/
 # *.ps
 # *.eps
 *.pdf
+
+*#
+literature/
+temp/

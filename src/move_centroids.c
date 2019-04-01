@@ -2,33 +2,65 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void execute(double k, double centroids[], double closest[], double points[]) {
-  printf("started");
 
-  int j;
-  int i;
+void vector_add(double *vector1,
+	        double *vector2,
+		double *result,
+                int64_t dimensions) {
 
-  for (i=0; i < k; ++i) {
-    printf("Got here");
-
-
-    for (j=0; i < sizeof(closest); ++j)
-
-      if (k==closest[j]) {
-	char str[50];
-	snprintf(str,50,"%f", points[j]);
-	printf("%s", str);
-
-      }
+  for (int i = 0; i < dimensions; i++) {
+    result[i] = vector1[i] + vector2[i];
   }
 }
 
-void main() {
-  double k = 3;
-  double closest[] = {0, 1, 2, 1};
-  double points[4][2] = {{0, 0}, {1, 1}, {3, 3}, {5, 5}};
-  double centroids[4][2] = {{0, 0}, {1, 1}};
+int get_index(int x, int y, int width) { return x + y * width; }
 
-  execute(k, centroids, closest, points);
 
+
+
+
+
+
+void execute(int64_t *k,
+	     double *centroids,
+	     int64_t *closest,
+	     double *points,
+             int64_t *size_closest) {
+
+
+  //printf("%lu", sizeof(*closest)/sizeof(*closest[0]));
+
+
+  // For each centroid
+  for (int i = 0; i < k[0]; i++) {
+
+    int counter = 0;
+    int size_1 = k[0];
+
+    int dim = 10;
+
+
+    double temp[] = {10,0,0,0,0,0,0,0,0,0};
+
+
+    // For each point
+    for (int j = 0; j < size_closest[0]; j++) {
+
+      // If point-j belongs to point k
+      if (i == closest[j]) {
+	printf("%f\n", temp[i]);
+	vector_add(temp, &points[j], temp, dim);
+	printf("%f\n", temp[i]);
+
+
+	counter += 1;
+      }
+    }
+
+    // temp /= counter;
+    // for (int d = 0; d < dim; d++) {
+    //	temp[d] /= counter;
+    //}
+    //centroids[i] = temp;
+  }
 }
