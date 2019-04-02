@@ -85,7 +85,6 @@ clf.fit(X)
 kmeans = bohrium_kmeans('bohrium')
 X = kmeans.scale_data(X)
 closest, centroids, iterations = kmeans.kmeans_vectorized(X, 10)
-
 correct = 0
 for i in range(len(X)):
 

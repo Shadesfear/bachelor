@@ -3,9 +3,7 @@ import pandas as pd
 from bohrium_kmeans import *
 from sklearn.cluster import KMeans
 
-
-#import the heart data
-data_path = "datasets/heart.csv"
+data_path = "../data/heart.csv"
 
 """
 1. #3 (age)
@@ -27,7 +25,6 @@ data_path = "datasets/heart.csv"
 data_frame = pd.read_csv(data_path)
 data_frame.convert_objects(convert_numeric=True)
 data_frame.fillna(0, inplace=True)
-#data_frame.drop(['country-year'], 1, inplace = True)
 
 def handle_non_numerics(data_frame):
     """
@@ -45,9 +42,7 @@ def handle_non_numerics(data_frame):
     2 0
     3 1
 
-
     """
-
 
     columns = data_frame.columns.values
 
@@ -84,9 +79,11 @@ Y = np.array(data_frame['target'])
 clf = KMeans(n_clusters=2)
 clf.fit(X)
 
-kmeans = bohrium_kmeans('bohrium')
-X = kmeans.scale_data(X)
-closest, centroids, iterations = kmeans.kmeans_vectorized(X, 2)
+kmeans = bohrium_kmeans(k = 2, userkernel=False)
+# X = kmeans.scale_data(X)
+closest, centroids, iterations = kmeans.run(X)
+
+
 
 correct = 0
 for i in range(len(X)):
@@ -98,8 +95,6 @@ for i in range(len(X)):
 
     if prediction[0] == Y[i]:
         correct += 1
-
-
 
 print(correct/len(X))
 
