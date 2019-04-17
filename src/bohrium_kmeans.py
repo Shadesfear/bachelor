@@ -2,6 +2,7 @@ import logging
 import bohrium as bh
 import numpy as np
 from sklearn.cluster import KMeans
+import scipy
 import time
 import random
 from benchpress.benchmarks import util
@@ -19,10 +20,11 @@ def timeit(func):
 
 class bohrium_kmeans:
 
-    def __init__(self, k, userkernel = True):
+    def __init__(self, k, init = "kmeans++", userkernel = True):
 
         self.userkernel = userkernel
         self.k = k
+        self.init = init
         userkerneldir = "user-kernels/"
 
         if self.userkernel:
@@ -50,7 +52,7 @@ class bohrium_kmeans:
 
         return temp[:self.k]
 
-
+    @timeit
     def init_random_centroids(self, points):
 
         centroids = bh.zeros_like(points[:self.k])
@@ -67,22 +69,36 @@ class bohrium_kmeans:
     def init_first_k(self, points):
         return points[:self.k]
 
-
+    @timeit
     def init_plus_plus(self, points):
         """
-        Initialize the clusters using KMeans++
+        Initialize the clusters using KMeans++, where each centroid
+        is chosen with randomly with weights
+
+        Parameters:
+        -----------
+        points: Points to sample centroids from
+
+        Returns:
+        --------
+        Centroids: K-centroids
 
         """
 
         centroids = bh.zeros_like(points[:self.k])
-        centroids[0] = points[0]
+        r = bh.random.randint(0, points.shape[0])
+        centroids[0] = points[r]
 
-        distances = self.euclidian_distance(centroids[:1], points, mode = 'squared')
+        for k in range(1, self.k):
 
-        for i in range(1, self.k):
-            pass
-        return(centroids)
+            min_distances = self.euclidian_distance(centroids[:k], points, mode = 'squared').min(1)
+            prob = min_distances / min_distances.sum()
+            cs = bh.cumsum(prob)
+            idx = bh.sum(cs < bh.random.rand())
+            centroids[k] = points[int(idx)]
 
+        self.init_centroids = centroids
+        return centroids
 
 
     def euclidian_distance(self, point1, point2, mode = 'squared'):
@@ -94,7 +110,7 @@ class bohrium_kmeans:
             distances = bh.sqrt(((point1 - point2[:, bh.newaxis])**2).sum(axis=2))
         return(distances)
 
-    @timeit
+
     def centroids_closest(self, points, centroids, mode):
 
         distances = self.euclidian_distance(points, centroids, mode)
@@ -152,10 +168,12 @@ class bohrium_kmeans:
 
         plt.scatter(points[:,0], points[:,1], marker = ".", s=50, c = closest)
         plt.scatter(centroids[:,0], centroids[:,1], marker = "X", s=400, c = 'r')
+        if self.init_centroids.size > 0:
+            plt.scatter(self.init_centroids[:,0], self.init_centroids[:,1], marker = "X", s=400, c = 'b')
         plt.show()
 
 
-    @timeit
+
     def move_centroids(self, points, closest, centroids, n = 0 ):
 
         if self.userkernel:
@@ -209,13 +227,19 @@ class bohrium_kmeans:
         scaled_data = points / std
         return scaled_data
 
+    def get_error(self, closest, points, centroids):
+        pass
 
-    def run(self, points, epsilon=0.1, mode = 'squared'):
+
+    def run(self, points, epsilon=0.01, mode = 'squared'):
 
         if self.userkernel:
             centroids = self.init_random_userkernel(points)
+        elif self.init == "kmeans++":
+            centroids = self.init_plus_plus(points)
         else:
             centroids = self.init_random_centroids(points)
+
 
         centroids_old = bh.zeros(centroids.shape)
         iterations, diff = 0, epsilon+1
@@ -247,25 +271,27 @@ class bohrium_kmeans:
 
 if __name__ == "__main__":
 
+    import matplotlib.pyplot as plt
+    points = bh.loadtxt("../data/birchgrid.txt")
 
-    points = bh.loadtxt("../data/dim032.txt")
 
-    kmeans = bohrium_kmeans(100, userkernel=True)
+    kmeans = bohrium_kmeans(100, userkernel=False)
+    kmeans_random = bohrium_kmeans(100, init = "random", userkernel=False)
 
-    # kmeans.run(points)
-
-    # points = bh.array([[1,1],
-    #                    [2,2],
-    #                    [3,3],
-    #                    [4,4],
-    #                    [5,5],
-    #                    [6,6]], dtype=np.float64)
-
+    # centroids = kmeans.init_plus_plus(points)
 
     start = time.time()
-    centroids = kmeans.init_random_userkernel(points)
-    print("Time: ", time.time() - start)
-    print(centroids)
+    closest, centroids, iterations = kmeans.run_plot(points)
+
+    print("++: ", time.time()-start)
+
+
+    # plt.scatter(points[:,0], points[:,1], marker = ".", s=50, c = closest)
+    # plt.scatter(centroids[:,0], centroids[:,1], marker = "X", s=400, c = 'r')
+    # plt.show()
+
+
+
 
 
     # print("USER KERNEL FALSE\n")
