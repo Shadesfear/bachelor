@@ -27,7 +27,7 @@ void execute(int64_t *k,
 	     double *centroids)
 {
   // For each centroid
-#pragma omp parallel
+#pragma omp parallel for
   for (int i = 0; i < k[0]; i++)
   {
 
@@ -37,7 +37,7 @@ void execute(int64_t *k,
     memset(temp, 0, dim[0]*sizeof(double));
 
     // For each label in closest
-    #pragma omp parallel
+    #pragma omp parallel for
     for (int j = 0; j < size_closest[0]; j++)
     {
       // If point-j belongs to point k
@@ -67,6 +67,7 @@ void execute(int64_t *k,
     /*
       Dividing by counter to get mean
     */
+    #pragma omp parallel
     for (int d = 0; d < dim[0]; d++)
     {
       if (counter > 0)

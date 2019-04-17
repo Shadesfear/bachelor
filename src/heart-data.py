@@ -1,7 +1,7 @@
-import numpy as np
+import bohrium as np
 import pandas as pd
 from bohrium_kmeans import *
-from sklearn.cluster import KMeans
+# from sklearn.cluster import KMeans
 
 data_path = "../data/heart.csv"
 
@@ -76,8 +76,8 @@ Y = np.array(data_frame['target'])
 
 # data_frame.drop(['suicides_no', 'suicides/100k pop'], 1, inplace=True)
 
-clf = KMeans(n_clusters=2)
-clf.fit(X)
+# clf = KMeans(n_clusters=2)
+# clf.fit(X)
 
 kmeans = bohrium_kmeans(k = 2, userkernel=False)
 # X = kmeans.scale_data(X)
