@@ -5,6 +5,10 @@ bachelor-venv/
 contracts/
 src/datasets
 src/.#*
+data/
+tmp/
+__pycache__/
+
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
