@@ -23,15 +23,16 @@ class bohrium_kmeans:
 
         self.userkernel = userkernel
         self.k = k
+        userkerneldir = "user-kernels/"
 
         if self.userkernel:
-            with open('centroids_closest.c', 'r') as content_file:
+            with open(userkerneldir + 'centroids_closest.c', 'r') as content_file:
                 self.kernel_centroids_closest = content_file.read()
 
-            with open('move_centroids.c', 'r') as content_file:
+            with open(userkerneldir + 'move_centroids.c', 'r') as content_file:
                 self.kernel_move_centroids = content_file.read()
 
-            with open('shuffle.c', 'r') as content_file:
+            with open(userkerneldir + 'shuffle.c', 'r') as content_file:
                 self.kernel_shuffle = content_file.read()
 
 
@@ -260,10 +261,10 @@ if __name__ == "__main__":
     #                    [5,5],
     #                    [6,6]], dtype=np.float64)
 
-    for i in range(10):
-        start = time.time()
-        centroids = kmeans.init_random_userkernel(points)
-        print("Time: ", time.time() - start)
+
+    start = time.time()
+    centroids = kmeans.init_random_userkernel(points)
+    print("Time: ", time.time() - start)
     print(centroids)
 
 
