@@ -52,7 +52,7 @@ class bohrium_kmeans:
 
         return temp[:self.k]
 
-    @timeit
+
     def init_random_centroids(self, points):
 
         centroids = bh.zeros_like(points[:self.k])
@@ -69,7 +69,7 @@ class bohrium_kmeans:
     def init_first_k(self, points):
         return points[:self.k]
 
-    @timeit
+
     def init_plus_plus(self, points):
         """
         Initialize the clusters using KMeans++, where each centroid
@@ -108,9 +108,10 @@ class bohrium_kmeans:
 
         elif mode == 'normal':
             distances = bh.sqrt(((point1 - point2[:, bh.newaxis])**2).sum(axis=2))
+
         return(distances)
 
-
+    @timeit
     def centroids_closest(self, points, centroids, mode):
 
         distances = self.euclidian_distance(points, centroids, mode)
@@ -119,14 +120,13 @@ class bohrium_kmeans:
         if not self.userkernel:
             # diff = points[None, :, :] - centroids[:, None, :]
             # distances = bh.sqrt(((points - centroids[:, bh.newaxis])**2).sum(axis=2))
-
             distances = distances.copy2numpy()
             ary = bh.array(np.argmin(distances, axis = 0))
-
             return ary, min_dist
 
         else:
 
+            start = time.time()
             result = bh.zeros(points.shape[0], dtype = bh.int)
 
             distances_transposed = bh.user_kernel.make_behaving(distances.T)
@@ -134,10 +134,12 @@ class bohrium_kmeans:
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_k = 0", "int n_k = " + str(self.k))
 
-            # cmd = bh.user_kernel.get_default_compiler_command() + " -lfftw3 -lfftw3_threads"
 
-            bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, result])
 
+            cmd = bh.user_kernel.get_default_compiler_command()
+            start = time.time()
+            bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, result], compiler_command = cmd)
+            print("CC: ",time.time()-start)
             return result, min_dist
 
 
@@ -173,21 +175,28 @@ class bohrium_kmeans:
         plt.show()
 
 
-
+    @timeit
     def move_centroids(self, points, closest, centroids, n = 0 ):
 
         if self.userkernel:
-            logging.info("move_centroids: userkernel")
+            # logging.info("move_centroids: userkernel")
 
-            centroids = bh.user_kernel.make_behaving(centroids)
+            # centroids = bh.user_kernel.make_behaving(centroids)
 
-            bh.user_kernel.execute(self.kernel_move_centroids, [bh.array([self.k]),
-                                                                bh.array(closest),
-                                                                points,
-                                                                bh.array([len(closest)]),
-                                                                bh.array([len(points[0])]),
-                                                                centroids])
-            return centroids
+            # bh.user_kernel.execute(self.kernel_move_centroids, [bh.array([self.k]),
+            #                                                     bh.array(closest),
+            #                                                     points,
+            #                                                     bh.array([len(closest)]),
+            #                                                     bh.array([len(points[0])]),
+            #                                                     centroids])
+            # return centroids
+
+            if not n:
+                n = self.k
+
+            mask = (closest == bh.arange(n)[:,None])
+            out = mask.dot(points)/ mask.sum(1)[:,None]
+            return out
 
         else:
 
@@ -230,38 +239,53 @@ class bohrium_kmeans:
     def get_error(self, closest, points, centroids):
         pass
 
-
+    @timeit
     def run(self, points, epsilon=0.01, mode = 'squared'):
 
         if self.userkernel:
             centroids = self.init_random_userkernel(points)
+
         elif self.init == "kmeans++":
             centroids = self.init_plus_plus(points)
+
         else:
             centroids = self.init_random_centroids(points)
 
-
         centroids_old = bh.zeros(centroids.shape)
-        iterations, diff = 0, epsilon+1
-
+        iterations = 0
+        diff = epsilon + 1
         avg_dist = []
+
 
         while diff > epsilon:
 
-            centroids_old = centroids
-            closest, min_dist = self.centroids_closest(points, centroids, mode)
+            if iterations > 0:
+                old_min_dist = min_dist.copy()
+                old_closest = closest.copy()
 
+            # centroids_old = centroids
+            closest, min_dist = self.centroids_closest(points, centroids, mode)
             centroids = self.move_centroids(points, closest, centroids)
 
-            avg_dist.append(bh.mean(min_dist, axis = -1))
+            if iterations > 0:
 
-            if len(avg_dist) > 1:
-                diff = avg_dist[-2] - avg_dist[-1]
-
-                if ((avg_dist[-2] - avg_dist[-1])/avg_dist[-2])*100 < epsilon:
-
-                    print("broke here")
+                if (old_closest==closest).all():
+                    print("broke closes")
                     return closest, centroids, iterations
+
+                if (bh.sum(old_min_dist) - bh.sum(min_dist)) < epsilon:
+                    print("broke new")
+                    return closest, centroids, iterations
+
+            # avg_dist.append(bh.mean(min_dist, axis = -1))
+
+            # if len(avg_dist) > 1:
+            #     diff = avg_dist[-2] - avg_dist[-1]
+
+            #     if ((avg_dist[-2] - avg_dist[-1])/avg_dist[-2])*100 < epsilon:
+
+            #         print("Avg dist broke")
+            #         return closest, centroids, iterations
 
             iterations += 1
         return closest, centroids, iterations
@@ -275,13 +299,14 @@ if __name__ == "__main__":
     points = bh.loadtxt("../data/birchgrid.txt")
 
 
-    kmeans = bohrium_kmeans(100, userkernel=False)
-    kmeans_random = bohrium_kmeans(100, init = "random", userkernel=False)
+    kmeans = bohrium_kmeans(100, userkernel=True)
+    kmeans_random = bohrium_kmeans(100, init = "random", userkernel=True)
 
     # centroids = kmeans.init_plus_plus(points)
 
     start = time.time()
-    closest, centroids, iterations = kmeans.run_plot(points)
+    closest, centroids, iterations = kmeans.run(points)
+
 
     print("++: ", time.time()-start)
 
