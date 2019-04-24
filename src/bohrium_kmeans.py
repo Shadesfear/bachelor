@@ -20,16 +20,17 @@ def timeit(func):
 
 class bohrium_kmeans:
 
-    def __init__(self, k, init = "kmeans++", userkernel = True):
+    def __init__(self, k, init = "kmeans++", userkernel = True, max_iter = 300):
         if k <= 0:
             raise ValueError("Invalid number of initializations."
                              " n_init=%d must be bigger than zero." % n_init)
 
-
+        self.max_iter = max_iter
         self.userkernel = userkernel
         self.k = k
         self.init = init
         self.init_centroids = np.array([0])
+
         userkerneldir = "/home/chris/Documents/bachelor/src/user-kernels/"
 
         if self.userkernel:
@@ -293,7 +294,7 @@ class bohrium_kmeans:
         avg_dist = []
 
 
-        while diff > epsilon:
+        while iterations < self.max_iter:
 
             if iterations > 0:
                 old_min_dist = min_dist.copy()
