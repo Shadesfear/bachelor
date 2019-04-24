@@ -8,6 +8,7 @@ src/.#*
 data/
 tmp/
 src/__pycache__/
+.ipynb_checkpoints/
 
 
 ## Core latex/pdflatex auxiliary files:
