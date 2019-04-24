@@ -21,11 +21,16 @@ def timeit(func):
 class bohrium_kmeans:
 
     def __init__(self, k, init = "kmeans++", userkernel = True):
+        if k <= 0:
+            raise ValueError("Invalid number of initializations."
+                             " n_init=%d must be bigger than zero." % n_init)
+
 
         self.userkernel = userkernel
         self.k = k
         self.init = init
-        userkerneldir = "user-kernels/"
+        self.init_centroids = np.array([0])
+        userkerneldir = "/home/chris/Documents/bachelor/src/user-kernels/"
 
         if self.userkernel:
             with open(userkerneldir + 'centroids_closest.c', 'r') as content_file:
@@ -44,6 +49,9 @@ class bohrium_kmeans:
 
     def init_random_userkernel(self, points):
         temp = points.copy()
+
+        if type(temp) != 'numpy.float32':
+            temp = bh.float64(temp)
 
         self.kernel_shuffle = self.kernel_shuffle.replace("int rows", "int rows = " + str(points.shape[0]))
         self.kernel_shuffle = self.kernel_shuffle.replace("int cols", "int cols = " + str(points.shape[1]))
@@ -91,7 +99,7 @@ class bohrium_kmeans:
 
         for k in range(1, self.k):
 
-            min_distances = self.euclidian_distance(centroids[:k], points, mode = 'squared').min(1)
+            min_distances = self.euclidian_distance(centroids[:k], points).min(1)
             prob = min_distances / min_distances.sum()
             cs = bh.cumsum(prob)
             idx = bh.sum(cs < bh.random.rand())
@@ -100,21 +108,40 @@ class bohrium_kmeans:
         self.init_centroids = centroids
         return centroids
 
+    @timeit
+    def euclidian_distance(self, point1, point2, square = True):
+        """
+        Calculates the euclidian distance between two sets of points.
+        This uses numpy broadcasting trick if the to sets arent the same size
 
-    def euclidian_distance(self, point1, point2, mode = 'squared'):
+        Parameters:
+        -----------
+        point1: nd array
+            First set of points
+        point2: nd array
+            Second set of points
+        square: bool, optional
+            If to take the square root or not when performing the calculation
 
-        if mode == 'squared':
-            distances = ((point1 - point2[:, bh.newaxis])**2).sum(axis=2)
+        Returns:
+        --------
+        Distances matrix, such that
 
-        elif mode == 'normal':
-            distances = bh.sqrt(((point1 - point2[:, bh.newaxis])**2).sum(axis=2))
+        """
+        X = point1 - point2[:, bh.newaxis]
+        if square:
+            distances = (X * X).sum(axis=2)
+
+        else:
+            distances = bh.sqrt((X * X).sum(axis=2))
+            # distances = bh.sqrt(((point1 - point2[:, bh.newaxis])**2).sum(axis=2))
 
         return(distances)
 
-    @timeit
-    def centroids_closest(self, points, centroids, mode):
 
-        distances = self.euclidian_distance(points, centroids, mode)
+    def centroids_closest(self, points, centroids):
+
+        distances = self.euclidian_distance(points, centroids)
         min_dist = bh.minimum.reduce(distances, 0)
 
         if not self.userkernel:
@@ -139,7 +166,7 @@ class bohrium_kmeans:
             cmd = bh.user_kernel.get_default_compiler_command()
             start = time.time()
             bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, result], compiler_command = cmd)
-            print("CC: ",time.time()-start)
+
             return result, min_dist
 
 
@@ -175,7 +202,7 @@ class bohrium_kmeans:
         plt.show()
 
 
-    @timeit
+
     def move_centroids(self, points, closest, centroids, n = 0 ):
 
         if self.userkernel:
@@ -239,13 +266,22 @@ class bohrium_kmeans:
     def get_error(self, closest, points, centroids):
         pass
 
-    @timeit
+
     def run(self, points, epsilon=0.01, mode = 'squared'):
 
-        if self.userkernel:
+        if self.k > len(points[0]):
+            raise ValueError("number of points=%d should be >= k=%d" % (
+                len(points[0]), self.k))
+
+        if type(points) != 'numpy.float32':
+            points = bh.float64(points)
+
+
+        if self.userkernel and self.init != "kmeans++":
             centroids = self.init_random_userkernel(points)
 
         elif self.init == "kmeans++":
+            print("plusplus")
             centroids = self.init_plus_plus(points)
 
         else:
@@ -269,9 +305,9 @@ class bohrium_kmeans:
 
             if iterations > 0:
 
-                if (old_closest==closest).all():
-                    print("broke closes")
-                    return closest, centroids, iterations
+                # if (old_closest==closest).all():
+                    # print("broke closes")
+                    # return closest, centroids, iterations
 
                 if (bh.sum(old_min_dist) - bh.sum(min_dist)) < epsilon:
                     print("broke new")
@@ -295,39 +331,12 @@ class bohrium_kmeans:
 
 if __name__ == "__main__":
 
-    import matplotlib.pyplot as plt
+
     points = bh.loadtxt("../data/birchgrid.txt")
 
-
-    kmeans = bohrium_kmeans(100, userkernel=True)
-    kmeans_random = bohrium_kmeans(100, init = "random", userkernel=True)
-
-    # centroids = kmeans.init_plus_plus(points)
-
-    start = time.time()
-    closest, centroids, iterations = kmeans.run(points)
+    kmeans = bohrium_kmeans(2, userkernel=True)
 
 
-    print("++: ", time.time()-start)
+    centroids = kmeans.init_plus_plus(points)
 
-
-    # plt.scatter(points[:,0], points[:,1], marker = ".", s=50, c = closest)
-    # plt.scatter(centroids[:,0], centroids[:,1], marker = "X", s=400, c = 'r')
-    # plt.show()
-
-
-
-
-
-    # print("USER KERNEL FALSE\n")
-
-    # kmeans.run(points)
-    # print("\n")
-    # print(kmeans)
-    # print("\n")
-
-    # kmeans = bohrium_kmeans(100, userkernel=True)
-
-    # print("USERKERNEL TRUE")
-    # kmeans.run(points)
-    # print(kmeans
+    print(kmeans.euclidian_distance(points, centroids))
