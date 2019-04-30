@@ -3,11 +3,14 @@
 #include <stdlib.h>
 #include <omp.h>
 
-
+struct idx_min {
+  int index;
+  double minimum;
+};
 
 int get_index(int x, int y, int width) { return x + (y * width); }
 
-int argmin(double *array1, int end)
+struct idx_min argmin(double *array1, int end)
 {
   double minimum = array[0];
   int index;
@@ -20,10 +23,11 @@ int argmin(double *array1, int end)
       index = j;
     }
   }
-  return index;
+  tuple idx_min = {index, minimum};
+  return idx_min;
 }
 
-void execute(double *dist, int64_t *res)
+void execute(double *dist, double *res_min, int64_t *res)
 {
   int n_points = 0;
   int n_k = 0;
@@ -33,11 +37,13 @@ void execute(double *dist, int64_t *res)
   for (int i = 0; i < n_points; i++)
   {
     //int row_index = get_index(0, i, n_k);
-    printf("%d", omp_get_num_threads());
-    printf("Hello world \n")
+    //printf("%d", omp_get_num_threads());
+    //printf("Hello world \n")
+
     int row_index = i * n_k;
-    int location = argmin(&dist[row_index], n_k);
-    res[i] = location;
+    struct idx_min = argmin(&dist[row_index], n_k);
+    res[i] = idx_min.index;
+    res_min[i] = idx_min.minimum
   }
 
 

@@ -7,7 +7,12 @@
 
 //int get_index(int x, int y, int width) { return x + (y * width); }
 
-int argmin(double *array, int end)
+typedef struct idx_min {
+  int idx;
+  double min;
+} idx_min;
+
+struct idx_min argmin(double *array, int end)
 {
   double minimum = array[0];
   int index;
@@ -20,27 +25,25 @@ int argmin(double *array, int end)
       index = j;
     }
   }
-  return index;
+  idx_min idxmin = {index, minimum};
+
+  return idxmin;
 }
 
-void execute(double *dist, int64_t *res)
+void execute(double *dist, double * res_min, int64_t *res)
 {
   int n_points = 0;
   int n_k = 0;
-
-  double start = omp_get_wtime();
-
 
   #pragma omp parallel for
   for (int i = 0; i < n_points; i++)
   {
     //int row_index = get_index(0, i, n_k);
     int row_index = i * n_k;
-    res[i] = argmin(&dist[row_index], n_k);
+    struct idx_min idxmin = argmin(&dist[row_index], n_k);
+
+    res[i] = idxmin.idx;
+    res_min[i] = idxmin.min;
 
   }
-  printf("%f", omp_get_wtime()-start);
-
-
-
 }
