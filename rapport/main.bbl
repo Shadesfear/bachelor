@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{plusplus}
+David Arthur and Sergei Vassilvitskii.
+\newblock k-means++: The advantages of careful seeding.
+\newblock 2007.
+
+\bibitem{lloyd}
+Stuart~P. Lloyd.
+\newblock Least squares quantization in pcm.
+\newblock 1988.
+
+\end{thebibliography}

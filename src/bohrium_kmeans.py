@@ -143,6 +143,8 @@ class bohrium_kmeans:
     def centroids_closest(self, points, centroids):
 
         distances = self.euclidian_distance(points, centroids)
+        min_dist2 = bh.minimum.reduce(distances, 0)
+
 
 
         if not self.userkernel:
@@ -168,7 +170,7 @@ class bohrium_kmeans:
 
             bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, min_dist, result], compiler_command = cmd)
 
-            return result, min_dist
+            return result, min_dist2
 
 
     def run_plot(self, points):

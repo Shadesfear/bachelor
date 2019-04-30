@@ -4,17 +4,17 @@
 \subsection{K-Means}
 \label{subsec:kmeans}
 
-K-means clustering is a way of partitioning a set of points in a d-dimensional space. The algorithm takes n points and k number of clusters, it returns points split up into these clusters where an assignment has been made for each point to a given cluster. This problem is what is called a NP-hard problem this means that it's computationally hard.
+K-means clustering is a method developed  of partitioning a set of points $X = \{x_1, x_2, ..., x_n\}$ in a d-dimensional space into a set of clusters $S = \{s_1, s_2, ..., s_k\}$, hence the name K-means. The algorithm takes n points and k number of clusters, it returns points split up into these clusters where an assignment has been made for each point to a given cluster. This problem is what is called a NP-hard problem this means that it's computationally hard. KMeans usually is one of the fastest clustering methods, but it suffers that it might converge to a local minimum instead of the sought after global minimum, but there are ways to more or less correct this fault.\cite{lloyd}
 
 \subsection{Lloyd's Algorithm}
 \label{subsec:lloyds}
 
-The most common implementation of k-means is the so called Lloyd's Algorithm that uses an iterative refinement approach. To start of some initial centroids as the center of each cluster is called, is chosen at random, then at each iteration of the algorithm two steps are executed. And repeated until the individual clusters does not change anymore, or is terminated by an upper bound of iterations. There are many methods for choosing the initial centroids, a common method is the Forgy method, where k random points of the input data set is chosen as the centroid. This is the methods we will use in this project. The two steps for each iteration can be outlined as such: \\
+The most common implementation of k-means is the so called Lloyd's Algorithm that uses an iterative refinement approach. To start of some initial centroids as the center of each cluster is called, is chosen at random, then at each iteration of the algorithm two steps are executed, and repeated until the individual clusters does not change anymore (This is called convergence), or is terminated by an upper bound of iterations. There are many methods for choosing the initial centroids, a common method is the Forgy method, where k random points of the input data set is chosen as the centroid. Another example is the KMeans++ method of initializing centroids, that aims to by careful seeding have a better start for the algorithm, and such reach convergence faster.\cite{plusplus} The two steps for each iteration can be outlined as such: \\
 
 \textbf{Assignment:} For each data point, compute all distances to all centroids, and find the nearest one. assign this point to the cluster.\\
-\textbf{Update:} For each cluster calculate the mean of all the assigned point to the cluster and move the cluster to this new mean\\
+\textbf{Update:} For each cluster calculate the mean of all the assigned points to the cluster and move the cluster to the mean\\
 
-The algorithm has some problems, it has to compute the distance from each point to each cluster in each iteration, this takes time. To compute the distance between to points we have to do the following computation:
+The algorithm has some problems, it has to compute the distance from each point to each cluster in each iteration, this takes computational power. To compute the distance between two points we have to do the following computation:
 
 \begin{equation}
   L = ||s - q||^2 = (s_1 - q_1)^2 +...+(s_d - q_d)^2
@@ -23,14 +23,66 @@ Where L is the distance between the points and d is the dimension of each point.
 This gives d subtractions, d multiplications and d-1 sums, and then for comparison with the previous cluster calculate the following: $d_{min} > d$ \\
 This evaluates to $3\cdot d$ calculations for each point and cluster. Thus for each iteration we would need to execute $3d \cdot n \cdot k$ operations.
 
+\subsection{KMeans++}
+When we initialize the clusters randomly, we don't know how well the clusters represent the optimal clusters that we are trying to find in the end, this may in some cases lead to some  bad centroids that takes a very long time to converge to til global minimum. Instead we want to use another method for initializing the centroids. For this purpose the kmeans++ algorithm was developed in 2007 by David Arthur and Sergei Vassilvitskii \cite{plusplus}.
+First we let $D(x)$ denote the shortest (euclidean) distance from a data point $x$ to the closest centroids that we have already chosen. And we also define a probability as the following:
+\begin{equation}
+P(x) = \frac{D(x)^2}{\sum_{x\in X}D(x)^2}
+\end{equation}
+Then the algorithm is explained as such:
+\begin{itemize}
+  \item Take one center $c_1$ chosen at random from the set of points $X$
+  \item Take a new center $c_i$ choosing $x\in X$ with probability $P(x)$.
+  \item Repeat until we have k centers.
+  \item Continue with normal KMeans
+\end{itemize}
+
+Here I have just pasted some of the original experimental results that David and Sergei found in their original paper.
+
+\begin{table}[h!]
+  \centering
+    \begin{tabular}{|c| c |c| c| }
+      & Average $\phi$ & Minimum $\phi$ & Average time (Seconds) \\
+      k & Random KMeans++ & Random KMeans++ & Random KMeans++ \\
+      \hline
+      2&3&  ell8 & cell9
+    \end{tabular}
+    \caption{Table of results from original KMeans++ Paper.}
+    \label{table:kpp}
+\end{table}
+
+The faster times the results show comes from the fact that with proper initialization of the centroids we reach convergence faster than with random initialized centroids. As discussed in \ref{subsec:lloyds} each iteration of the algorithm will need $3d \cdot n\cdot k$ operations, so decreasing the number of iterations will have a huge impact on performance.
+
+\subsection{Bohrium}
+\label{subsec:Bohrium}
+Bohrium is framework that aims to present a way to speed-up array programming, it's a modular framework with support for multiple alternate front end and back ends. Bohrium was created in 2013, by Mads R. B. Kristensen
+
+\subsection{How it works}
+\label{subsec:hiw}
+Bohrium lazily record any array operations that is used, this could as an example be from NumPy, and turn them into bytecode instruction set. An overview can be seen in figure \ref{fig:bohrium}
+
+\begin{figure}[H]
+  \centering
+  \label{fig:bohrium}
+  \input{bohrium_overview}
+\caption{The components that Bohrium are made out of}
+\end{figure}
+
+
+
+
+
+
 \subsection{Vectorization}
 \label{subsec:vectorization}
 
 The point of vectorization is to generalize operations on scalars to apply on vectors, matrices and also higher-dimensional arrays. The idea is to do operations on an entire set of values instead of each single item in the set. As en example the operation of adding two arrays together in a scalar function would look like this implemented in python
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=C]
   for (i=0; i < n; i++)
       for (j = 0; j < n; j++)
           a[index_a][index_b] += b[index_a][index_b]
 \end{lstlisting}
 
-This can now be generalized to $a=a+b$ in Python using Numpy. Vectorized operations are typically faster than doing operations as standard loops, and allows for computations on GPU's. Loop vectorization transforms a program so a single operation is performed at the same time on several vector elements. This means instead of running n-times, we now run n/4 times
+This tedious way of coding can now be abstracted away, as more and more programming languages and libraries support what is known as array programming, as an example in the library for python called Numpy the code for adding to vectors together can the trivialized to $a + b = c$ this leads to simpler code and it makes it possible for the programmer to speak the same language as mathematicians.
+
+Vectorized operations are typically allows for the operations to be run in parallel, thus speeding up the operation time. This in turn allows us further to run our code on GPU's which should lead to even greater speedups. These speedups will be discussed en greater detail when we discuss my vectorized implementation of the KMeans algorithm and my results.
