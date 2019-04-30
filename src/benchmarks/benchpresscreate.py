@@ -6,7 +6,7 @@ points = [random.randint(0, 100) for i in range(1000)]
 
 scripts = [
 
-    ('bohrium_kmeans',  [points, "10"])
+    ('Move Centroids',  'bohrium_kmeans',  [points, "10"])
 ]
 
 cmd_list = []
