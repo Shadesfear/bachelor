@@ -30,17 +30,12 @@ void execute(double *dist, int64_t *res)
 
   double start = omp_get_wtime();
 
-
   #pragma omp parallel for
   for (int i = 0; i < n_points; i++)
   {
     //int row_index = get_index(0, i, n_k);
     int row_index = i * n_k;
     res[i] = argmin(&dist[row_index], n_k);
-
   }
   printf("%f", omp_get_wtime()-start);
-
-
-
 }
