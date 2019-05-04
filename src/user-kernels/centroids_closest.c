@@ -23,7 +23,9 @@ int argmin(double *array, int end)
   return index;
 }
 
-void execute(double *dist, double * res_min, int64_t *res)
+
+void execute(double *dist, int64_t *res, double *min_dist)
+
 {
   int n_points = 0;
   int n_k = 0;
@@ -32,11 +34,8 @@ void execute(double *dist, double * res_min, int64_t *res)
   for (int i = 0; i < n_points; i++)
   {
     int row_index = i * n_k;
-
-    res[i] = argmin(&dist[i], n_k);
-
-    res_min[i] = dist[res[i]];
-
+    res[i] = argmin(&dist[row_index], n_k);
+    min_dist[i] = dist[res[i] + row_index];
 
   }
 }

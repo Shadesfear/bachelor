@@ -149,16 +149,12 @@ class bohrium_kmeans:
 
 
         distances = self.euclidian_distance(points, centroids)
-        # print(distances)
-        # time.sleep(10)
-        distances = distances.copy2numpy()
-        min_dist2 = np.minimum.reduce(distances, 0)
-
 
         if not self.userkernel:
             # diff = points[None, :, :] - centroids[:, None, :]
             # distances = bh.sqrt(((points - centroids[:, bh.newaxis])**2).sum(axis=2))
             distances = distances.copy2numpy()
+            min_dist = bh.minimum.reduce(distances, 0)
             ary = bh.array(np.argmin(distances, axis = 0))
             min_dist = bh.minimum.reduce(distances, 0)
             return ary, min_dist
@@ -167,7 +163,8 @@ class bohrium_kmeans:
 
 
             result = bh.zeros(points.shape[0], dtype = bh.int)
-            min_dist = bh.zeros(points.shape[0], dtype = bh.float64)
+            min_dist2 = bh.zeros(points.shape[0], dtype = bh.float64)
+
 
             distances_transposed = bh.user_kernel.make_behaving(distances.T)
 
@@ -178,7 +175,10 @@ class bohrium_kmeans:
 
             bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, min_dist, result])
 
-            #print((min_dist2 == bh.amin(distances, axis = 0)).all())
+            cmd = bh.user_kernel.get_default_compiler_command()
+            start = time.time()
+            bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, result, min_dist2], compiler_command = cmd)
+
 
             return result, min_dist2
 
@@ -324,6 +324,7 @@ class bohrium_kmeans:
                 # if (old_closest==closest).all():
                     # print("broke closes")
                     # return closest, centroids, iterations
+                print(bh.sum(old_min_dist) - bh.sum(min_dist))
 
                 if (bh.sum(old_min_dist) - bh.sum(min_dist)) < epsilon:
                     print("broke new")
@@ -348,10 +349,10 @@ class bohrium_kmeans:
 if __name__ == "__main__":
 
 
-    points = bh.loadtxt("../data/dataset.txt")
+    points = bh.loadtxt("../data/birchgrid.txt")
 
-    kmeans = bohrium_kmeans(3, userkernel=True)
+    kmeans = bohrium_kmeans(100, userkernel=True)
 
-    # centroids = kmeans.init_plus_plus(points)
-    c = kmeans.run(points)
-    # cloest , min_dist = kmeans.centroids_closest(points, centroids)
+    kmeans.run(points)
+
+    print(kmeans.euclidian_distance(points, centroids))
