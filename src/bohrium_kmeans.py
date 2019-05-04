@@ -23,7 +23,7 @@ class bohrium_kmeans:
     def __init__(self, k, init = "kmeans++", userkernel = True, max_iter = 300):
         if k <= 0:
             raise ValueError("Invalid number of initializations."
-                             " n_init=%d must be bigger than zero." % n_init)
+                             " n_init=%d must be bigger than zero." % k)
 
         self.max_iter = max_iter
         self.userkernel = userkernel
@@ -129,9 +129,14 @@ class bohrium_kmeans:
         Distances matrix, such that
 
         """
-        X = point1 - point2[:, bh.newaxis]
+        #print("points 1 ", point1.shape)
+        #print("points 2 ", point2)
+        X = point1 - point2[:, None]
         if square:
-            distances = (X * X).sum(axis=2)
+            distances = (X**2).sum(axis=2)
+            if bh.isnan(distances).any():
+                pass
+
 
         else:
             distances = bh.sqrt((X * X).sum(axis=2))
@@ -142,9 +147,12 @@ class bohrium_kmeans:
     @timeit
     def centroids_closest(self, points, centroids):
 
-        distances = self.euclidian_distance(points, centroids)
-        min_dist2 = bh.minimum.reduce(distances, 0)
 
+        distances = self.euclidian_distance(points, centroids)
+        # print(distances)
+        # time.sleep(10)
+        distances = distances.copy2numpy()
+        min_dist2 = np.minimum.reduce(distances, 0)
 
 
         if not self.userkernel:
@@ -168,7 +176,9 @@ class bohrium_kmeans:
 
             cmd = bh.user_kernel.get_default_compiler_command()
 
-            bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, min_dist, result], compiler_command = cmd)
+            bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, min_dist, result])
+
+            #print((min_dist2 == bh.amin(distances, axis = 0)).all())
 
             return result, min_dist2
 
@@ -220,6 +230,9 @@ class bohrium_kmeans:
             #                                                     bh.array([len(points[0])]),
             #                                                     centroids])
             # return centroids
+
+            print("points ", points)
+            print("closest", closest)
 
             if not n:
                 n = self.k
@@ -335,9 +348,9 @@ class bohrium_kmeans:
 if __name__ == "__main__":
 
 
-    points = bh.loadtxt("../data/birchgrid.txt")
+    points = bh.loadtxt("../data/dataset.txt")
 
-    kmeans = bohrium_kmeans(100, userkernel=True)
+    kmeans = bohrium_kmeans(3, userkernel=True)
 
     # centroids = kmeans.init_plus_plus(points)
     c = kmeans.run(points)
