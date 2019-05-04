@@ -4,9 +4,6 @@
 #include <omp.h>
 #include <time.h>
 
-
-//int get_index(int x, int y, int width) { return x + (y * width); }
-
 int argmin(double *array, int end)
 {
   double minimum = array[0];

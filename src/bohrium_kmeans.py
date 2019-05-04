@@ -7,10 +7,13 @@ import time
 import random
 from benchpress.benchmarks import util
 
+
 def timeit(func):
     def let_time(*args, **kwargs):
+        bh.flush()
         ts = time.time()
         result = func(*args, **kwargs)
+        bh.flush()
         te = time.time()
         print('Function "{name}" took {time} seconds to complete.'.format(name=func.__name__, time=te-ts))
         return result
@@ -109,7 +112,7 @@ class bohrium_kmeans:
         self.init_centroids = centroids
         return centroids
 
-
+    @timeit
     def euclidian_distance(self, point1, point2, square = True):
         """
         Calculates the euclidian distance between two sets of points.
@@ -126,17 +129,15 @@ class bohrium_kmeans:
 
         Returns:
         --------
-        Distances matrix, such that
+        Distances matrix:
+
 
         """
-        #print("points 1 ", point1.shape)
-        #print("points 2 ", point2)
-        X = point1 - point2[:, None]
-        if square:
-            distances = (X**2).sum(axis=2)
-            if bh.isnan(distances).any():
-                pass
 
+        X = point1 - point2[:, None]
+
+        if square:
+            distances = (X * X).sum(axis=2)
 
         else:
             distances = bh.sqrt((X * X).sum(axis=2))
@@ -144,7 +145,7 @@ class bohrium_kmeans:
 
         return(distances)
 
-    @timeit
+
     def centroids_closest(self, points, centroids):
 
 
@@ -171,9 +172,6 @@ class bohrium_kmeans:
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_k = 0", "int n_k = " + str(self.k))
 
-            cmd = bh.user_kernel.get_default_compiler_command()
-
-            bh.user_kernel.execute(self.kernel_centroids_closest, [distances_transposed, min_dist, result])
 
             cmd = bh.user_kernel.get_default_compiler_command()
             start = time.time()
@@ -231,9 +229,6 @@ class bohrium_kmeans:
             #                                                     centroids])
             # return centroids
 
-            print("points ", points)
-            print("closest", closest)
-
             if not n:
                 n = self.k
 
@@ -249,8 +244,6 @@ class bohrium_kmeans:
 
             mask = (closest == bh.arange(n)[:,None])
             out = mask.dot(points)/ mask.sum(1)[:,None]
-
-            #new_centroid = bh.array([points[closest==k].mean(axis = 0) for k in range(self.k)])
 
             return out
 
@@ -279,35 +272,30 @@ class bohrium_kmeans:
         scaled_data = points / std
         return scaled_data
 
-    def get_error(self, closest, points, centroids):
-        pass
 
 
-    def run(self, points, epsilon=0.01, mode = 'squared'):
+    def run(self, points, epsilon=0.001, square = True):
 
         if self.k > points.shape[0]:
             raise ValueError("number of points=%d should be >= k=%d" % (
-                len(points[0]), self.k))
+                points.shape[0], self.k))
 
         if type(points) != 'numpy.float32':
             points = bh.float64(points)
 
 
         if self.userkernel and self.init != "kmeans++":
+            print("init: random")
             centroids = self.init_random_userkernel(points)
 
         elif self.init == "kmeans++":
-            print("plusplus")
+            print("init: ++")
             centroids = self.init_plus_plus(points)
 
         else:
             centroids = self.init_random_centroids(points)
 
-        centroids_old = bh.zeros(centroids.shape)
         iterations = 0
-        diff = epsilon + 1
-        avg_dist = []
-
 
         while iterations < self.max_iter:
 
@@ -315,30 +303,15 @@ class bohrium_kmeans:
                 old_min_dist = min_dist.copy()
                 old_closest = closest.copy()
 
-            # centroids_old = centroids
             closest, min_dist = self.centroids_closest(points, centroids)
             centroids = self.move_centroids(points, closest, centroids)
 
             if iterations > 0:
 
-                # if (old_closest==closest).all():
-                    # print("broke closes")
-                    # return closest, centroids, iterations
-                print(bh.sum(old_min_dist) - bh.sum(min_dist))
-
                 if (bh.sum(old_min_dist) - bh.sum(min_dist)) < epsilon:
-                    print("broke new")
+                    print("Difference less than threshold")
                     return closest, centroids, iterations
 
-            # avg_dist.append(bh.mean(min_dist, axis = -1))
-
-            # if len(avg_dist) > 1:
-            #     diff = avg_dist[-2] - avg_dist[-1]
-
-            #     if ((avg_dist[-2] - avg_dist[-1])/avg_dist[-2])*100 < epsilon:
-
-            #         print("Avg dist broke")
-            #         return closest, centroids, iterations
 
             iterations += 1
         return closest, centroids, iterations
@@ -350,9 +323,6 @@ if __name__ == "__main__":
 
 
     points = bh.loadtxt("../data/birchgrid.txt")
-
-    kmeans = bohrium_kmeans(100, userkernel=True)
-
-    kmeans.run(points)
-
-    print(kmeans.euclidian_distance(points, centroids))
+    kmeans = bohrium_kmeans(100, userkernel=True, init="random")
+    c = kmeans.run(points)
+    # print(c)
