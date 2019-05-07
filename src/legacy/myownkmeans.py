@@ -73,24 +73,13 @@ if __name__ == "__main__":
     point_ary = [[randint(0,10), randint(0,10)] for i in range(n_points)]
     point_ary1 = []
 
-    # file1 = open("datapoints.txt", "r")
-    # for line in file1:
-    #     a = line.split(",")
-    #     point_ary1.append([float(a[0]), float(a[1].rstrip())])
-    points = np.loadtxt('../datasets/birchgrid.txt')
+    points = np.loadtxt('../../data/birchgrid.txt')
 
-    # points = np.vstack(((np.random.randn(30000, 2) * 0.75432 + np.array([1, 0])),
-    #                     (np.random.randn(30000, 2) * 0.25212 + np.array([-0.5, 0.5])),
-    #                     (np.random.randn(3300, 2) * 0.5443 + np.array([-0.5, -0.5]))))
-
-    # plt.scatter(*zip(*data), marker = 'o', color = 'r')
-    # plt.scatter(*zip(*centroids), marker = 'x', s = 600)
-    # plt.scatter(my_kmeans.init_clusters[:,0], my_kmeans.init_clusters[:,1], marker = "X", s=200, c = 'c')
 
 
 
     start = time.time()
-    centroids, iterations, closest = mykmeans(points,100)
+    centroids, iterations, closest = mykmeans(points,1000)
     end = time.time()
 
     plt.scatter(*zip(*points), c=closest)
@@ -99,4 +88,4 @@ if __name__ == "__main__":
     # plt.show()
     print(iterations)
 
-    print('{:.2e}'.format(end-start))
+    print("Tid: ", end-start)

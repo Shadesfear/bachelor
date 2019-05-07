@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 import scipy
 import time
+import utils
 import random
 from benchpress.benchmarks import util
 
@@ -37,14 +38,16 @@ class bohrium_kmeans:
         userkerneldir = "/home/chris/Documents/bachelor/src/user-kernels/"
 
         if self.userkernel:
-            with open(userkerneldir + 'centroids_closest.c', 'r') as content_file:
-                self.kernel_centroids_closest = content_file.read()
 
-            with open(userkerneldir + 'move_centroids.c', 'r') as content_file:
-                self.kernel_move_centroids = content_file.read()
+            self.kernel_centroids_closest = open(userkerneldir + 'centroids_closest.c').read()
+            # with open(userkerneldir + 'centroids_closest.c', 'r') as content_file:
+            #     self.kernel_centroids_closest = content_file.read()
 
-            with open(userkerneldir + 'shuffle.c', 'r') as content_file:
-                self.kernel_shuffle = content_file.read()
+            self.kernel_move_centroids = open(userkerneldir + 'move_centroids.c', 'r').read()
+            self.kernel_shuffle = open(userkerneldir + 'shuffle.c', 'r').read()
+
+
+
 
 
     def __str__(self):
@@ -79,9 +82,10 @@ class bohrium_kmeans:
 
 
     def init_first_k(self, points):
+        self.centroids = centroids
         return points[:self.k]
 
-
+    @timeit
     def init_plus_plus(self, points):
         """
         Initialize the clusters using KMeans++, where each centroid
@@ -112,7 +116,39 @@ class bohrium_kmeans:
         self.init_centroids = centroids
         return centroids
 
-    @timeit
+    # @timeit
+    def init_parallel(self, points, l = 2):
+        # centroids = bh.zeros_like(points[:self.k])
+
+        r = bh.random.randint(0, points.shape[0])
+        centroids = points[None,r]
+        psi = self.euclidian_distance(centroids, points).min(1).sum()
+
+        # print(int(bh.log(psi)))
+
+        for i in range(int(bh.log(psi))):
+            distance = self.euclidian_distance(centroids, points)
+            norm_const = bh.sum(bh.min(distance,1))
+            prob = l * bh.min(distance, axis = 1) / norm_const
+            cs = bh.cumsum(prob)
+            sut = bh.random.rand(l)
+            idxk = bh.sum(cs[:,None] < sut, 0)
+
+            temp_point = bh.empty_like(points[:len(idxk)])
+            for idx, val in enumerate(idxk):
+                temp_point[idx] = points[val]
+
+
+            centroids = bh.vstack((centroids, temp_point))
+            # bh.concatenate((centroids[:,None], points[idxk]))
+
+
+        a = self.init_random_userkernel(centroids)
+        # print(centroids.shape)
+        self.init_centroids = a
+        return a
+
+
     def euclidian_distance(self, point1, point2, square = True):
         """
         Calculates the euclidian distance between two sets of points.
@@ -134,10 +170,13 @@ class bohrium_kmeans:
 
         """
 
+
+
         X = point1 - point2[:, None]
 
         if square:
             distances = (X * X).sum(axis=2)
+            # return bh.dot(X,X)
 
         else:
             distances = bh.sqrt((X * X).sum(axis=2))
@@ -155,7 +194,6 @@ class bohrium_kmeans:
             # diff = points[None, :, :] - centroids[:, None, :]
             # distances = bh.sqrt(((points - centroids[:, bh.newaxis])**2).sum(axis=2))
             distances = distances.copy2numpy()
-            min_dist = bh.minimum.reduce(distances, 0)
             ary = bh.array(np.argmin(distances, axis = 0))
             min_dist = bh.minimum.reduce(distances, 0)
             return ary, min_dist
@@ -273,8 +311,8 @@ class bohrium_kmeans:
         return scaled_data
 
 
-
-    def run(self, points, epsilon=0.001, square = True):
+    @timeit
+    def run(self, points, epsilon=0.00001, square = True):
 
         if self.k > points.shape[0]:
             raise ValueError("number of points=%d should be >= k=%d" % (
@@ -287,6 +325,7 @@ class bohrium_kmeans:
         if self.userkernel and self.init != "kmeans++":
             print("init: random")
             centroids = self.init_random_userkernel(points)
+            # centroids = self.init_parallel(points, l = 4)
 
         elif self.init == "kmeans++":
             print("init: ++")
@@ -300,29 +339,47 @@ class bohrium_kmeans:
         while iterations < self.max_iter:
 
             if iterations > 0:
+                old_centers = centroids.copy()
                 old_min_dist = min_dist.copy()
                 old_closest = closest.copy()
 
             closest, min_dist = self.centroids_closest(points, centroids)
             centroids = self.move_centroids(points, closest, centroids)
+            inertia = min_dist.sum()
+
+            inertia = inertia.copy2numpy()
+
 
             if iterations > 0:
 
-                if (bh.sum(old_min_dist) - bh.sum(min_dist)) < epsilon:
-                    print("Difference less than threshold")
-                    return closest, centroids, iterations
+                x = old_centers - centroids
+                x = bh.ravel(x)
+
+                #This is the SKlearn way of exiting.
+                if (bh.dot(x, x) <= epsilon):
+                    print("OLD CENTERS")
+                    return closest, centroids, iterations, inertia
+
+
+                # if (bh.sum(old_min_dist) - bh.sum(min_dist)) < epsilon:
+                #     print("Difference less than threshold")
+                #     return closest, centroids, iterations, inertia
 
 
             iterations += 1
-        return closest, centroids, iterations
+        return closest, centroids, iterations, inertia
 
 
 
 
 if __name__ == "__main__":
-
+    from sklearn.cluster import KMeans
 
     points = bh.loadtxt("../data/birchgrid.txt")
-    kmeans = bohrium_kmeans(100, userkernel=True, init="random")
-    c = kmeans.run(points)
-    # print(c)
+    kmeans = bohrium_kmeans(100, userkernel=True, init="kmeans++")
+
+    clos, cent, ite, iner = kmeans.run(points)
+
+    start = time.time()
+    skmeans = KMeans(n_clusters = 100, n_init = 1, verbose =  1, ).fit(points)
+    end = time.time()
