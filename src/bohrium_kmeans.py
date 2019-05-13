@@ -391,12 +391,12 @@ def benchmark():
 
 if __name__ == "__main__":
     # from sklearn.cluster import KMeans
-    print("here")
-    benchmark()
-    # points = bh.loadtxt("../data/birchgrid.txt")
-    # kmeans = bohrium_kmeans(100, userkernel=True, init="kmeans++")
+    # print("here")
+    # benchmark()
+    points = bh.loadtxt("../data/birchgrid.txt")
+    kmeans = bohrium_kmeans(100, userkernel=True, init="kmeans++")
 
-    # clos, cent, ite, iner = kmeans.run(points)
+    clos, cent, ite, iner = kmeans.run(points)
 
     # start = time.time()
     # skmeans = KMeans(n_clusters = 100, n_init = 1, verbose =  1, ).fit(points)
