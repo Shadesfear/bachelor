@@ -9,6 +9,10 @@ import random
 from benchpress.benchmarks import util
 
 
+bench = util.Benchmark("kmeans", "k")
+
+
+
 def timeit(func):
     def let_time(*args, **kwargs):
         bh.flush()
@@ -339,6 +343,7 @@ class bohrium_kmeans:
         while iterations < self.max_iter:
 
             if iterations > 0:
+
                 old_centers = centroids.copy()
                 old_min_dist = min_dist.copy()
                 old_closest = closest.copy()
@@ -369,17 +374,30 @@ class bohrium_kmeans:
             iterations += 1
         return closest, centroids, iterations, inertia
 
+def benchmark():
+    k = bench.args.size[0]
+    points = bh.loadtxt("../../data/birchgrid.txt")
+
+    bh.flush()
+    bench.start()
+    print("starting")
+    kmeans = bohrium_kmeans(k, userkernel=True, init="kmeans++")
+    bh.flush()
+
+    bench.stop()
+    bench.pprint()
 
 
 
 if __name__ == "__main__":
-    from sklearn.cluster import KMeans
+    # from sklearn.cluster import KMeans
+    print("here")
+    benchmark()
+    # points = bh.loadtxt("../data/birchgrid.txt")
+    # kmeans = bohrium_kmeans(100, userkernel=True, init="kmeans++")
 
-    points = bh.loadtxt("../data/birchgrid.txt")
-    kmeans = bohrium_kmeans(100, userkernel=True, init="kmeans++")
+    # clos, cent, ite, iner = kmeans.run(points)
 
-    clos, cent, ite, iner = kmeans.run(points)
-
-    start = time.time()
-    skmeans = KMeans(n_clusters = 100, n_init = 1, verbose =  1, ).fit(points)
-    end = time.time()
+    # start = time.time()
+    # skmeans = KMeans(n_clusters = 100, n_init = 1, verbose =  1, ).fit(points)
+    # end = time.time()

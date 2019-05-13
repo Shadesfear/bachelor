@@ -5,6 +5,12 @@ import math
 from random import *
 import random
 
+from benchpress.benchmarks import util
+
+
+bench = util.Benchmark("kmeans", "k")
+
+
 def mykmeans(data, k, epsilon = 0.000001):
 
     centroids = [data[randint(0, len(data)-1)] for i in range(k)]
@@ -64,28 +70,39 @@ def eucDistance(p_i, p_j):
         # print(result)
         return result
 
+def benchmarks():
+    k = bench.args.size[0]
+
+    points = np.loadtxt("../../data/birchgrid.txt")
+
+    bench.start()
+    kmeans = mykmeans(points, k)
+    bench.stop()
+    bench.pprint()
 
 
 
 
 if __name__ == "__main__":
-    n_points = 10
-    point_ary = [[randint(0,10), randint(0,10)] for i in range(n_points)]
-    point_ary1 = []
+    print("hello")
+    # n_points = 10
+    # point_ary = [[randint(0,10), randint(0,10)] for i in range(n_points)]
+    # point_ary1 = []
 
-    points = np.loadtxt('../../data/birchgrid.txt')
+    # points = np.loadtxt('../../data/birchgrid.txt')
 
 
 
 
-    start = time.time()
-    centroids, iterations, closest = mykmeans(points,1000)
-    end = time.time()
+    # start = time.time()
+    # centroids, iterations, closest = mykmeans(points,1000)
+    # end = time.time()
 
-    plt.scatter(*zip(*points), c=closest)
-    plt.scatter(*zip(*points), marker = "X", s=400, c = 'r')
+    # plt.scatter(*zip(*points), c=closest)
+    # plt.scatter(*zip(*points), marker = "X", s=400, c = 'r')
 
-    # plt.show()
-    print(iterations)
+    # # plt.show()
+    # print(iterations)
 
-    print("Tid: ", end-start)
+    # print("Tid: ", end-start)
+    benchmarks()

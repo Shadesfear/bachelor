@@ -2,10 +2,9 @@ import benchpress as bp
 from benchpress.suite_util import BP_ROOT
 import random
 
-points = [random.randint(0, 100) for i in range(1000)]
-
 scripts = [
-    ('kmeans', 'bohrium_kmeans',  ["20", "10"])
+    ('kmeans', 'bohrium_kmeans',  ["10", "20", "30", "40", "50", "100", "1000"]),
+    ('python_version', 'legacy/myownkmeans', ["10", "20", "30", "40", "50", "100", "1000"])
 ]
 
 cmd_list = []
