@@ -3,8 +3,8 @@ from benchpress.suite_util import BP_ROOT
 import random
 
 scripts = [
-    ('Bohrium', 'bohrium_kmeans', ["10", "20", "30", "40", "50", "100", "500"]),
-    ('Numpy', 'pure-numpy-kmeans', ["10", "20", "30", "40", "50", "100", "500"]),
+    ('Python', 'python_random_centroids',  ["10", "20", "50", "100", "1000", "5000"]),
+    ('Numpy', 'numpy_random_centroids', ["10", "20", "50", "100", "1000", "5000"]),
     # ('numpy_version', 'pure-numpy-kmeans', ["10", "20", "30", "40", "50", "100", "500"])
 
 ]

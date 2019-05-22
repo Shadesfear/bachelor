@@ -1,0 +1,439 @@
+{
+    "cmd_list": [
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 10",
+            "label": "python_version/10",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-871e38d5-1dc5-4cee-ba0f-5dc7d95f294e.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'python_version/10'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 10 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-871e38d5-1dc5-4cee-ba0f-5dc7d95f294e.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-871e38d5-1dc5-4cee-ba0f-5dc7d95f294e.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 10 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-871e38d5-1dc5-4cee-ba0f-5dc7d95f294e.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-871e38d5-1dc5-4cee-ba0f-5dc7d95f294e.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 10 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-871e38d5-1dc5-4cee-ba0f-5dc7d95f294e.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-871e38d5-1dc5-4cee-ba0f-5dc7d95f294e.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 7062416.352117112\ndiff 7062416.352117112\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 10, elapsed-time: 2.531767\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 8359731.108941026\ndiff 8359731.108941026\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 10, elapsed-time: 2.510541\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 7821161.451542172\ndiff 7821161.451542172\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 10, elapsed-time: 2.453218\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 20",
+            "label": "python_version/20",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-9917130e-ed1f-462f-ab7d-7399f46f393c.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'python_version/20'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 20 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-9917130e-ed1f-462f-ab7d-7399f46f393c.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-9917130e-ed1f-462f-ab7d-7399f46f393c.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 20 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-9917130e-ed1f-462f-ab7d-7399f46f393c.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-9917130e-ed1f-462f-ab7d-7399f46f393c.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 20 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-9917130e-ed1f-462f-ab7d-7399f46f393c.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-9917130e-ed1f-462f-ab7d-7399f46f393c.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 15527117.526121302\ndiff 15527117.526121302\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 20, elapsed-time: 4.228320\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 14141644.025017263\ndiff 14141644.025017263\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 20, elapsed-time: 4.021080\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 15399483.299087822\ndiff 15399483.299087822\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 20, elapsed-time: 4.007180\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 30",
+            "label": "python_version/30",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-fae4991d-0a24-4d3b-a487-4d127a7e8928.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'python_version/30'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 30 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fae4991d-0a24-4d3b-a487-4d127a7e8928.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fae4991d-0a24-4d3b-a487-4d127a7e8928.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 30 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fae4991d-0a24-4d3b-a487-4d127a7e8928.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fae4991d-0a24-4d3b-a487-4d127a7e8928.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 30 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fae4991d-0a24-4d3b-a487-4d127a7e8928.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fae4991d-0a24-4d3b-a487-4d127a7e8928.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 22500493.812812947\ndiff 22500493.812812947\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 30, elapsed-time: 5.830132\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 22756797.96289918\ndiff 22756797.96289918\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 30, elapsed-time: 6.012690\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 23091815.4186216\ndiff 23091815.4186216\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 30, elapsed-time: 5.873600\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 40",
+            "label": "python_version/40",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-00e7caa0-1ae2-4c3c-ac1b-476e7580ebc0.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'python_version/40'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 40 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-00e7caa0-1ae2-4c3c-ac1b-476e7580ebc0.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-00e7caa0-1ae2-4c3c-ac1b-476e7580ebc0.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 40 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-00e7caa0-1ae2-4c3c-ac1b-476e7580ebc0.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-00e7caa0-1ae2-4c3c-ac1b-476e7580ebc0.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 40 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-00e7caa0-1ae2-4c3c-ac1b-476e7580ebc0.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-00e7caa0-1ae2-4c3c-ac1b-476e7580ebc0.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 28598147.175855283\ndiff 28598147.175855283\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 40, elapsed-time: 7.720022\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 29779324.673597652\ndiff 29779324.673597652\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 40, elapsed-time: 7.627518\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 30457337.851470646\ndiff 30457337.851470646\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 40, elapsed-time: 7.785115\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 50",
+            "label": "python_version/50",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-a1b607a8-3ecd-445f-b212-5fdcda809e5f.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'python_version/50'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 50 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a1b607a8-3ecd-445f-b212-5fdcda809e5f.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a1b607a8-3ecd-445f-b212-5fdcda809e5f.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 50 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a1b607a8-3ecd-445f-b212-5fdcda809e5f.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a1b607a8-3ecd-445f-b212-5fdcda809e5f.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 50 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a1b607a8-3ecd-445f-b212-5fdcda809e5f.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a1b607a8-3ecd-445f-b212-5fdcda809e5f.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 37195769.26822124\ndiff 37195769.26822124\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 50, elapsed-time: 9.699105\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 38342738.56106745\ndiff 38342738.56106745\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 50, elapsed-time: 9.691442\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 40296874.58914319\ndiff 40296874.58914319\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 50, elapsed-time: 9.624917\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 100",
+            "label": "python_version/100",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-21117f67-7589-419d-8148-831541e4e21c.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'python_version/100'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 100 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-21117f67-7589-419d-8148-831541e4e21c.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-21117f67-7589-419d-8148-831541e4e21c.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 100 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-21117f67-7589-419d-8148-831541e4e21c.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-21117f67-7589-419d-8148-831541e4e21c.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 100 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-21117f67-7589-419d-8148-831541e4e21c.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-21117f67-7589-419d-8148-831541e4e21c.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 79015465.58179213\ndiff 79015465.58179213\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 100, elapsed-time: 19.189465\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 75524395.94518952\ndiff 75524395.94518952\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 100, elapsed-time: 19.407011\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 76885920.51599316\ndiff 76885920.51599316\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 100, elapsed-time: 18.882607\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 500",
+            "label": "python_version/500",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-b3ab6e61-ce16-4587-b84c-90556120b26b.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'python_version/500'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 500 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3ab6e61-ce16-4587-b84c-90556120b26b.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3ab6e61-ce16-4587-b84c-90556120b26b.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 500 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3ab6e61-ce16-4587-b84c-90556120b26b.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3ab6e61-ce16-4587-b84c-90556120b26b.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 500 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3ab6e61-ce16-4587-b84c-90556120b26b.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3ab6e61-ce16-4587-b84c-90556120b26b.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 373786775.64145666\ndiff 373786775.64145666\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 500, elapsed-time: 96.419054\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 376045453.6634387\ndiff 376045453.6634387\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 500, elapsed-time: 95.413090\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "hello\ndiff 378535835.1468631\ndiff 378535835.1468631\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 500, elapsed-time: 95.775459\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 10",
+            "label": "numpy_version/10",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-e6a166aa-6f30-4d37-a43f-e598569ffff9.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'numpy_version/10'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 10 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e6a166aa-6f30-4d37-a43f-e598569ffff9.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e6a166aa-6f30-4d37-a43f-e598569ffff9.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 10 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e6a166aa-6f30-4d37-a43f-e598569ffff9.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e6a166aa-6f30-4d37-a43f-e598569ffff9.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 10 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e6a166aa-6f30-4d37-a43f-e598569ffff9.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e6a166aa-6f30-4d37-a43f-e598569ffff9.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 10, elapsed-time: 15.799740\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 10, elapsed-time: 16.392574\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 10, elapsed-time: 16.093696\ndone\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 20",
+            "label": "numpy_version/20",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-d82356af-5c41-49be-ab27-b8a467a7074a.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'numpy_version/20'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 20 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d82356af-5c41-49be-ab27-b8a467a7074a.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d82356af-5c41-49be-ab27-b8a467a7074a.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 20 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d82356af-5c41-49be-ab27-b8a467a7074a.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d82356af-5c41-49be-ab27-b8a467a7074a.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 20 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d82356af-5c41-49be-ab27-b8a467a7074a.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d82356af-5c41-49be-ab27-b8a467a7074a.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 20, elapsed-time: 32.973897\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 20, elapsed-time: 30.845039\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 20, elapsed-time: 32.505764\ndone\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 30",
+            "label": "numpy_version/30",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-0c3a2a18-8337-4755-9806-52e3600cc4ab.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'numpy_version/30'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 30 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-0c3a2a18-8337-4755-9806-52e3600cc4ab.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-0c3a2a18-8337-4755-9806-52e3600cc4ab.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 30 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-0c3a2a18-8337-4755-9806-52e3600cc4ab.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-0c3a2a18-8337-4755-9806-52e3600cc4ab.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 30 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-0c3a2a18-8337-4755-9806-52e3600cc4ab.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-0c3a2a18-8337-4755-9806-52e3600cc4ab.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 30, elapsed-time: 46.355270\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 30, elapsed-time: 45.110699\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 30, elapsed-time: 46.980659\ndone\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 40",
+            "label": "numpy_version/40",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-f3457593-4c01-4a0b-b4ee-753a873fc654.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'numpy_version/40'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 40 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f3457593-4c01-4a0b-b4ee-753a873fc654.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f3457593-4c01-4a0b-b4ee-753a873fc654.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 40 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f3457593-4c01-4a0b-b4ee-753a873fc654.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f3457593-4c01-4a0b-b4ee-753a873fc654.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 40 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f3457593-4c01-4a0b-b4ee-753a873fc654.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f3457593-4c01-4a0b-b4ee-753a873fc654.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 40, elapsed-time: 64.650648\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 40, elapsed-time: 61.003790\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 40, elapsed-time: 61.180391\ndone\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 50",
+            "label": "numpy_version/50",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-72c2cc4e-3853-4c70-a5a6-136350db2987.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'numpy_version/50'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 50 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-72c2cc4e-3853-4c70-a5a6-136350db2987.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-72c2cc4e-3853-4c70-a5a6-136350db2987.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 50 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-72c2cc4e-3853-4c70-a5a6-136350db2987.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-72c2cc4e-3853-4c70-a5a6-136350db2987.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 50 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-72c2cc4e-3853-4c70-a5a6-136350db2987.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-72c2cc4e-3853-4c70-a5a6-136350db2987.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 50, elapsed-time: 76.126683\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 50, elapsed-time: 75.137977\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 50, elapsed-time: 77.116781\ndone\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 100",
+            "label": "numpy_version/100",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-5b6a7411-0489-4fb0-8c8d-65badf16b6d3.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'numpy_version/100'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 100 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5b6a7411-0489-4fb0-8c8d-65badf16b6d3.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5b6a7411-0489-4fb0-8c8d-65badf16b6d3.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 100 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5b6a7411-0489-4fb0-8c8d-65badf16b6d3.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5b6a7411-0489-4fb0-8c8d-65badf16b6d3.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 100 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5b6a7411-0489-4fb0-8c8d-65badf16b6d3.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5b6a7411-0489-4fb0-8c8d-65badf16b6d3.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 100, elapsed-time: 155.620439\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 100, elapsed-time: 151.477313\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 100, elapsed-time: 150.651622\ndone\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 500",
+            "label": "numpy_version/500",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-123577e2-5305-422a-8ee2-50d221bda0ac.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'numpy_version/500'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 500 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-123577e2-5305-422a-8ee2-50d221bda0ac.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-123577e2-5305-422a-8ee2-50d221bda0ac.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 500 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-123577e2-5305-422a-8ee2-50d221bda0ac.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-123577e2-5305-422a-8ee2-50d221bda0ac.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 500 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-123577e2-5305-422a-8ee2-50d221bda0ac.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-123577e2-5305-422a-8ee2-50d221bda0ac.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 500, elapsed-time: 730.691499\ndone\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 500, elapsed-time: 811.494558\ndone\n",
+                            "stderr": "/usr/lib/python3.7/site-packages/numpy/core/fromnumeric.py:3118: RuntimeWarning: Mean of empty slice.\n  out=out, **kwargs)\n/usr/lib/python3.7/site-packages/numpy/core/_methods.py:78: RuntimeWarning: invalid value encountered in true_divide\n  ret, rcount, out=ret, casting='unsafe', subok=False)\n"
+                        },
+                        {
+                            "success": true,
+                            "stdout": "starting\n/home/chris/Documents/bachelor/src/pure-numpy-kmeans.py - bohrium: False, size: 500, elapsed-time: 787.080353\ndone\n",
+                            "stderr": "/usr/lib/python3.7/site-packages/numpy/core/fromnumeric.py:3118: RuntimeWarning: Mean of empty slice.\n  out=out, **kwargs)\n/usr/lib/python3.7/site-packages/numpy/core/_methods.py:78: RuntimeWarning: invalid value encountered in true_divide\n  ret, rcount, out=ret, casting='unsafe', subok=False)\n"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "creation_date_utc": "2019-05-17T13:40:46.392511"
+}

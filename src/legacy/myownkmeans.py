@@ -75,8 +75,10 @@ def benchmarks():
 
     points = np.loadtxt("../../data/birchgrid.txt")
 
+    points = np.random.randint(2 * 10**k, size=(10**k, 2))
+
     bench.start()
-    kmeans = mykmeans(points, k)
+    kmeans = mykmeans(points, int(10**k / 100))
     bench.stop()
     bench.pprint()
 

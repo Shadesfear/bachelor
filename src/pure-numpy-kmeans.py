@@ -1,9 +1,28 @@
 # Keep number of imports short to show that only numpy was used
 #
 #
-
+from benchpress.benchmarks import util
 import numpy as np
 import matplotlib.pyplot as plt
+
+
+def move_centroids(points, closest, centroids, k):
+    mask = (closest == np.arange(k)[:,None])
+    out = mask.dot(points)/ mask.sum(1)[:,None]
+    return out
+
+
+def euclidian_distance(points, centroids):
+        X = points - centroids[:, None]
+        distances = (X * X).sum(axis=2)
+        return distances
+
+
+def centroids_closest(points, centroids):
+    distances = euclidian_distance(points, centroids)
+    result = np.argmin(distances, axis = 0)
+    min_dist = distances.min(1)
+    return result, min_dist
 
 def pure_numpy_kmeans(points, k, epsilon = 0.00001):
 
@@ -12,59 +31,74 @@ def pure_numpy_kmeans(points, k, epsilon = 0.00001):
     else:
 
         number_points, number_dim = points.shape
-
         row_i = np.random.choice(points.shape[0], k) #K random rows
         centroids=points[row_i,:]
         centroids_old, belongs_to = np.zeros(centroids.shape), np.zeros(number_points)
-
-
-        colors = ['r', 'b', 'g', 'k']
         iterations = 0
 
-        plt.scatter(*zip(*points), marker='o', color = 'r')
-        plt.scatter(*zip(*centroids), marker = 'x', s=600, color = 'k')
 
-        diff = np.linalg.norm(centroids_old[0,:] - centroids[0,:])
 
-        while diff > epsilon:
+        diff = np.linalg.norm(centroids_old - centroids)
+
+        while iterations < 300:
 
             iterations += 1
-            diff = np.linalg.norm(centroids_old[0,:] - centroids[0,:])
+            diff = np.linalg.norm(centroids_old - centroids)
 
             centroids_old = centroids #Update old for the diff
 
-            #################################################
-            # FIX ENUMERATE TO NUMPY, probably slow in python
-            #################################################
 
-            for p_x, point in enumerate(points):
-                distance_array = np.zeros(k)
+            closest, min_dist = centroids_closest(points, centroids)
+            centroids = move_centroids(points, closest, centroids, k)
 
-                for c_x, centroid in enumerate(centroids):
+            x = centroids_old - centroids
+            x = np.ravel(x)
+            if (np.dot(x, x) <= epsilon):
+                print(iterations)
+                return
 
-                    dist = np.linalg.norm(point-centroid)
-                    distance_array[c_x] = dist
+            # for p_x, point in enumerate(points):
+            #     distance_array = np.zeros(k)
 
-                belongs_to[p_x] = np.argmin(distance_array)
+            #     for c_x, centroid in enumerate(centroids):
 
-            for index in range(k):
+            #         dist = np.linalg.norm(point-centroid)
+            #         distance_array[c_x] = dist
 
-                instance_closest = [i for i in range(belongs_to.size) if belongs_to[i] == index]
-                new_centroid = np.mean(points[instance_closest], axis=0)
-                plt.scatter(*zip(*points[instance_closest]), marker = 'o', color=colors[index])
-                centroids[index,:] = new_centroid
+            #     belongs_to[p_x] = np.argmin(distance_array)
 
-    print(iterations)
-    for i in range(k):
-        plt.scatter(*zip(centroids[i]), marker = 'x', color = colors[i], s=600)
+            # for index in range(k):
 
-    plt.show()
+            #     instance_closest = [i for i in range(belongs_to.size) if belongs_to[i] == index]
+            #     new_centroid = np.mean(points[instance_closest], axis=0)
+            #     # plt.scatter(*zip(*points[instance_closest]), marker = 'o', color=colors[index])
+            #     centroids[index,:] = new_centroid
+        print(iterations)
+
+
+
+def benchmark():
+    k = bench.args.size[0]
+    points = np.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
+
+
+    bench.start()
+    print("starting")
+    pure_numpy_kmeans(points, k)
+
+    bench.stop()
+    bench.pprint()
+
 
     print("done")
 
 
 
 if __name__ == "__main__":
+
+  # points = np.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
+    # pure_numpy_kmeans(points, 100)
     #Get points from text file
-    pnt_ary = np.loadtxt('dataset.txt')
-    pure_numpy_kmeans(pnt_ary, 3)
+    bench = util.Benchmark("kmeans", "k")
+    # pnt_ary = np.loadtxt('../../data/birchgrid.txt')
+    benchmark()
