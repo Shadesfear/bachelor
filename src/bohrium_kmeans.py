@@ -193,7 +193,7 @@ class bohrium_kmeans:
 
         return(distances)
 
-    @timeit
+
     def centroids_closest(self, points, centroids):
         bh.flush()
         distances = self.euclidian_distance(points, centroids)
@@ -468,14 +468,14 @@ if __name__ == "__main__":
     # from sklearn.cluster import KMeans
     # from bohrium_api import stack_info, _bh_api
     # print("here")
-    bench = util.Benchmark("kmeans", "k*gpu")
-    gpu_bench()
-    # points = bh.loadtxt("../data/birchgrid.txt")
+    # bench = util.Benchmark("kmeans", "k*gpu")
+    # gpu_bench()
+    points = bh.loadtxt("../data/birchgrid.txt")
     # points = np.random.randint(200000, size=(100000, 2))
     # points = bh.array(points)
-    # kmeans = bohrium_kmeans(10000, userkernel=True, init="random", gpu=False)
+    kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=True)
 
-    # clos, cent, ite, iner = kmeans.run_plot(points)
+    clos, cent, ite, iner = kmeans.run_plot(points)
     # centroids = kmeans.init_plus_plus(points)
 
     # closest, min_dist = kmeans.centroids_closest(points, centroids)
