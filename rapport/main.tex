@@ -169,7 +169,15 @@ NumPy is a math library for python, that adds support for large matrix operation
 \subsection{Broadcasting}
 \label{subsec:Broadcasting}
 
-On of the more advanced features of NumPy is broadcasting,
+On of the more advanced features of NumPy that we utilize in this project is broadcasting, broadcasting is NumPy's way of adding, subtracting or any other arithmetic on arrays of different sizes. Basically NumPy duplicates the smaller array such that the size and dimension of the smaller array matches the bigger array. A basic example of how this is handled can be seen in figure \ref{fig:broadcasting}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width = 0.6\textwidth]{images/broadcasting.png}
+  \caption{An example of how NumPy broadcasting works.\label{fig:broadcasting}}
+\end{figure}
+
+
 
 
 
@@ -190,9 +198,6 @@ Bohrium lazily record any array operations that is used, this could as an exampl
 
 
 
-
-
-
 \section{Vectorization}
 \label{subsec:vectorization}
 
@@ -209,6 +214,9 @@ Vectorized operations are typically allows for the operations to be run in paral
 
 \section{OpenMP}
 \label{subsec:openmp}
+OpenMP is  library that supports what is known as shared memory multiproccesing. So when programming inside the framework of OpenMP all of the threads utilize the same memory and data. With OpenMP it's easy to paralellize code on the CPU, just by adding a pragma to the code. An example of this could to automatically try to paralellize a for loop.
+
+
 
 
 \section{OpenCL}

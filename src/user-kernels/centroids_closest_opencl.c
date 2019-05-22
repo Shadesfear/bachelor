@@ -36,6 +36,7 @@ kernel void execute(global double *dist, global long *res, global double *min_di
 
   double minimum = dist[row_index];
   int index;
+
   for (int j = 0; j < n_k; j++)
   {
     if (dist[j + row_index] < minimum)
@@ -44,5 +45,7 @@ kernel void execute(global double *dist, global long *res, global double *min_di
       index = j + row_index;
     }
   }
+
+  res[i] = index;
   min_dist[i] = dist[res[i] + row_index];
 }
