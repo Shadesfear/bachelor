@@ -39,8 +39,8 @@ class bohrium_kmeans:
         self.init_centroids = np.array([0])
         self.gpu = gpu
 
-        userkerneldir = "/home/chris/Documents/bachelor/src/user-kernels/"
-        # userkerneldir = "/home/cca/bachelor/src/user-kernels/"
+        # userkerneldir = "/home/chris/Documents/bachelor/src/user-kernels/"
+        userkerneldir = "/home/cca/bachelor/src/user-kernels/"
 
 
         if self.userkernel:
@@ -202,6 +202,9 @@ class bohrium_kmeans:
 
             result = bh.zeros(points.shape[0], dtype = bh.int64)
             min_dist = bh.zeros(points.shape[0], dtype = bh.float64)
+            result2 = bh.zeros(points.shape[0], dtype = bh.int64)
+            min_dist2 = bh.zeros(points.shape[0], dtype = bh.float64)
+
             distances_transposed = bh.user_kernel.make_behaving(distances.T)
 
             if self.gpu:
@@ -215,6 +218,11 @@ class bohrium_kmeans:
                 bh.user_kernel.execute(self.kernel_centroids_closest,
                                        [distances_transposed, result, min_dist], compiler_command = cmd)
 
+                bh.user_kernel.execute(self.kernel_centroids_closest_opencl,
+                                       [distances_transposed, result2, min_dist2],
+                                       tag="opencl", param={"global_work_size": [points.shape[0], self.k], "local_work_size": [1, 1]})
+
+                print((result == result2).all())
 
         else:
             bh.flush()
