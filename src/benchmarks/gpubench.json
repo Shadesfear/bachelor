@@ -1,0 +1,40 @@
+{
+    "cmd_list": [
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 10 gpu",
+            "label": "Bohrium/10 gpu",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 20",
+            "label": "Bohrium/20",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 30",
+            "label": "Bohrium/30",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 40",
+            "label": "Bohrium/40",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 50",
+            "label": "Bohrium/50",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 100",
+            "label": "Bohrium/100",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 500",
+            "label": "Bohrium/500",
+            "env": {}
+        }
+    ],
+    "creation_date_utc": "2019-05-22T07:28:36.574588"
+}
