@@ -444,13 +444,32 @@ def benchmark():
     bench.pprint()
 
 
+def gpu_bench():
+    k = bench.args.size[0]
+    gp = bench.args.size[1]
+
+    np.random.seed(0)
+    # points = bh.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
+    points = np.random.randint(2*10**6, size=(10**6, 2))
+    points = bh.array(points)
+
+    bh.flush()
+    bench.start()
+
+    kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=gp)
+    kmeans.run(points)
+    bh.flush()
+
+    bench.stop()
+    bench.pprint()
+
 
 if __name__ == "__main__":
     # from sklearn.cluster import KMeans
     # from bohrium_api import stack_info, _bh_api
     # print("here")
-    bench = util.Benchmark("kmeans", "k")
-    benchmark()
+    bench = util.Benchmark("kmeans", "k*gpu")
+    gpu_bench()
     # points = bh.loadtxt("../data/birchgrid.txt")
     # points = np.random.randint(200000, size=(100000, 2))
     # points = bh.array(points)
