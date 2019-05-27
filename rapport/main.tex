@@ -471,15 +471,33 @@ I Told you that we would not be using Kmeans++ for initializing the centroids, n
 In this chapter I will try to provide the reader with acceptable proof that we did indeed gain an increase in performance when going from plain Python to Bohrium. This was done by performing different benchmarks of the different implementations of the KMeans algorithm, for different number of points, in different number of dimensions (features) and in different number of centroids (k).\\\\ The benchmarks was conducted using the Python library Benchpress that is also created by Mads B. R Kristensen that makes it a breeze to create soffisticated Benchmarks of different sizes and functions by creating a suite file that describes the functions to run with different parameters, and then executing them one by one.\\
 For the benchmarks we will use the same method of initialization for all the different benchmarks namely random initialization with the same seed such that the randomness is predictable.
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=1\linewidth]{images/bohr-numpy-kmeans2.pdf}
-  \caption{\label{fig:bohriumvsnumpy}Benchmark of the kmeans algorithm of the same dataset with different number of centroids. The centroids chosen is \{10, 20, 30, 40, 50, 100, 500\}}
-\end{figure}
 
 \section{Python VS Bohrium}
 \label{sec:pyvbohrium}
-Now we will explore the increases in performance in pure Python compared to my version in Bohrium, when running on the CPU. First I will explore runtimes of the algorithm for an increasing number of random points with the same seed to make sure that the benchmark across runs are fair, then I will conduct the benchmark for an increasing number of values for $k$, with a fixed number of random points.
+Now we will explore the increases in performance in pure Python compared to my version in Bohrium, when running on the CPU. First I will explore runtimes of the algorithm for an increasing number of random points with the same seed to make sure that the benchmark across runs are fair, then I will conduct the benchmark for an increasing number of values for $k$, with a fixed number of random points. This results are seen in figure \ref{fig:pythonvsbohrium}, as we see, bohrium is faster and scales much better, allowing for larger datasets in a shorter time.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{images/python_vs_bohrium1.pdf}
+  \caption{\label{fig:pythonvsbohrium}Runtimes of the KMeans algorithm run on a varying number of points, the notation reads ``multiplier*exponent'', such that Bohrium/5*5 is KMeans using Bohrium with $5*10^5$ number of points, the number of centroids was fixed to be 50.}
+\end{figure}
+
+\section{NumPy VS Bohrium}
+\label{sec:numpyvsbohrium}
+In this section we will look at the performance in  running my implementation of the KMeans algorithm in  NumPy vs Bohrium, we will do the same as in the last section, first looking at performance for different number of points, and then we will be looking at different number of centroids.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{images/bohr-numpy-kmeans2.pdf}
+  \caption{\label{fig:bohriumvsnumpy}Benchmark of the kmeans algorithm of the same dataset with different number of centroids. The centroids chosen is \{10, 20, 30, 40, 50, 100, 500\}}
+\end{figure}
+
+
+
+\section{CPU vs GPU}
+\label{sec:cpugpu}
+
+
 
 
 

@@ -71,16 +71,17 @@ def eucDistance(p_i, p_j):
         return result
 
 def benchmarks():
-    points = bench.args.size[0]
-
-    k = 5
+    exp = bench.args.size[0]
+    times = bench.args.size[1]
+    k = 50
     np.random.seed(0)
     # points = bh.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
-    points = np.random.randint(2*10**points, size=(10**points, 2))
+    points = np.random.randint(times*2*10**exp, size=(times *10**exp, 2))
 
-    mykmeans(points, k)
+
     # bh.flush()
     bench.start()
+    a, b, c = mykmeans(points, k)
 
     # kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=gp)
     # kmeans.run(points)
@@ -91,7 +92,7 @@ def benchmarks():
     bench.stop()
     bench.pprint()
 
-
+    print(b)
 
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ import os
 from benchpress.benchmarks import util
 
 
-# bench = util.Benchmark("kmeans", "k")
+
 
 def timeit(func):
     def let_time(*args, **kwargs):
@@ -45,8 +45,6 @@ class bohrium_kmeans:
 
         userkerneldir = dirname + "/user-kernels/"
 
-
-
         if self.userkernel:
             self.kernel_centroids_closest = open(userkerneldir + 'centroids_closest.c').read()
             self.kernel_centroids_closest_opencl = open(userkerneldir + 'centroids_closest_opencl.c').read()
@@ -60,13 +58,10 @@ class bohrium_kmeans:
 
     def init_random_userkernel(self, points):
         temp = points.copy()
-
         if type(temp) != 'numpy.float32':
             temp = bh.float64(temp)
 
-
         bh.user_kernel.execute(self.kernel_shuffle, [temp])
-
         return temp[:self.k]
 
 
@@ -148,16 +143,16 @@ class bohrium_kmeans:
         return a
 
 
-    def euclidian_distance(self, point1, point2, square = True):
+    def euclidian_distance(self, points1, points2, square = True):
         """
         Calculates the euclidian distance between two sets of points.
         This uses numpy broadcasting trick if the to sets arent the same size
 
         Parameters:
         -----------
-        point1: nd array
+        points1: nd array
             First set of points
-        point2: nd array
+        points2: nd array
             Second set of points
         square: bool, optional
             If to take the square root or not when performing the calculation
@@ -167,7 +162,7 @@ class bohrium_kmeans:
         Distances matrix:
         """
 
-        X = point1 - point2[:, None]
+        X = points1 - points2[:, None]
 
         distances = (X * X).sum(axis=2)
 
@@ -343,13 +338,25 @@ class bohrium_kmeans:
         return closest, centroids, iterations, inertia
 
 def benchmark():
-    k = bench.args.size[0]
-    points = bh.loadtxt("../../data/birchgrid.txt")
+
+
+    exp = bench.args.size[0]
+    times = bench.args.size[1]
+
+    k = 50
+    bh.random.seed(0)
+    np.random.seed(0)
+
+    # points = bh.random.randint(2*10**exp, size=(10**exp, 2))
+    points = np.random.randint(times*2*10**exp, size=(times * 10**exp, 2))
+    points = bh.array(points)
 
     bh.flush()
     bench.start()
-    print("starting")
-    kmeans = bohrium_kmeans(k, userkernel=True, init="kmeans++")
+
+    kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=False)
+    kmeans.run(points)
+
     bh.flush()
 
     bench.stop()
@@ -357,15 +364,18 @@ def benchmark():
 
 
 
+
+
 if __name__ == "__main__":
     # from sklearn.cluster import KMeans
     # print("here")
-    # benchmark()
-    points = bh.loadtxt("../data/birchgrid.txt")
-    kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=False)
+    bench = util.Benchmark("kmeans", "k")
+    benchmark()
+    # points = bh.loadtxt("../data/birchgrid.txt")
+    # kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=False)
 
-    clos, cent, ite, iner = kmeans.run(points)
-    print(iner)
+    # clos, cent, ite, iner = kmeans.run(points)
+    # print(iner)
     # centroids = kmeans.init_plus_plus(points)
 
     # closest, min_dist = kmeans.centroids_closest(points, centroids)
