@@ -46,7 +46,7 @@ class bohrium_kmeans:
         if self.userkernel:
 
             self.kernel_centroids_closest = open(userkerneldir + 'centroids_closest.c').read()
-            # self.kernel_centroids_closest_opencl = open(userkerneldir + 'centroids_closest_opencl.c').read()
+            self.kernel_centroids_closest_opencl = open(userkerneldir + 'centroids_closest_opencl.c').read()
             self.kernel_move_centroids = open(userkerneldir + 'move_centroids.c', 'r').read()
             self.kernel_shuffle = open(userkerneldir + 'shuffle.c', 'r').read()
 
@@ -165,22 +165,13 @@ class bohrium_kmeans:
         Returns:
         --------
         Distances matrix:
-
-
         """
-
-
 
         X = point1 - point2[:, None]
 
-        if square:
-            distances = (X * X).sum(axis=2)
-            # return bh.dot(X,X)
+        distances = (X * X).sum(axis=2)
 
-        else:
-            distances = bh.sqrt((X * X).sum(axis=2))
-
-        return(distances)
+        return distances if square else bh.sqrt(distances)
 
 
     def centroids_closest(self, points, centroids):
@@ -294,8 +285,8 @@ class bohrium_kmeans:
 
 
         if self.userkernel:
-            # self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
-            # self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_k = 0", "int n_k = " + str(self.k))
+            self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
+            self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_k = 0", "int n_k = " + str(self.k))
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_k = 0", "int n_k = " + str(self.k))
             self.kernel_shuffle = self.kernel_shuffle.replace("int rows", "int rows = " + str(points.shape[0]))
@@ -313,7 +304,6 @@ class bohrium_kmeans:
 
         else:
             centroids = self.init_random_centroids(points)
-
 
         iterations = 0
 
