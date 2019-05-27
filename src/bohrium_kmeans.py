@@ -7,11 +7,7 @@ import time
 import utils
 import random
 import os
-
 from benchpress.benchmarks import util
-
-
-
 
 def timeit(func):
     def let_time(*args, **kwargs):
@@ -24,17 +20,16 @@ def timeit(func):
         return result
     return let_time
 
-
-
 class bohrium_kmeans:
 
-    def __init__(self, k, init = "kmeans++", userkernel = True, max_iter = 300, gpu=False):
+    def __init__(self, k, init = "kmeans++", userkernel = True, max_iter = 300, gpu=False, verbose = False):
 
         if k <= 0:
             raise ValueError("Invalid number of initializations."
                              " n_init=%d must be bigger than zero." % k)
 
         self.max_iter = max_iter
+        self.verbose = verbose
         self.userkernel = userkernel
         self.k = k
         self.init = init
@@ -42,7 +37,6 @@ class bohrium_kmeans:
         self.gpu = gpu
 
         dirname, filename = os.path.split(os.path.abspath(__file__))
-
         userkerneldir = dirname + "/user-kernels/"
 
         if self.userkernel:
@@ -51,6 +45,8 @@ class bohrium_kmeans:
             self.kernel_move_centroids = open(userkerneldir + 'move_centroids.c', 'r').read()
             self.kernel_shuffle = open(userkerneldir + 'shuffle.c', 'r').read()
 
+        if self.verbose:
+            print("Userkernels has been loaded")
 
     def __str__(self):
         return "Userkernel: {}, Number of clusters: {}".format(self.userkernel, str(self.k))
@@ -60,8 +56,13 @@ class bohrium_kmeans:
         temp = points.copy()
         if type(temp) != 'numpy.float32':
             temp = bh.float64(temp)
-
         bh.user_kernel.execute(self.kernel_shuffle, [temp])
+
+        if self.verbose:
+            print("Initialized {} number of centroids randomly with userkernel".format(str(self.k)))
+
+        self.init_centroids = temp[:self.k]
+
         return temp[:self.k]
 
 
@@ -111,6 +112,10 @@ class bohrium_kmeans:
             centroids[k] = points[int(idx)]
 
         self.init_centroids = centroids
+
+        if self.verbose:
+            print("Initialized {} centroids according to kmeans++".format(str(self.k)))
+
         return centroids
 
 
@@ -163,9 +168,7 @@ class bohrium_kmeans:
         """
 
         X = points1 - points2[:, None]
-
         distances = (X * X).sum(axis=2)
-
         return distances if square else bh.sqrt(distances)
 
 
@@ -302,6 +305,8 @@ class bohrium_kmeans:
 
         iterations = 0
 
+        if self.verbose:
+            print("Done initializing, starting..")
 
         while iterations < self.max_iter:
 
@@ -315,9 +320,6 @@ class bohrium_kmeans:
             centroids = self.move_centroids(points, closest, centroids)
             inertia = min_dist.sum()
 
-            # inertia = inertia.copy2numpy()
-
-
             if iterations > 0:
 
                 x = old_centers - centroids
@@ -325,25 +327,21 @@ class bohrium_kmeans:
 
                 #This is the SKlearn way of exiting.
                 if (bh.dot(x, x) <= epsilon):
-                    print("OLD CENTERS")
+                    if self.verbose:
+                        print("Converged after {} iterations".format(str(iterations)))
+
                     return closest, centroids, iterations, inertia
-
-
-                # if (bh.sum(old_min_dist) - bh.sum(min_dist)) < epsilon:
-                #     print("Difference less than threshold")
-                #     return closest, centroids, iterations, inertia
-
 
             iterations += 1
         return closest, centroids, iterations, inertia
 
 def benchmark():
 
+    times = bench.args.size[0]
+    exp = bench.args.size[1]
 
-    exp = bench.args.size[0]
-    times = bench.args.size[1]
 
-    k = 50
+    k = 25
     bh.random.seed(0)
     np.random.seed(0)
 
@@ -354,7 +352,7 @@ def benchmark():
     bh.flush()
     bench.start()
 
-    kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=False)
+    kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=False, verbose=True)
     kmeans.run(points)
 
     bh.flush()

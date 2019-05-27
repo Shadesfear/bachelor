@@ -71,9 +71,9 @@ def eucDistance(p_i, p_j):
         return result
 
 def benchmarks():
-    exp = bench.args.size[0]
-    times = bench.args.size[1]
-    k = 50
+    exp = bench.args.size[1]
+    times = bench.args.size[0]
+    k = 25
     np.random.seed(0)
     # points = bh.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
     points = np.random.randint(times*2*10**exp, size=(times *10**exp, 2))
