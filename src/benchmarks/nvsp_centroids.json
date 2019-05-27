@@ -1,0 +1,289 @@
+{
+    "cmd_list": [
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/numpy_random_centroids.py 10**6",
+            "label": "Numpy/10**6",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-4f442627-beca-41b2-8799-12d7f2521acb.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Numpy/10**6'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 10**6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4f442627-beca-41b2-8799-12d7f2521acb.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4f442627-beca-41b2-8799-12d7f2521acb.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 10**6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4f442627-beca-41b2-8799-12d7f2521acb.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4f442627-beca-41b2-8799-12d7f2521acb.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 10**6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4f442627-beca-41b2-8799-12d7f2521acb.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4f442627-beca-41b2-8799-12d7f2521acb.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 10**6, elapsed-time: 5.575892\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 10**6, elapsed-time: 5.622429\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 10**6, elapsed-time: 5.507517\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/numpy_random_centroids.py 10**7",
+            "label": "Numpy/10**7",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-2c94b70f-f97b-436f-bdb6-0a7acf7fb237.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Numpy/10**7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2c94b70f-f97b-436f-bdb6-0a7acf7fb237.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2c94b70f-f97b-436f-bdb6-0a7acf7fb237.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2c94b70f-f97b-436f-bdb6-0a7acf7fb237.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2c94b70f-f97b-436f-bdb6-0a7acf7fb237.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2c94b70f-f97b-436f-bdb6-0a7acf7fb237.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2c94b70f-f97b-436f-bdb6-0a7acf7fb237.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 10**7, elapsed-time: 6.269842\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 10**7, elapsed-time: 6.215567\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 10**7, elapsed-time: 6.560356\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/numpy_random_centroids.py 2*10**7",
+            "label": "Numpy/2*10**7",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-ad36f61e-3781-4002-8668-a509a937ac33.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Numpy/2*10**7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 2*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ad36f61e-3781-4002-8668-a509a937ac33.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ad36f61e-3781-4002-8668-a509a937ac33.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 2*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ad36f61e-3781-4002-8668-a509a937ac33.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ad36f61e-3781-4002-8668-a509a937ac33.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 2*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ad36f61e-3781-4002-8668-a509a937ac33.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ad36f61e-3781-4002-8668-a509a937ac33.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 2*10**7, elapsed-time: 6.916203\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 2*10**7, elapsed-time: 7.342640\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 2*10**7, elapsed-time: 7.179101\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/numpy_random_centroids.py 5*10**7",
+            "label": "Numpy/5*10**7",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-8c5925fe-1342-4ec6-904e-105002a106f0.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Numpy/5*10**7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 5*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8c5925fe-1342-4ec6-904e-105002a106f0.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8c5925fe-1342-4ec6-904e-105002a106f0.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 5*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8c5925fe-1342-4ec6-904e-105002a106f0.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8c5925fe-1342-4ec6-904e-105002a106f0.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 5*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8c5925fe-1342-4ec6-904e-105002a106f0.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8c5925fe-1342-4ec6-904e-105002a106f0.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 5*10**7, elapsed-time: 10.051759\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 5*10**7, elapsed-time: 9.601454\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 5*10**7, elapsed-time: 9.283888\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/numpy_random_centroids.py 8*10**7",
+            "label": "Numpy/8*10**7",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-8adc3bbf-ac68-44d4-8236-44e093964655.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Numpy/8*10**7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 8*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8adc3bbf-ac68-44d4-8236-44e093964655.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8adc3bbf-ac68-44d4-8236-44e093964655.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 8*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8adc3bbf-ac68-44d4-8236-44e093964655.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8adc3bbf-ac68-44d4-8236-44e093964655.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/numpy_random_centroids.py 8*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8adc3bbf-ac68-44d4-8236-44e093964655.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8adc3bbf-ac68-44d4-8236-44e093964655.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 8*10**7, elapsed-time: 13.083825\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 8*10**7, elapsed-time: 11.914292\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/numpy_random_centroids.py - bohrium: False, size: 8*10**7, elapsed-time: 11.587565\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/python_random_centroids.py 10**6",
+            "label": "Python/10**6",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-48829634-c3fb-4a5c-be42-af53116f0a4e.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/10**6'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/python_random_centroids.py 10**6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-48829634-c3fb-4a5c-be42-af53116f0a4e.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-48829634-c3fb-4a5c-be42-af53116f0a4e.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/python_random_centroids.py 10**6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-48829634-c3fb-4a5c-be42-af53116f0a4e.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-48829634-c3fb-4a5c-be42-af53116f0a4e.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/python_random_centroids.py 10**6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-48829634-c3fb-4a5c-be42-af53116f0a4e.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-48829634-c3fb-4a5c-be42-af53116f0a4e.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 10**6, elapsed-time: 1.187896\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 10**6, elapsed-time: 1.152229\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 10**6, elapsed-time: 1.188902\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/python_random_centroids.py 10**7",
+            "label": "Python/10**7",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-5ae99ce5-b92c-438c-8763-0d511fa2a468.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/10**7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/python_random_centroids.py 10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5ae99ce5-b92c-438c-8763-0d511fa2a468.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5ae99ce5-b92c-438c-8763-0d511fa2a468.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/python_random_centroids.py 10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5ae99ce5-b92c-438c-8763-0d511fa2a468.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5ae99ce5-b92c-438c-8763-0d511fa2a468.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/python_random_centroids.py 10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5ae99ce5-b92c-438c-8763-0d511fa2a468.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-5ae99ce5-b92c-438c-8763-0d511fa2a468.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 10**7, elapsed-time: 12.524582\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 10**7, elapsed-time: 12.586131\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 10**7, elapsed-time: 13.418761\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/python_random_centroids.py 2*10**7",
+            "label": "Python/2*10**7",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-a9212630-1f32-4b22-b041-f52ddc6e069e.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/2*10**7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/python_random_centroids.py 2*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a9212630-1f32-4b22-b041-f52ddc6e069e.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a9212630-1f32-4b22-b041-f52ddc6e069e.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/python_random_centroids.py 2*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a9212630-1f32-4b22-b041-f52ddc6e069e.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a9212630-1f32-4b22-b041-f52ddc6e069e.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/python_random_centroids.py 2*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a9212630-1f32-4b22-b041-f52ddc6e069e.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-a9212630-1f32-4b22-b041-f52ddc6e069e.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 2*10**7, elapsed-time: 26.606242\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 2*10**7, elapsed-time: 25.949003\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 2*10**7, elapsed-time: 25.521319\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/python_random_centroids.py 5*10**7",
+            "label": "Python/5*10**7",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-02318959-3ecf-4797-affe-8f3e2ffc630e.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/5*10**7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/python_random_centroids.py 5*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-02318959-3ecf-4797-affe-8f3e2ffc630e.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-02318959-3ecf-4797-affe-8f3e2ffc630e.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/python_random_centroids.py 5*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-02318959-3ecf-4797-affe-8f3e2ffc630e.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-02318959-3ecf-4797-affe-8f3e2ffc630e.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/python_random_centroids.py 5*10**7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-02318959-3ecf-4797-affe-8f3e2ffc630e.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-02318959-3ecf-4797-affe-8f3e2ffc630e.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 5*10**7, elapsed-time: 65.395339\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 5*10**7, elapsed-time: 64.853045\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "<class 'str'>\n/home/chris/Documents/bachelor/src/python_random_centroids.py - bohrium: False, size: 5*10**7, elapsed-time: 66.877555\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/python_random_centroids.py 8*10**7",
+            "label": "Python/8*10**7",
+            "env": {}
+        }
+    ],
+    "creation_date_utc": "2019-05-22T12:19:33.086520"
+}

@@ -33,9 +33,8 @@ kernel void execute(global double *dist, global long *res, global double *min_di
 
   int row_index = i * n_k;
 
-
   double minimum = dist[row_index];
-  int index;
+  long index;
 
   for (int j = 0; j < n_k; j++)
   {

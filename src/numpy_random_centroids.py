@@ -1,18 +1,16 @@
 import random
 import numpy as np
+import time
 
 
 
 def benchmarks():
     k = bench.args.size[0]
-
-    points = np.loadtxt("../../data/birchgrid.txt")
-
-
+    k = eval(k)
     bench.start()
 
-    row_i = np.random.choice(points.shape[0], k)
-    centroids = points[row_i,:]
+    centroids=points[ np.random.choice(points.shape[0], size=k, replace=False)]
+    # centroids = points[row_i]
     bench.stop()
     bench.pprint()
 
@@ -21,9 +19,9 @@ def benchmarks():
 if __name__=="__main__":
 
     from benchpress.benchmarks import util
+    np.random.seed(0)
+    points = np.random.randint(2*10**8, size=(10**8, 2))
 
-
-    bench = util.Benchmark("kmeans", "k")
-
+    bench = util.Benchmark("kmeans", "k", delimiter="å")
 
     benchmarks()

@@ -11,7 +11,7 @@ from benchpress.benchmarks import util
 bench = util.Benchmark("kmeans", "k")
 
 
-def mykmeans(data, k, epsilon = 0.000001):
+def mykmeans(data, k, epsilon = 0.00001):
 
     centroids = [data[randint(0, len(data)-1)] for i in range(k)]
     centroids_old = [[0,0]]*k
@@ -71,14 +71,23 @@ def eucDistance(p_i, p_j):
         return result
 
 def benchmarks():
-    k = bench.args.size[0]
+    points = bench.args.size[0]
 
-    points = np.loadtxt("../../data/birchgrid.txt")
+    k = 5
+    np.random.seed(0)
+    # points = bh.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
+    points = np.random.randint(2*10**points, size=(10**points, 2))
 
-    points = np.random.randint(2 * 10**k, size=(10**k, 2))
-
+    mykmeans(points, k)
+    # bh.flush()
     bench.start()
-    kmeans = mykmeans(points, int(10**k / 100))
+
+    # kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=gp)
+    # kmeans.run(points)
+
+
+    # bh.flush()
+
     bench.stop()
     bench.pprint()
 
@@ -86,7 +95,7 @@ def benchmarks():
 
 
 if __name__ == "__main__":
-    print("hello")
+    # print("hello")
     # n_points = 10
     # point_ary = [[randint(0,10), randint(0,10)] for i in range(n_points)]
     # point_ary1 = []

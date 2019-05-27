@@ -1,0 +1,153 @@
+{
+    "cmd_list": [
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 1",
+            "label": "Bohrium/1",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-edb3e9b1-7cb0-49c8-a83c-268859b2ba41.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 1 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-edb3e9b1-7cb0-49c8-a83c-268859b2ba41.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-edb3e9b1-7cb0-49c8-a83c-268859b2ba41.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 1 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-edb3e9b1-7cb0-49c8-a83c-268859b2ba41.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-edb3e9b1-7cb0-49c8-a83c-268859b2ba41.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 1 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-edb3e9b1-7cb0-49c8-a83c-268859b2ba41.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-edb3e9b1-7cb0-49c8-a83c-268859b2ba41.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "init: random\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1, elapsed-time: 3.272874\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "init: random\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1, elapsed-time: 3.302311\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "init: random\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1, elapsed-time: 3.285829\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 2",
+            "label": "Bohrium/2",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-fa1fe350-b02f-4531-b0e1-e2e1e27ebda4.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/2'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 2 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fa1fe350-b02f-4531-b0e1-e2e1e27ebda4.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fa1fe350-b02f-4531-b0e1-e2e1e27ebda4.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 2 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fa1fe350-b02f-4531-b0e1-e2e1e27ebda4.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fa1fe350-b02f-4531-b0e1-e2e1e27ebda4.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 2 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fa1fe350-b02f-4531-b0e1-e2e1e27ebda4.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-fa1fe350-b02f-4531-b0e1-e2e1e27ebda4.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "init: random\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 2, elapsed-time: 3.777215\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "init: random\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 2, elapsed-time: 3.984118\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "init: random\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 2, elapsed-time: 4.064294\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(346): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(440): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(453): gpu_bench()\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3",
+            "label": "Bohrium/3",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-372ad379-726c-4c86-a995-e4fa1dfcae62.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/3'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-372ad379-726c-4c86-a995-e4fa1dfcae62.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-372ad379-726c-4c86-a995-e4fa1dfcae62.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-372ad379-726c-4c86-a995-e4fa1dfcae62.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-372ad379-726c-4c86-a995-e4fa1dfcae62.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-372ad379-726c-4c86-a995-e4fa1dfcae62.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-372ad379-726c-4c86-a995-e4fa1dfcae62.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 4",
+            "label": "Bohrium/4",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5",
+            "label": "Bohrium/5",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6",
+            "label": "Bohrium/6",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 7",
+            "label": "Bohrium/7",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 1",
+            "label": "Python/1",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 2",
+            "label": "Python/2",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3",
+            "label": "Python/3",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 4",
+            "label": "Python/4",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5",
+            "label": "Python/5",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 6",
+            "label": "Python/6",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 7",
+            "label": "Python/7",
+            "env": {}
+        }
+    ],
+    "creation_date_utc": "2019-05-27T12:07:00.703285"
+}

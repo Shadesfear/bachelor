@@ -1,0 +1,75 @@
+{
+    "cmd_list": [
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 10dd",
+            "label": "Bohrium/10dd",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 20",
+            "label": "Bohrium/20",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 30",
+            "label": "Bohrium/30",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 40",
+            "label": "Bohrium/40",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 50",
+            "label": "Bohrium/50",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 100",
+            "label": "Bohrium/100",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 500",
+            "label": "Bohrium/500",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 10",
+            "label": "Numpy/10",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 20",
+            "label": "Numpy/20",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 30",
+            "label": "Numpy/30",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 40",
+            "label": "Numpy/40",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 50",
+            "label": "Numpy/50",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 100",
+            "label": "Numpy/100",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 500",
+            "label": "Numpy/500",
+            "env": {}
+        }
+    ],
+    "creation_date_utc": "2019-05-23T09:56:35.944074"
+}

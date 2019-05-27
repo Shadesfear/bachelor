@@ -6,8 +6,8 @@
 \usepackage{standalone}
 
 % Default fixed font does not support bold face
-\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
-\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{11}  % for normal
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{10} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{10}  % for normal
 
 % Custom colors
 \usepackage{color}
@@ -19,14 +19,15 @@
 \newcommand\pythonstyle{\lstset{
 language=Python,
 basicstyle=\ttm,
-%numbers=left,
+numbers=left,
+numberstyle=\ttm,
 %stepnumber = 1,
 otherkeywords={self},             % Add keywords here
 keywordstyle=\ttb\color{deepblue},
 emph={MyClass,__init__},          % Custom highlighting
 emphstyle=\ttb\color{deepred},    % Custom highlighting style
 stringstyle=\color{deepgreen},
-frame=tb,                         % Any extra options here
+frame=single,                         % Any extra options here
 showstringspaces=false            %
 }}
 
@@ -38,6 +39,29 @@ showstringspaces=false            %
 }
 {}
 
+\newcommand\cstyle{\lstset{
+language=c,
+basicstyle=\ttm,
+%numbers=left,
+%stepnumber = 1,
+otherkeywords={self,\#include,\#pragma},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=single,                         % Any extra options here
+showstringspaces=false            %
+}}
+
+% Python environment
+\lstnewenvironment{c_lang}[1][]
+{
+\cstyle
+\lstset{#1}
+}
+{}
+
+
 % Python for external files
 \newcommand\pythonexternal[2][]{{
 \pythonstyle
@@ -45,7 +69,6 @@ showstringspaces=false            %
 
 % Python for inline
 \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
-
 
 
 \begin{document}
@@ -130,10 +153,13 @@ This evaluates to $3\cdot d$ calculations for each point and cluster. Thus for e
 
 \section{Convergence}
 \label{subsec:Convergens}
+The algorithm is said to have converged when the assignment of cluster no longer changes, there are several ways of actually determining when this convergens actually has happened. A common way of doing this is stopping when the difference of the current centroids with the centroids from the previous step of the algorithm has decreased to under some threshold $\epsilon$, this is the way that is implemented in the popular Python Library Numpy, and also the method that we will be using. \\\\
+Another method is stopping whenever the labels for each centroid to their corresponding points no longer changes, this way it can be proven that it wont actually converge
 
 
 
 \section{KMeans++}
+\label{sec:plusplus}
 When we initialize the clusters randomly, we don't know how well the clusters represent the optimal clusters that we are trying to find in the end, this may in some cases lead to some  bad centroids that takes a very long time to converge to til global minimum. Instead we want to use another method for initializing the centroids. For this purpose the kmeans++ algorithm was developed in 2007 by David Arthur and Sergei Vassilvitskii \cite{plusplus}.
 First we let $D(x)$ denote the shortest (euclidean) distance from a data point $x$ to the closest centroids that we have already chosen. And we also define a probability as the following:
 \begin{equation}
@@ -183,17 +209,16 @@ On of the more advanced features of NumPy that we utilize in this project is bro
 
 \section{Bohrium}
 \label{subsec:Bohrium}
-Bohrium is framework that aims to present a way to speed-up array programming, it's a modular framework with support for multiple alternate front end and back ends. Bohrium was created in 2013, by Mads R. B. Kristensen
+Bohrium is framework that aims to present a way to speed-up array programming, it's a modular framework with support for multiple alternate front end and back ends. Bohrium was created in 2013, by Mads R. B. Kristensen, this makes it possible to both run code on the CPU (Using OpenMP) or the GPU (Using Cuda / OpenCL) and all of this is done without explicitly writing any code for the different platforms.
 
 \subsection{How it works}
 \label{subsec:hiw}
-Bohrium lazily record any array operations that is used, this could as an example be from NumPy, and turn them into bytecode instruction set. An overview can be seen in figure \ref{fig:bohrium}
+Bohrium lazily record any array operations that is used, this could as an example be from NumPy, and turn them into bytecode instruction set. An overview can be seen in figure \ref{fig:bohrium_overview}. Bohrium also utilizes lazy CPU / GPU communication which means that Bohrium only moves data between the CPU and the GPU when the data is accessed directly by Python Code \cite{bohrium_website}
 
 \begin{figure}[H]
   \centering
-  \label{fig:bohrium}
   \input{bohrium_overview}
-\caption{The components that Bohrium are made out of}
+\caption{\label{fig:bohrium_overview}The components that Bohrium are made out of}
 \end{figure}
 
 
@@ -214,14 +239,35 @@ Vectorized operations are typically allows for the operations to be run in paral
 
 \section{OpenMP}
 \label{subsec:openmp}
-OpenMP is  library that supports what is known as shared memory multiproccesing. So when programming inside the framework of OpenMP all of the threads utilize the same memory and data. With OpenMP it's easy to paralellize code on the CPU, just by adding a pragma to the code. An example of this could to automatically try to paralellize a for loop.
+OpenMP is  library that supports what is known as shared memory multiproccesing. So when programming inside the framework of OpenMP all of the threads utilize the same memory and data. With OpenMP it's easy to paralellize code on the CPU, just by adding a pragma to the code. An example of this could to automatically try to paralellize a for loop as seen in listing \ref{code:openmp}
 
+% \begin{lstlisting}[language=C, caption={How to automatically paralellize for loop with OpenMP.}]
+%   #include <omp.h>
+%   #pragma omp paralellize for
+%   for (i=0; i < n; i++)
+%       ....
+% \end{lstlisting}
 
-
+\begin{c_lang}[caption={Example of how to automatically paralellize for loops with OpenMP}\label{code:openmp}]
+  #include <omp.h>
+  #pragma omp paralellize for
+  for (int i=0; i < n; i++) {
+    ....
+  }
+\end{c_lang}
 
 \section{OpenCL}
 \label{subsec:opencl}
+OpenCL is a programming framework for writing parallel code on CPUs, GPUs, clusters etc, doing so by writing in the language ``OpenCL C'' this allows us to run user-kernels (Code to be run on GPU device) on the GPU with the purpose of getting greater speedups of the code. One of the first examples you see of OpenCL is the vector addition as seen in \ref{code:opencl}, consider this to be the Hello World of OpenCL.
 
+\begin{c_lang}[caption={Example of adding to vectors in OpenCL}\label{code:opencl}]
+  #pragma OPENCL EXTENSION cl_khr_fp64 : enable
+  kernel void vecAdd(global double *a, global double *b,
+                                       global double *c){
+    int id = get_global_id(0);
+    c[id] = a[id] + b[id];
+  }
+\end{c_lang}
 
 
 
@@ -237,26 +283,45 @@ In the following chapter I will desribe and detail some of the ways I implemente
 To start of with the goal was to implement a barebones version of the kmeans algorithm in python without use of any external libraries, this decision means that we will have no array programming or vectorization. So we are left with only our knowledge of programming and a blank editor.
 This means that we are forced to use loops in python, luckily python includes the feature: list comprehension which is a way of creating new list from  old list depending on some condition. This can get rid of some larger loops and as a bonus list comprehension is optimized for the python interpreter, just take a look this example where we choose k centroids from the set of points, first with a loop the standard way where we have to initialize the list to store the centroids in first, and then with a list comprehension.
 
-\begin{lstlisting}[language=Python]
+% \begin{lstlisting}[language=Python]
+%   centroids = []
+%   for i in range(k):
+%       centroids.append(points[randint(0, len(data)-1)])
+%     \end{lstlisting}
+\begin{python}[caption={Generating k random centroids using for loop in python}]
   centroids = []
   for i in range(k):
       centroids.append(points[randint(0, len(data)-1)])
-\end{lstlisting}
+\end{python}
 Now with list comprehension
-\begin{lstlisting}[language=Python]
+% \begin{lstlisting}[language=Python]
+% centroids = [points[randint(0, len(data)-1)] for i in range(k)]
+% \end{lstlisting}
+
+\begin{python}
 centroids = [points[randint(0, len(data)-1)] for i in range(k)]
-\end{lstlisting}
+\end{python}
+
 One way or the other we still loop sequentially k times and doing it this way is not a vectorized approach thus we cannot hope to accelerate it in any meaningful way. A vectorized version will be discussed in the next chapter where start discussing the basic implementation using Numpy. \\
 Another maybe even more surprising example, is the assignment step of Lloyd's algorithm where we have to compute the distance from each point to each centroid, without any vectorization we are again forced to use for loops, but this time a nested one
 
-\begin{lstlisting}[language=Python]
+% \begin{lstlisting}[language=Python]
+%   for p_idx, point in enumerate(points):
+%       distance_array = [0] * k #Initialize empty array
+%       for c_idx, centroids in enumerate(centroids):
+%           distance = euclidean_distance(point, centroid)
+%           distance_array[c_idx] = distance
+%       labels[p_idx] = distance_array.index(min(distance_array))
+%     \end{lstlisting}
+
+\begin{python}[caption={Python example of calculating the distances between each centroid and each point. Lastly getting the label for each point for which centroid they belong to.}]
   for p_idx, point in enumerate(points):
       distance_array = [0] * k #Initialize empty array
       for c_idx, centroids in enumerate(centroids):
           distance = euclidean_distance(point, centroid)
           distance_array[c_idx] = distance
       labels[p_idx] = distance_array.index(min(distance_array))
-\end{lstlisting}
+\end{python}
 
 This is definitely hurtful for performance as we have to execute the body of the loop $n \times k$ times (not to mention the loop in the euclidean distance function)
 
@@ -267,11 +332,17 @@ This is definitely hurtful for performance as we have to execute the body of the
 \label{subsec:middle}
 Now we turn our heads to a version written with the help of the library NumPy, NumPy allows us to utilize array programming as already discussed. This makes it so that we can carry out array operations with simple instructions and then NumPy will take the instructions and carry them out in a much more optimized way. Let us take a quick look at the previous code snippet where we chose $k$ random centroids, but this time using NumPy
 
-\begin{lstlisting}[language=Python]
+% \begin{lstlisting}[language=Python]
+% import numpy as np
+% row_i = np.random.choice(points.shape[0], k)
+% centroids=points[row_i,:]
+% \end{lstlisting}
+
+\begin{python}[caption = {Choosing k random centroids using NumPy.}\label{code:numpykrandom}]
 import numpy as np
 row_i = np.random.choice(points.shape[0], k)
 centroids=points[row_i,:]
-\end{lstlisting}
+\end{python}
 
 This let's NumPy handle all the dirty work and should in theory give better performance, lets just take a quick look at what speedups we might expect. We performed a test with the previous code snippets discussed for choosing k random centroids from a set of points. The results can be seen in figure \ref{fig:numpyvspython}, the speedups from choosing 5000 centroids is about 13 times faster when going from Python to NumPy, we could expect to see even greater results when going to larger values of $k$.
 
@@ -317,7 +388,7 @@ As discussed in section \ref{subsec:lloyds} Lloyd's algorithm will for each iter
   \end{algorithmic}
 \end{algorithm}
 
-In the second step of the kmeans algorithm we have to move the centroids, using a seemingly naive approach this would take two for loops taking around a running time of $k^2$ times to complete. This can be seen in algorithm \ref{alg:movecent}, and then a fast vectorized approach again using some advanced NumPy features to rid ourselves of loops can be seen in code snippet \ref{code:movecent}, our gain in speeds when going from the sequential to vectorized approach when be discussed in more detail in the results section.
+In the second step of the kmeans algorithm we have to move the centroids, using a seemingly naive approach this would take two for loops taking around a running time of $k^2$ times to complete. This can be seen in algorithm \ref{alg:movecent}, and then a fast vectorized approach again using some advanced NumPy features to rid ourselves of loops can be seen in code snippet \ref{code:movecent}, our gain in speeds when going from the sequential to vectorized approach will be discussed in more detail in the results section, also the evolution of listing \ref{code:movecent} will be discussed in the next section.
 
 
 \begin{algorithm}
@@ -348,12 +419,67 @@ def move_centroids(points, closest, centroids, k):
 
 \section{Finally: Bohrium}
 \label{subsec:finally}
-Let us now turn our heads to the final beast that is Bohrium, automated acceleration of our matrix operations sounds awesome, just replace the import of NumPy, with an import of Bohrium in our previous code and all the code should work, super fast kmeans right? Not so fast, not all NumPy function's have been implemented yet, and some are just not able to be accelerated, then we have two choices going forward, either find another way to write the code such that Bohrium can automatically accelerate it, or write a custom userkernel for you problem. In my efforts to create a version using Bohrium, I have resorted to both methods, sometimes going back and forth when my own knowledge of the problem expanded, thus rewriting and refactoring the same code multiple times getting a better and better implementation.
+Let us now turn our heads to the final beast that is Bohrium, automated acceleration of our matrix operations sounds awesome, just replace the import of NumPy, with an import of Bohrium in our previous code and all the code should work, super fast kmeans right? Not so fast, not all NumPy function's have been implemented in Bohrium yet, and some are just not able to be accelerated, then we have two choices going forward, either find another way to rewrite the code such that Bohrium can automatically accelerate it, or write a custom userkernel for you problem in either OpenMP or OpenCL. In my efforts to create a version using Bohrium, I have resorted to both methods, sometimes going back and forth when my own knowledge of the problem expanded, thus rewriting and refactoring the same code multiple times getting a better and better implementation, the gain in performance when going to Bohrium will be discussed in detail in the next chapter.
+\subsection{Initialize the centroids}
+\label{subsec:userkernel}
+Let's take a look at a problem that was not implemented in Bohrium, the simple task at the start of running the kmeans algorithm is initializing centroids. To initialize k random centroids as described in listing \ref{code:numpykrandom} unfortionatly this does not work in Bohrium and will resort to using NumPy that can not be parallelized. So we write c code to shuffle an array and we can pick the first k elements to initialize the centroids. To do this we implemented Fisher-Yates shuffle that was popularized in Donald Knuths book ``The Art of computer Programming'', the algorithm is described in listing \ref{code:fisheryates}, the only difference that my version shuffles along the first dimension of the array, the code can of course be seen in the \href{https://github.com/shadesfear/bachelor}{repository}
+
+\begin{algorithm}
+  \caption{Shuffle an array a of n element}
+  \label{code:fisheryates}
+  \begin{algorithmic}[1]
+    \Procedure{fisher\_yates}{}
+    \For{i \textbf{from} n-1 \textbf{downto} 1}
+    \State $j \gets$ random integer such that $0\leq j \leq i$
+    \State swap a[$i$] and a[$j$]
+    \EndFor
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\subsection{Reasign the centroids}
+\label{subsec:reasign}
+This first naive solution i implemented worked in NumPy using a for loop in a list comprehension displayed in algorithm \ref{code:reasign_naive} as we know, for loops in python are slow and we are not able to easily paralellize the code. So we must find another way either by writing a userkernel or finding another way using only functions that actually are implemented in Bohrium. My first attempts was to write my own userkernel using OpenMP than can run on the CPU \\
+
+% \begin{algorithm}
+%   \caption{Reasign centroids (naive)}
+%   \label{code:reasign_naive}
+%   \begin{algorithmic}[1]
+%     \Procedure{}{}
+%     \
+%     \EndProcedure
+
+%   \end{algorithmic}
+%\end{algorithm}
+\begin{python}[caption={Naive implementation of reassigning the centroids using for loop }\label{code:reasign_naive}]
+  import bohrium as bh
+  new_centroids = bh.array([points[closest==k].mean(axis = 0)
+                                    for k in range(self.k)])
+\end{python}
+
+The userkernel follows the pattern of algorithm in \ref{alg:movecent}, thus we using some \textbf{for} loops that in OpenMP we parallelize with the \#pragma discussed in \ref{subsec:openmp}
+
+\section{Why  Not Kmeans++?}
+\label{sec:notplusplus}
+I Told you that we would not be using Kmeans++ for initializing the centroids, now im going to tell you why. KMeans++ is not really suited for running in parallel as a result of it's sequential nature it scales badly with greater values of $k$, do the way it works, where the next centroid chosen depends on the last one. This was the subject of the 2012 paper ``Scalable Kmeans++'' \cite{scalableKmeans} written by Bahman Bahmani, Benjamin Moseley, Andrea Vattani, Ravi Kumar, Sergei Vassilvitskiil, where they were tasked to implement a scalable and parallel version of the KMeans$++$ algorithm, this was not a possibility to implement as of the writing of this paper, but may be subject to further investigation.
+
+
 
 
 \chapter{Results}
 \label{sec:label}
+In this chapter I will try to provide the reader with acceptable proof that we did indeed gain an increase in performance when going from plain Python to Bohrium. This was done by performing different benchmarks of the different implementations of the KMeans algorithm, for different number of points, in different number of dimensions (features) and in different number of centroids (k).\\\\ The benchmarks was conducted using the Python library Benchpress that is also created by Mads B. R Kristensen that makes it a breeze to create soffisticated Benchmarks of different sizes and functions by creating a suite file that describes the functions to run with different parameters, and then executing them one by one.\\
+For the benchmarks we will use the same method of initialization for all the different benchmarks namely random initialization with the same seed such that the randomness is predictable.
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\linewidth]{images/bohr-numpy-kmeans2.pdf}
+  \caption{\label{fig:bohriumvsnumpy}Benchmark of the kmeans algorithm of the same dataset with different number of centroids. The centroids chosen is \{10, 20, 30, 40, 50, 100, 500\}}
+\end{figure}
+
+\section{Python VS Bohrium}
+\label{sec:pyvbohrium}
+Now we will explore the increases in performance in pure Python compared to my version in Bohrium, when running on the CPU. First I will explore runtimes of the algorithm for an increasing number of random points with the same seed to make sure that the benchmark across runs are fair, then I will conduct the benchmark for an increasing number of values for $k$, with a fixed number of random points.
 
 
 

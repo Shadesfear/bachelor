@@ -9,7 +9,7 @@ import random
 from benchpress.benchmarks import util
 
 
-
+# bench = util.Benchmark("kmeans", "k")
 
 def timeit(func):
     def let_time(*args, **kwargs):
@@ -39,14 +39,14 @@ class bohrium_kmeans:
         self.init_centroids = np.array([0])
         self.gpu = gpu
 
-        # userkerneldir = "/home/chris/Documents/bachelor/src/user-kernels/"
-        userkerneldir = "/home/cca/bachelor/src/user-kernels/"
+        userkerneldir = "/home/chris/Documents/bachelor/src/user-kernels/"
+        # userkerneldir = "/home/cca/bachelor/src/user-kernels/"
 
 
         if self.userkernel:
 
             self.kernel_centroids_closest = open(userkerneldir + 'centroids_closest.c').read()
-            self.kernel_centroids_closest_opencl = open(userkerneldir + 'centroids_closest_opencl.c').read()
+            # self.kernel_centroids_closest_opencl = open(userkerneldir + 'centroids_closest_opencl.c').read()
             self.kernel_move_centroids = open(userkerneldir + 'move_centroids.c', 'r').read()
             self.kernel_shuffle = open(userkerneldir + 'shuffle.c', 'r').read()
 
@@ -84,17 +84,6 @@ class bohrium_kmeans:
 
 
     def init_first_k(self, points):
-        """
-        Initialize the first k points as centroids
-        Parameters
-        ----------
-        points: Points to sample centroids from
-
-        Returns
-        -------
-        Centroids: K-centroids
-        """
-
         self.centroids = centroids
         return points[:self.k]
 
@@ -138,7 +127,7 @@ class bohrium_kmeans:
         psi = self.euclidian_distance(centroids, points).min(1).sum()
 
 
-        for i in range(self.k / l):
+        for i in range(int(bh.log(psi))):
             distance = self.euclidian_distance(centroids, points)
             norm_const = bh.sum(bh.min(distance,1))
             prob = l * bh.min(distance, axis = 1) / norm_const
@@ -195,101 +184,31 @@ class bohrium_kmeans:
 
 
     def centroids_closest(self, points, centroids):
-        bh.flush()
+
         distances = self.euclidian_distance(points, centroids)
 
         if self.userkernel:
 
             result = bh.zeros(points.shape[0], dtype = bh.int64)
             min_dist = bh.zeros(points.shape[0], dtype = bh.float64)
-            result2 = bh.zeros(points.shape[0], dtype = bh.int64)
-            min_dist2 = bh.zeros(points.shape[0], dtype = bh.float64)
-
             distances_transposed = bh.user_kernel.make_behaving(distances.T)
 
             if self.gpu:
-
                 bh.user_kernel.execute(self.kernel_centroids_closest_opencl,
                                        [distances_transposed, result, min_dist],
                                        tag="opencl", param={"global_work_size": [points.shape[0], self.k], "local_work_size": [1, 1]})
 
             else:
                 cmd = bh.user_kernel.get_default_compiler_command()
+
                 bh.user_kernel.execute(self.kernel_centroids_closest,
                                        [distances_transposed, result, min_dist], compiler_command = cmd)
 
-                bh.user_kernel.execute(self.kernel_centroids_closest_opencl,
-                                       [distances_transposed, result2, min_dist2],
-                                       tag="opencl", param={"global_work_size": [points.shape[0], self.k], "local_work_size": [1, 1]})
-
-                print((result == result2).all())
 
         else:
-            bh.flush()
-            distances2 = distances.copy2numpy()
-            # bh.set_printoptions(precision=2, suppress=True)
-            # print(distances)
-            result2 = bh.array(np.argmin(distances2, axis = 0))
-            # print("Result: ", result)
-            bh.flush()
-            # start =  time.time()
-            start = time.time()# min_dist = bh.minimum.reduce(distances, 0)
-            # min_dist = bh.min(distances, 0)
-            min_dist = bh.amin(distances, 0)
-            bh.flush()
-            print("bh: ", time.time() - start)
-
-            start = time.time()
-            re = bh.argmin(distances, 0 )
-            # min_dist2 = np.amin(distances2, 0)
-            print("np: ", time.time() - start)
-
-
-
-            # mask = (distances[:,None,0] <= data) & (data <= distances[:,None,1])
-            # r,c = bh.nonzero(mask)
-            # cut_idx = bh.unique(r, return_index=1)[1]
-            # out = bh.minimum.reduceat(data[mask], cut_idx)
-
-
-
-            # print(min_dist3)
-            # bh.flush()
-            # print("time: ", time.time() - start)
-            # print(distances.shape)
-            # mask = (distances.T == min_dist[:,None])
-            # print(mask.T)
-            # mask = mask.T
-            # print(reorganization.nonzero(mask))
-            # out = bh.masked_get(distances, mask)
-            # print(out)
-            # print(mask.dot(distances)/mask.sum(0))
-            # print(min_dist)
-            out = bh.nonzero(min_dist[:,None] == distances.T)[1]
-            # print(out)
-            # out2 = np.nonzero(distances2 == min_dist2)
-            # print(out2)
-            # out = bh.array(out).T
-
-            # print(out[out[:,1].argsort()][:,0])
-            # print(out[bh.argsort(out[:,1])][:,0])
-            # print(out[(-out[:,1]).argsort()])
-            # print(bh.sort(out.view('f8,f8,f8'), order =['f1'], axis = 0))
-
-            # print(min_dist.shape)
-            # bh.flush()
-            # start = time.time()
-            result =  bh.nonzero(distances.T==min_dist[:,None])[1]
-            # bh.flush()
-            # print("time2: ", time.time() -start)
-
-            # print(result)
-            print(result2)
-
-            # print((result2==result).all())
-
-            # print("idx ", idx[0])
-            # print(min_dist)
+            distances = distances.copy2numpy()
+            result = bh.array(np.argmin(distances, axis = 0))
+            min_dist = bh.minimum.reduce(distances, 0)
 
         return result, min_dist
 
@@ -313,7 +232,7 @@ class bohrium_kmeans:
 
         """
         import matplotlib.pyplot as plt
-        closest, centroids, iterations, iner = self.run(points)
+        closest, centroids, iterations = self.run(points)
 
         points = points.copy2numpy()
         centroids = centroids.copy2numpy()
@@ -375,8 +294,8 @@ class bohrium_kmeans:
 
 
         if self.userkernel:
-            self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
-            self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_k = 0", "int n_k = " + str(self.k))
+            # self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
+            # self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_k = 0", "int n_k = " + str(self.k))
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_k = 0", "int n_k = " + str(self.k))
             self.kernel_shuffle = self.kernel_shuffle.replace("int rows", "int rows = " + str(points.shape[0]))
@@ -411,7 +330,7 @@ class bohrium_kmeans:
             centroids = self.move_centroids(points, closest, centroids)
             inertia = min_dist.sum()
 
-            inertia = inertia.copy2numpy()
+            # inertia = inertia.copy2numpy()
 
 
             if iterations > 0:
@@ -435,55 +354,28 @@ class bohrium_kmeans:
 
 def benchmark():
     k = bench.args.size[0]
-    points = bh.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
-    # points = np.random.randint(2 * 10**k, size=(10**k, 2))
-    # points = bh.array(points)
-
-    # print(10**k / 10)
+    points = bh.loadtxt("../../data/birchgrid.txt")
 
     bh.flush()
     bench.start()
-
-    kmeans = bohrium_kmeans(k, userkernel=True, init="random")
-    kmeans.run(points)
+    print("starting")
+    kmeans = bohrium_kmeans(k, userkernel=True, init="kmeans++")
     bh.flush()
 
     bench.stop()
     bench.pprint()
 
-
-def gpu_bench():
-    k = bench.args.size[0]
-    gp = bench.args.size[1]
-
-    np.random.seed(0)
-    # points = bh.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
-    points = np.random.randint(2*10**6, size=(10**6, 2))
-    points = bh.array(points)
-
-    bh.flush()
-    bench.start()
-
-    kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=gp)
-    kmeans.run(points)
-    bh.flush()
-
-    bench.stop()
-    bench.pprint()
 
 
 if __name__ == "__main__":
     # from sklearn.cluster import KMeans
-    # from bohrium_api import stack_info, _bh_api
     # print("here")
-    # bench = util.Benchmark("kmeans", "k*gpu")
-    # gpu_bench()
+    # benchmark()
     points = bh.loadtxt("../data/birchgrid.txt")
-    # points = np.random.randint(200000, size=(100000, 2))
-    # points = bh.array(points)
-    kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=True)
+    kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=False)
 
-    clos, cent, ite, iner = kmeans.run_plot(points)
+    clos, cent, ite, iner = kmeans.run(points)
+    print(iner)
     # centroids = kmeans.init_plus_plus(points)
 
     # closest, min_dist = kmeans.centroids_closest(points, centroids)

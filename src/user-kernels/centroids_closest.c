@@ -22,10 +22,9 @@ int argmin(double *array, int end)
 
 
 void execute(double *dist, int64_t *res, double *min_dist)
-
 {
-  int n_points = 0;
-  int n_k = 0;
+  int n_points = 0; // rows
+  int n_k = 0; // cols
 
   #pragma omp parallel for
   for (int i = 0; i < n_points; i++)
