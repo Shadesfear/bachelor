@@ -6,6 +6,8 @@ import scipy
 import time
 import utils
 import random
+import os
+
 from benchpress.benchmarks import util
 
 
@@ -39,19 +41,17 @@ class bohrium_kmeans:
         self.init_centroids = np.array([0])
         self.gpu = gpu
 
-        userkerneldir = "/home/chris/Documents/bachelor/src/user-kernels/"
-        # userkerneldir = "/home/cca/bachelor/src/user-kernels/"
+        dirname, filename = os.path.split(os.path.abspath(__file__))
+
+        userkerneldir = dirname + "/user-kernels/"
+
 
 
         if self.userkernel:
-
             self.kernel_centroids_closest = open(userkerneldir + 'centroids_closest.c').read()
             self.kernel_centroids_closest_opencl = open(userkerneldir + 'centroids_closest_opencl.c').read()
             self.kernel_move_centroids = open(userkerneldir + 'move_centroids.c', 'r').read()
             self.kernel_shuffle = open(userkerneldir + 'shuffle.c', 'r').read()
-
-
-
 
 
     def __str__(self):
