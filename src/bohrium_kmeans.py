@@ -54,8 +54,6 @@ class bohrium_kmeans:
 
     def init_random_userkernel(self, points):
         temp = points.copy()
-        if type(temp) != 'numpy.float32':
-            temp = bh.float64(temp)
         bh.user_kernel.execute(self.kernel_shuffle, [temp])
 
         if self.verbose:
@@ -277,11 +275,6 @@ class bohrium_kmeans:
                 points.shape[0], self.k))
 
 
-
-        if type(points) != 'numpy.float32':
-            points = bh.float64(points)
-
-
         if self.userkernel:
             self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
             self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_k = 0", "int n_k = " + str(self.k))
@@ -308,31 +301,28 @@ class bohrium_kmeans:
         if self.verbose:
             print("Done initializing, starting..")
 
-        while iterations < self.max_iter:
+        #while iterations < self.max_iter:
+        for iterations in range(self.max_iter):
 
-            if iterations > 0:
-
-                old_centers = centroids.copy()
-                old_min_dist = min_dist.copy()
-                old_closest = closest.copy()
+            old_centers = centroids.copy()
 
             closest, min_dist = self.centroids_closest(points, centroids)
             centroids = self.move_centroids(points, closest, centroids)
             inertia = min_dist.sum()
 
-            if iterations > 0:
 
-                x = old_centers - centroids
-                x = bh.ravel(x)
+
+            x = old_centers - centroids
+            x = bh.ravel(x)
 
                 #This is the SKlearn way of exiting.
-                if (bh.dot(x, x) <= epsilon):
-                    if self.verbose:
-                        print("Converged after {} iterations".format(str(iterations)))
+            if (bh.dot(x, x) <= epsilon):
+                if self.verbose:
+                    print("Converged after {} iterations".format(str(iterations)))
 
-                    return closest, centroids, iterations, inertia
+                return closest, centroids, iterations, inertia
 
-            iterations += 1
+
         return closest, centroids, iterations, inertia
 
 def benchmark():
@@ -346,8 +336,8 @@ def benchmark():
     np.random.seed(0)
 
     # points = bh.random.randint(2*10**exp, size=(10**exp, 2))
-    points = np.random.randint(times*2*10**exp, size=(times * 10**exp, 2))
-    points = bh.array(points)
+    points = bh.random.randint(times*2*10**exp, size=(times * 10**exp, 2), dtype=bh.float64)
+    # points = bh.array(points)
 
     bh.flush()
     bench.start()
