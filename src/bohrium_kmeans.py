@@ -177,7 +177,7 @@ class bohrium_kmeans:
 
         if self.userkernel:
 
-            result = bh.zeros(points.shape[0], dtype = bh.int64)
+            result = bh.zeros(points.shape[0], dtype = bh.int32)
             min_dist = bh.zeros(points.shape[0], dtype = bh.float64)
             distances_transposed = bh.user_kernel.make_behaving(distances.T)
             print(distances_transposed.shape)
@@ -363,18 +363,18 @@ def benchmark():
 if __name__ == "__main__":
     # from sklearn.cluster import KMeans
     # print("here")
-    bench = util.Benchmark("kmeans", "k")
-    benchmark()
-    # points = bh.loadtxt("../data/birchgrid.txt")
-    # kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=False)
+    # bench = util.Benchmark("kmeans", "k")
+    # benchmark()
+    points = bh.loadtxt("../data/birchgrid.txt")
+    kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=False)
 
     # points = bh.array(points)
     # clos, cent, ite, iner = kmeans.run(points)
     # # print(iner)
-    # centroids = kmeans.init_random_userkernel(points)
+    centroids = kmeans.init_random_userkernel(points)
 
-    # closest, min_dist = kmeans.centroids_closest(points, centroids)
-    # closest, min_dist = kmeans.centroids_closest(points, centroids)
+    closest, min_dist = kmeans.centroids_closest(points, centroids)
+    closest, min_dist = kmeans.centroids_closest(points, centroids)
 
 
     # start = time.time()
