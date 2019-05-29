@@ -1,75 +1,75 @@
 {
     "cmd_list": [
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 10dd",
-            "label": "Bohrium/10dd",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 10,0",
+            "label": "CPU/10,0",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 20",
-            "label": "Bohrium/20",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 20*0",
+            "label": "CPU/20*0",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 30",
-            "label": "Bohrium/30",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 30*0",
+            "label": "CPU/30*0",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 40",
-            "label": "Bohrium/40",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 40*0",
+            "label": "CPU/40*0",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 50",
-            "label": "Bohrium/50",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 50*0",
+            "label": "CPU/50*0",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 100",
-            "label": "Bohrium/100",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 100*0",
+            "label": "CPU/100*0",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 500",
-            "label": "Bohrium/500",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 500*0",
+            "label": "CPU/500*0",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 10",
-            "label": "Numpy/10",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 10*1",
+            "label": "GPU/10*1",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 20",
-            "label": "Numpy/20",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 20*1",
+            "label": "GPU/20*1",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 30",
-            "label": "Numpy/30",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 30*1",
+            "label": "GPU/30*1",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 40",
-            "label": "Numpy/40",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 40*1",
+            "label": "GPU/40*1",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 50",
-            "label": "Numpy/50",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 50*1",
+            "label": "GPU/50*1",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 100",
-            "label": "Numpy/100",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 100*1",
+            "label": "GPU/100*1",
             "env": {}
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/pure-numpy-kmeans.py 500",
-            "label": "Numpy/500",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 500*1",
+            "label": "GPU/500*1",
             "env": {}
         }
     ],
-    "creation_date_utc": "2019-05-23T09:56:35.944074"
+    "creation_date_utc": "2019-05-28T12:08:39.533740"
 }

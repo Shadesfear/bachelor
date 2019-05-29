@@ -75,13 +75,25 @@ showstringspaces=false            %
 
 \subfile{forside.tex}
 
-\section*{Abstract}
-\label{sec:label}
+%\section*{Abstract}
+%\label{sec:label}
+
+\begin{abstract}
+
+\end{abstract}
 
 
 \newpage
-\section*{Acknowledgement}
-\label{sec:ackow}
+
+\renewcommand{\abstractname}{Acknowledgements}
+\begin{abstract}
+  First of all I would like to express my sincerest gratitude to Mads B. R. Kristensen for being co-supervisor on this project, without your help and guidance the project wouldn't be the same. \\
+  A special thanks to Morten Dalfoss for being my rubber duck of choice. \\
+  And maybe the biggest thanks to my girlfriend Amalie Willum for never letting me go easy on anything, and always having my back when it counts.
+\end{abstract}
+
+%\section*{Acknowledgement}
+%\label{sec:ackow}
 
 \newpage
 
@@ -90,10 +102,17 @@ showstringspaces=false            %
 \newpage
 \chapter{introduction}
 \label{sec:intro}
+This paper is written as part of a Bachelor project at the Niels Bohr Institute University of Copenhagen. The project deals with fast clustering of data. The author is Christopher Toft Carman. Supervised by Brian Vinter, lecturer at University of Copenhagen. Co-supervised by Mads. B. R. Kristensen bla bla bla at University of Copenhagen.
 \section{Background}
-\label{subsec:label}
+\label{subsec:background}
+
 \section{Goal}
-\label{subsec:label}
+\label{subsec:goal}
+The goal of the project is to implement and describe the theory for a vectorized version of the unsupervised machine learning algorithm KMeans using the library Bohrium. Given a dataset the program is able to find a number of centroids that minimizes the internal squared distances to each centroid.
+\section{results}
+\label{sec:intro_results}
+
+
 
 
 
@@ -479,12 +498,19 @@ Now we will explore the increases in performance in pure Python compared to my v
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\linewidth]{images/python_vs_bohrium1.pdf}
-  \caption{\label{fig:pythonvsbohrium}Runtimes of the KMeans algorithm run on a varying number of points, the notation reads ``multiplier*exponent'', such that Bohrium/5*5 is KMeans using Bohrium with $5*10^5$ number of points, the number of centroids was fixed to be 50.}
+  \caption{\label{fig:pythonvsbohrium}Runtimes of the KMeans algorithm run on a varying number of points, the notation reads ``multiplier*exponent'', such that Bohrium/5*5 is KMeans using Bohrium with $5*10^5$ number of points, the number of centroids was fixed to be 25.}
 \end{figure}
 
 \section{NumPy VS Bohrium}
 \label{sec:numpyvsbohrium}
-In this section we will look at the performance in  running my implementation of the KMeans algorithm in  NumPy vs Bohrium, we will do the same as in the last section, first looking at performance for different number of points, and then we will be looking at different number of centroids.
+In this section we will look at the performance in  running my implementation of the KMeans algorithm in  NumPy vs Bohrium, we will do the same as in the last section, first looking at performance for different number of points, and then we will be looking at different number of centroids. Again we expected to see a gain in performance, and that is what we got, although less than in the previous example.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{images/numpy_vs_bohrium_points.pdf}
+  \caption{\label{fig:label}Runtimes of Kmeans implemented in Bohrium VS NumPy with a varying number of points. \textbf{LOWER IS BETTER}. The notation reads that ``times*exponent'' such that 3*5 means $3 \times 10^5$ number of points}
+\end{figure}
+
 
 \begin{figure}[H]
   \centering
@@ -496,22 +522,58 @@ In this section we will look at the performance in  running my implementation of
 
 \section{CPU vs GPU}
 \label{sec:cpugpu}
-
+When comparing speeds on the CPU compared to the GPU we conduct the test on the machine Nelson, provided by NBI this machine is equipped with the Nvidia 680 graphics, although not the fastest card on the market today, it should provide us with ample computing power for our purposes.
 
 
 
 
 \chapter{Experiments}
 \label{sec:experi}
+In this chapter i will discuss two common use cases for the KMeans algorithm, the first example is where we try to find groups or clusters in data from heart patients. The other example is where we try segment a CT scan of the brain, the idea is to reveal similar attributes in the image for further image analysis. These experiments was conducted in Jupyter Notebooks, as it's a nice way to visualize data processing, the notebooks can be found in the github \href{https://github.com/shadesfear/bachelor}{repository}, but images will also be presented laters in this chapter.
+\section{Heart Disease}
+\label{sec:heart}
+The setup of the experiment is that we want to find groups in the data of heart patients, the data can be found at this \href{https://www.kaggle.com/ronitf/heart-disease-uci}{link}. The dataset contains 14 different features (or dimensions) relating to the health of heart, in which the last feature is the ``target'' or if the person has actually gotten a major heart disease or not. The plan is then:
+\begin{enumerate}
+\item Deal with non numerical data
+\item Perform KMeans clustering on the dataset minus the target feature
+\item Check how ``correct'' our clustering is
+\end{enumerate}
+To deal with the non numerical data, we encode each unique value of the coloum with a value, as an example from our dataset we map ``male''/``female'' to either 1 and 0 or 0 and 1.\\
+Performing KMeans on the dataset was a trivial task, we set the number centroids to two, to try and find binary structure in the data. Since we then get a label for each thirteen dimensional point in the dataset we check the overlap from the target coloumn versus our labels. This revealed an overlap of about 43\% or 57\%, \textbf{EXPLAIN WHAT IT MEANS}, these seemingly bad values does have an explaination, we did not normalize our dataset, as we are using an Euclidean distance metric for comparision if the data is not normalized we will not get good values \cite{kmeansconvergence}. After normalizing we now get 81\% or 21\% overlap, but better! Now these labels can used as a feature in lets say a logistical regression.
+\subsection{Image Segmentation}
+\label{subsec:imgseg}
+Another classic example is image segmentation, the task is to cluster the image into groups based on similar features, this could as an example be the RGB color value of each pixle that we might want to group together. In my attempt at image segmentation I looked at grey scale values of a CT scan of a human head, in the hopes that we might find underlying structures such as bones and not bones, in lack of a better term. The image before and after segmentation can be seen in figure \ref{fig:imgseg}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/brain512.png}
+        \caption{Original image that needs to be clustered }
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/clustering512.png}
+        \caption{Image after clustering}
+    \end{subfigure}
+    \caption{Caption place holder}
+\end{figure}
+To validate the clusters..
+
+
+
 
 \chapter{Conclusion}
 \label{sec:label}
+I have implemented a version of the KMeans algorithm that can run on both the CPU and the GPU using the library Bohrium for automatic acceleration of the code. My version is implemented as described in the section about implementation. The program utilizes array programming as a way of telling Bohrium how to accelerate each operation, this is done by rewriting all code to array programming, and if not possible then our have written my own userkernel to manually parallelize the code. \\
+I have implemented three different version of the KMeans, one using only Python, one using only Numpy and finally one using only Bohrium with the goal of measuring the increase in performance when running code in parallel. The goal of the project was to implement a version of the KMeans clustering algorithm in bohrium such performance heavy tasks such as image segmentation can be sped up, this goal has been met. Although we cannot guarantee an increase in performance as this is hardware dependent so highly individual of the environment that you are running the program in. \\
+Comparing my program to an implementation in either python or NumPy, my version does see better performance as in we see faster execution time of my implementation with the same tolerance for convergence. \\ \\
 
+I future update for the program is to implement the Elkan's Algorithm that uses triangle inequality to avoid many distance calculations that LLoyds algorithm calculates, although much faster it uses much more memory compared to Lloyds, thus not suited for large datasets that needs clustering.
 
 
 \newpage
-
-\bibliographystyle{plain}
 \bibliography{ref,main}
 
 \end{document}

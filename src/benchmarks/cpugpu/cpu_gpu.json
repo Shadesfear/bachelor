@@ -1,0 +1,65 @@
+{
+    "cmd_list": [
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*5*0",
+            "label": "Bohrium/3*5*0",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 4*5*0",
+            "label": "Bohrium/4*5*0",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5*0",
+            "label": "Bohrium/5*5*0",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*5*0",
+            "label": "Bohrium/6*5*0",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 7*5*0",
+            "label": "Bohrium/7*5*0",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 8*5*0",
+            "label": "Bohrium/8*5*0",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*5*1",
+            "label": "numpy/3*5*1",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 4*5*1",
+            "label": "numpy/4*5*1",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5*1",
+            "label": "numpy/5*5*1",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*5*1",
+            "label": "numpy/6*5*1",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 7*5*1",
+            "label": "numpy/7*5*1",
+            "env": {}
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 8*5*1",
+            "label": "numpy/8*5*1",
+            "env": {}
+        }
+    ],
+    "creation_date_utc": "2019-05-29T18:24:16.537215"
+}

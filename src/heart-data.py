@@ -1,4 +1,5 @@
 import bohrium as np
+import bohrium as bh
 import pandas as pd
 from bohrium_kmeans import *
 # from sklearn.cluster import KMeans
@@ -79,9 +80,10 @@ Y = np.array(data_frame['target'])
 # clf = KMeans(n_clusters=2)
 # clf.fit(X)
 
-kmeans = bohrium_kmeans(k = 2, userkernel=False)
-# X = kmeans.scale_data(X)
-closest, centroids, iterations = kmeans.run(X)
+kmeans = bohrium_kmeans(2, userkernel=False)
+X = kmeans.scale_data(X)
+X = bh.array(X)
+closest, centroids, iterations, ine = kmeans.run(X)
 
 
 
@@ -91,7 +93,7 @@ for i in range(len(X)):
     predict_me = np.array(X[i].astype(float))
     predict_me = predict_me.reshape(-1, len(predict_me))
     # prediction = clf.predict(predict_me)
-    prediction, min_dist = kmeans.centroids_closest(predict_me, centroids, 'squared')
+    prediction, min_dist = kmeans.centroids_closest(predict_me, centroids)
 
     if prediction[0] == Y[i]:
         correct += 1

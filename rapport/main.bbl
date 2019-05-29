@@ -3,11 +3,26 @@
 \bibitem{plusplus}
 David Arthur and Sergei Vassilvitskii.
 \newblock k-means++: The advantages of careful seeding.
-\newblock 2007.
+\newblock {\em 2}, 2007.
+
+\bibitem{scalableKmeans}
+Bahman Bahmani, Benjamin Moseley, Andrea Vattani, Ravi Kumar, and Sergei
+  Vassilvitskii.
+\newblock Scalable kmeans++.
+\newblock {\em 3}, 2012.
+
+\bibitem{kmeansconvergence}
+Leon Bottou and Yoshua Bengio.
+\newblock Convergence properties of the kmeans algorithm.
+\newblock {\em 4}, 1995.
+
+\bibitem{bohrium_website}
+Mads B.~R. Kristensen.
+\newblock https://bohrium.readthedocs.io/, 2019.
 
 \bibitem{lloyd}
 Stuart~P. Lloyd.
 \newblock Least squares quantization in pcm.
-\newblock 1988.
+\newblock {\em 1}, 1988.
 
 \end{thebibliography}

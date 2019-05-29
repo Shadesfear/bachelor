@@ -78,19 +78,18 @@ def pure_numpy_kmeans(points, k, epsilon = 0.00001):
 
 
 def benchmark():
-    k = bench.args.size[0]
-    points = np.loadtxt("/home/chris/Documents/bachelor/data/birchgrid.txt")
+    times = bench.args.size[0]
+    exp = bench.args.size[1]
 
+    k = 25
+
+    np.random.seed(0)
+    points = np.random.randint(times*2*10**exp, size=(times * 10**exp, 2))
 
     bench.start()
-    print("starting")
     pure_numpy_kmeans(points, k)
-
     bench.stop()
     bench.pprint()
-
-
-    print("done")
 
 
 

@@ -1,30 +1,92 @@
 {
     "cmd_list": [
         {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*5",
+            "label": "Bohrium/3*5",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-ecb7fd29-90e0-49f2-9a25-735943d06335.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/3*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ecb7fd29-90e0-49f2-9a25-735943d06335.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ecb7fd29-90e0-49f2-9a25-735943d06335.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ecb7fd29-90e0-49f2-9a25-735943d06335.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ecb7fd29-90e0-49f2-9a25-735943d06335.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ecb7fd29-90e0-49f2-9a25-735943d06335.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ecb7fd29-90e0-49f2-9a25-735943d06335.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 145 iterations\nFunction \"run\" took 6.813271760940552 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*5, elapsed-time: 6.813993\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 145 iterations\nFunction \"run\" took 6.247724533081055 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*5, elapsed-time: 6.248205\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 145 iterations\nFunction \"run\" took 6.225464105606079 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*5, elapsed-time: 6.225892\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 4*5",
+            "label": "Bohrium/4*5",
+            "env": {},
+            "jobs": [
+                {
+                    "status": "finished",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-ac845c42-ec46-4d34-9391-819be225f1ce.sh",
+                    "nruns": 3,
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/4*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 4*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ac845c42-ec46-4d34-9391-819be225f1ce.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ac845c42-ec46-4d34-9391-819be225f1ce.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 4*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ac845c42-ec46-4d34-9391-819be225f1ce.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ac845c42-ec46-4d34-9391-819be225f1ce.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 4*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ac845c42-ec46-4d34-9391-819be225f1ce.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ac845c42-ec46-4d34-9391-819be225f1ce.sh-2.err >&2)\nsync\n",
+                    "warmup": false,
+                    "results": [
+                        {
+                            "success": true,
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 277 iterations\nFunction \"run\" took 14.447298288345337 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*5, elapsed-time: 14.447756\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 277 iterations\nFunction \"run\" took 14.42573618888855 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*5, elapsed-time: 14.426187\n",
+                            "stderr": ""
+                        },
+                        {
+                            "success": true,
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 277 iterations\nFunction \"run\" took 14.518593549728394 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*5, elapsed-time: 14.519038\n",
+                            "stderr": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5",
             "label": "Bohrium/5*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-83a5a164-6a44-435c-872e-8b57f8e419f8.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-f158a40d-a391-4b8d-9a6f-6e0658bd1919.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/5*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-83a5a164-6a44-435c-872e-8b57f8e419f8.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-83a5a164-6a44-435c-872e-8b57f8e419f8.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-83a5a164-6a44-435c-872e-8b57f8e419f8.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-83a5a164-6a44-435c-872e-8b57f8e419f8.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-83a5a164-6a44-435c-872e-8b57f8e419f8.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-83a5a164-6a44-435c-872e-8b57f8e419f8.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/5*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f158a40d-a391-4b8d-9a6f-6e0658bd1919.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f158a40d-a391-4b8d-9a6f-6e0658bd1919.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f158a40d-a391-4b8d-9a6f-6e0658bd1919.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f158a40d-a391-4b8d-9a6f-6e0658bd1919.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f158a40d-a391-4b8d-9a6f-6e0658bd1919.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-f158a40d-a391-4b8d-9a6f-6e0658bd1919.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 21.946958541870117 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*5, elapsed-time: 21.947329\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 200 iterations\nFunction \"run\" took 12.402589082717896 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*5, elapsed-time: 12.403059\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 26.953124046325684 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*5, elapsed-time: 26.953490\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 200 iterations\nFunction \"run\" took 12.463971614837646 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*5, elapsed-time: 12.464444\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 23.289579153060913 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*5, elapsed-time: 23.289982\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 200 iterations\nFunction \"run\" took 12.436705112457275 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*5, elapsed-time: 12.437198\n",
                             "stderr": ""
                         }
                     ]
@@ -32,30 +94,30 @@
             ]
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*6",
-            "label": "Bohrium/5*6",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*5",
+            "label": "Bohrium/6*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-d44fc1f3-93bf-464f-8b07-b6351f9fc5b6.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-b4df7475-9441-484a-b825-b27b18528d82.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/5*6'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d44fc1f3-93bf-464f-8b07-b6351f9fc5b6.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d44fc1f3-93bf-464f-8b07-b6351f9fc5b6.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d44fc1f3-93bf-464f-8b07-b6351f9fc5b6.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d44fc1f3-93bf-464f-8b07-b6351f9fc5b6.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d44fc1f3-93bf-464f-8b07-b6351f9fc5b6.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d44fc1f3-93bf-464f-8b07-b6351f9fc5b6.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/6*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b4df7475-9441-484a-b825-b27b18528d82.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b4df7475-9441-484a-b825-b27b18528d82.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b4df7475-9441-484a-b825-b27b18528d82.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b4df7475-9441-484a-b825-b27b18528d82.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b4df7475-9441-484a-b825-b27b18528d82.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b4df7475-9441-484a-b825-b27b18528d82.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 36.84975790977478 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*6, elapsed-time: 36.850165\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 254 iterations\nFunction \"run\" took 18.222847938537598 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*5, elapsed-time: 18.223358\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 36.88877272605896 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*6, elapsed-time: 36.889151\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 254 iterations\nFunction \"run\" took 18.066552877426147 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*5, elapsed-time: 18.067061\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 36.34733605384827 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*6, elapsed-time: 36.347711\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 254 iterations\nFunction \"run\" took 18.14965057373047 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*5, elapsed-time: 18.150163\n",
                             "stderr": ""
                         }
                     ]
@@ -63,30 +125,30 @@
             ]
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 1*7",
-            "label": "Bohrium/1*7",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 7*5",
+            "label": "Bohrium/7*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-38c41068-8e86-4789-948f-77acbac7ab12.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-d482015f-cca5-480c-b4f8-f418a35b7244.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/1*7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 1*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-38c41068-8e86-4789-948f-77acbac7ab12.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-38c41068-8e86-4789-948f-77acbac7ab12.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 1*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-38c41068-8e86-4789-948f-77acbac7ab12.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-38c41068-8e86-4789-948f-77acbac7ab12.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 1*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-38c41068-8e86-4789-948f-77acbac7ab12.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-38c41068-8e86-4789-948f-77acbac7ab12.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/7*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 7*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d482015f-cca5-480c-b4f8-f418a35b7244.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d482015f-cca5-480c-b4f8-f418a35b7244.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 7*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d482015f-cca5-480c-b4f8-f418a35b7244.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d482015f-cca5-480c-b4f8-f418a35b7244.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 7*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d482015f-cca5-480c-b4f8-f418a35b7244.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-d482015f-cca5-480c-b4f8-f418a35b7244.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 0.6457703113555908 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1*7, elapsed-time: 0.646092\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 238 iterations\nFunction \"run\" took 19.142035245895386 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 7*5, elapsed-time: 19.142535\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 0.2984931468963623 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1*7, elapsed-time: 0.298813\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 238 iterations\nFunction \"run\" took 19.223532676696777 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 7*5, elapsed-time: 19.224041\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 0.32227230072021484 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1*7, elapsed-time: 0.322599\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 238 iterations\nFunction \"run\" took 19.126056432724 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 7*5, elapsed-time: 19.126563\n",
                             "stderr": ""
                         }
                     ]
@@ -94,30 +156,30 @@
             ]
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*7",
-            "label": "Bohrium/3*7",
+            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 8*5",
+            "label": "Bohrium/8*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-bb57ad52-56b6-4faa-b542-945561ad6e48.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-59896980-522c-47c8-aa62-03a337af5a67.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/3*7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-bb57ad52-56b6-4faa-b542-945561ad6e48.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-bb57ad52-56b6-4faa-b542-945561ad6e48.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-bb57ad52-56b6-4faa-b542-945561ad6e48.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-bb57ad52-56b6-4faa-b542-945561ad6e48.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 3*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-bb57ad52-56b6-4faa-b542-945561ad6e48.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-bb57ad52-56b6-4faa-b542-945561ad6e48.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/8*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 8*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-59896980-522c-47c8-aa62-03a337af5a67.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-59896980-522c-47c8-aa62-03a337af5a67.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 8*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-59896980-522c-47c8-aa62-03a337af5a67.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-59896980-522c-47c8-aa62-03a337af5a67.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 8*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-59896980-522c-47c8-aa62-03a337af5a67.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-59896980-522c-47c8-aa62-03a337af5a67.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 1.5331127643585205 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*7, elapsed-time: 1.533461\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 256 iterations\nFunction \"run\" took 22.895928621292114 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 8*5, elapsed-time: 22.896472\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 1.2378478050231934 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*7, elapsed-time: 1.238233\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 256 iterations\nFunction \"run\" took 23.01809811592102 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 8*5, elapsed-time: 23.018629\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nOLD CENTERS\nFunction \"run\" took 1.134096622467041 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*7, elapsed-time: 1.134432\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "Userkernels has been loaded\ninit: random\nInitialized 25 number of centroids randomly with userkernel\nDone initializing, starting..\nConverged after 256 iterations\nFunction \"run\" took 22.968181848526 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 8*5, elapsed-time: 22.968711\n",
                             "stderr": ""
                         }
                     ]
@@ -125,30 +187,30 @@
             ]
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*7",
-            "label": "Bohrium/5*7",
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3*5",
+            "label": "Python/3*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-8010419d-9826-4d1f-8b7e-4e009a83368f.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-c1fc39e0-39d5-40d8-915f-b8cec2b47af7.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/5*7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8010419d-9826-4d1f-8b7e-4e009a83368f.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8010419d-9826-4d1f-8b7e-4e009a83368f.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8010419d-9826-4d1f-8b7e-4e009a83368f.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8010419d-9826-4d1f-8b7e-4e009a83368f.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 5*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8010419d-9826-4d1f-8b7e-4e009a83368f.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-8010419d-9826-4d1f-8b7e-4e009a83368f.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/3*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c1fc39e0-39d5-40d8-915f-b8cec2b47af7.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c1fc39e0-39d5-40d8-915f-b8cec2b47af7.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c1fc39e0-39d5-40d8-915f-b8cec2b47af7.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c1fc39e0-39d5-40d8-915f-b8cec2b47af7.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c1fc39e0-39d5-40d8-915f-b8cec2b47af7.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c1fc39e0-39d5-40d8-915f-b8cec2b47af7.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 42.19928812980652 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*7, elapsed-time: 42.199698\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "diff 11201042.214619493\ndiff 11201042.214619493\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 3*5, elapsed-time: 13.471045\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 41.86298418045044 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*7, elapsed-time: 41.863360\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "diff 12215440.157323139\ndiff 12215440.157323139\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 3*5, elapsed-time: 13.193438\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 41.854357957839966 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*7, elapsed-time: 41.854768\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "diff 12934850.119987186\ndiff 12934850.119987186\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 3*5, elapsed-time: 13.326061\n1\n",
                             "stderr": ""
                         }
                     ]
@@ -156,30 +218,30 @@
             ]
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*7",
-            "label": "Bohrium/6*7",
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 4*5",
+            "label": "Python/4*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-31fc5a55-5d9d-4e2a-b37e-eab5bf5ce49f.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-2376c7c5-336e-4037-a25f-99c55391a0f6.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Bohrium/6*7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-31fc5a55-5d9d-4e2a-b37e-eab5bf5ce49f.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-31fc5a55-5d9d-4e2a-b37e-eab5bf5ce49f.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-31fc5a55-5d9d-4e2a-b37e-eab5bf5ce49f.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-31fc5a55-5d9d-4e2a-b37e-eab5bf5ce49f.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/bohrium_kmeans.py 6*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-31fc5a55-5d9d-4e2a-b37e-eab5bf5ce49f.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-31fc5a55-5d9d-4e2a-b37e-eab5bf5ce49f.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/4*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 4*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2376c7c5-336e-4037-a25f-99c55391a0f6.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2376c7c5-336e-4037-a25f-99c55391a0f6.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 4*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2376c7c5-336e-4037-a25f-99c55391a0f6.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2376c7c5-336e-4037-a25f-99c55391a0f6.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 4*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2376c7c5-336e-4037-a25f-99c55391a0f6.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-2376c7c5-336e-4037-a25f-99c55391a0f6.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 400.30541014671326 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*7, elapsed-time: 400.305874\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "diff 15610813.807078093\ndiff 15610813.807078093\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 4*5, elapsed-time: 18.061515\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 398.23338317871094 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*7, elapsed-time: 398.233792\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "diff 13649430.136785075\ndiff 13649430.136785075\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 4*5, elapsed-time: 17.929232\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "init: random\nFunction \"run\" took 395.4444851875305 seconds to complete.\n/home/chris/Documents/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*7, elapsed-time: 395.444915\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\nEncountering an operation not supported by Bohrium. It will be handled by the original NumPy:\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(279): points = bh.float64(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(20): result = func(*args, **kwargs)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(358): kmeans.run(points)\n  /home/chris/Documents/bachelor/src/bohrium_kmeans.py(373): benchmark()\n",
+                            "stdout": "diff 16317598.028887164\ndiff 16317598.028887164\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 4*5, elapsed-time: 17.453646\n1\n",
                             "stderr": ""
                         }
                     ]
@@ -193,24 +255,24 @@
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-e2fff318-06bf-4a5c-a608-92d4fe88e3fd.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-32b3ba4f-6f6f-4751-8acd-f44ceab754d7.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/5*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e2fff318-06bf-4a5c-a608-92d4fe88e3fd.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e2fff318-06bf-4a5c-a608-92d4fe88e3fd.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e2fff318-06bf-4a5c-a608-92d4fe88e3fd.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e2fff318-06bf-4a5c-a608-92d4fe88e3fd.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e2fff318-06bf-4a5c-a608-92d4fe88e3fd.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-e2fff318-06bf-4a5c-a608-92d4fe88e3fd.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/5*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-32b3ba4f-6f6f-4751-8acd-f44ceab754d7.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-32b3ba4f-6f6f-4751-8acd-f44ceab754d7.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-32b3ba4f-6f6f-4751-8acd-f44ceab754d7.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-32b3ba4f-6f6f-4751-8acd-f44ceab754d7.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-32b3ba4f-6f6f-4751-8acd-f44ceab754d7.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-32b3ba4f-6f6f-4751-8acd-f44ceab754d7.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "diff 39683824.13067969\ndiff 39683824.13067969\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*5, elapsed-time: 43.587350\n1\n",
+                            "stdout": "diff 20398438.19962975\ndiff 20398438.19962975\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*5, elapsed-time: 21.794067\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "diff 41772171.39798554\ndiff 41772171.39798554\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*5, elapsed-time: 43.459358\n1\n",
+                            "stdout": "diff 17713264.88789918\ndiff 17713264.88789918\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*5, elapsed-time: 22.454905\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "diff 41964750.834580965\ndiff 41964750.834580965\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*5, elapsed-time: 43.304950\n1\n",
+                            "stdout": "diff 18349582.542401526\ndiff 18349582.542401526\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*5, elapsed-time: 21.973769\n1\n",
                             "stderr": ""
                         }
                     ]
@@ -218,30 +280,30 @@
             ]
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*6",
-            "label": "Python/5*6",
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 6*5",
+            "label": "Python/6*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-ea420474-b636-49d5-9b91-9e5e2a9df0d8.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-1de35d7a-2c55-41b8-bda3-4dd4402fd192.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/5*6'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ea420474-b636-49d5-9b91-9e5e2a9df0d8.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ea420474-b636-49d5-9b91-9e5e2a9df0d8.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ea420474-b636-49d5-9b91-9e5e2a9df0d8.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ea420474-b636-49d5-9b91-9e5e2a9df0d8.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*6 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ea420474-b636-49d5-9b91-9e5e2a9df0d8.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-ea420474-b636-49d5-9b91-9e5e2a9df0d8.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/6*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 6*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-1de35d7a-2c55-41b8-bda3-4dd4402fd192.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-1de35d7a-2c55-41b8-bda3-4dd4402fd192.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 6*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-1de35d7a-2c55-41b8-bda3-4dd4402fd192.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-1de35d7a-2c55-41b8-bda3-4dd4402fd192.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 6*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-1de35d7a-2c55-41b8-bda3-4dd4402fd192.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-1de35d7a-2c55-41b8-bda3-4dd4402fd192.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "diff 46367842.08263896\ndiff 46367842.08263896\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*6, elapsed-time: 52.195136\n1\n",
+                            "stdout": "diff 24193319.548284333\ndiff 24193319.548284333\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 6*5, elapsed-time: 26.376534\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "diff 46213971.50857117\ndiff 46213971.50857117\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*6, elapsed-time: 51.430633\n1\n",
+                            "stdout": "diff 21363078.80493336\ndiff 21363078.80493336\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 6*5, elapsed-time: 26.782562\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "diff 48962345.50805546\ndiff 48962345.50805546\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*6, elapsed-time: 51.774666\n1\n",
+                            "stdout": "diff 25035203.178938493\ndiff 25035203.178938493\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 6*5, elapsed-time: 26.839876\n1\n",
                             "stderr": ""
                         }
                     ]
@@ -249,30 +311,30 @@
             ]
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 1*7",
-            "label": "Python/1*7",
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 7*5",
+            "label": "Python/7*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-3b16a898-ba19-418b-8aa5-25cba121cb98.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-149e7cf0-b19d-4105-af4c-079f481d762f.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/1*7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 1*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-3b16a898-ba19-418b-8aa5-25cba121cb98.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-3b16a898-ba19-418b-8aa5-25cba121cb98.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 1*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-3b16a898-ba19-418b-8aa5-25cba121cb98.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-3b16a898-ba19-418b-8aa5-25cba121cb98.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 1*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-3b16a898-ba19-418b-8aa5-25cba121cb98.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-3b16a898-ba19-418b-8aa5-25cba121cb98.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/7*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 7*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-149e7cf0-b19d-4105-af4c-079f481d762f.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-149e7cf0-b19d-4105-af4c-079f481d762f.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 7*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-149e7cf0-b19d-4105-af4c-079f481d762f.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-149e7cf0-b19d-4105-af4c-079f481d762f.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 7*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-149e7cf0-b19d-4105-af4c-079f481d762f.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-149e7cf0-b19d-4105-af4c-079f481d762f.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "diff 5212.9270384185265\ndiff 5212.9270384185265\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 1*7, elapsed-time: 0.006204\n1\n",
+                            "stdout": "diff 25234273.343707383\ndiff 25234273.343707383\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 7*5, elapsed-time: 30.783734\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "diff 5026.262274090435\ndiff 5026.262274090435\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 1*7, elapsed-time: 0.006289\n1\n",
+                            "stdout": "diff 31423172.34839115\ndiff 31423172.34839115\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 7*5, elapsed-time: 30.681328\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "diff 5528.29656243562\ndiff 5528.29656243562\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 1*7, elapsed-time: 0.006227\n1\n",
+                            "stdout": "diff 29211171.69175154\ndiff 29211171.69175154\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 7*5, elapsed-time: 30.752184\n1\n",
                             "stderr": ""
                         }
                     ]
@@ -280,72 +342,36 @@
             ]
         },
         {
-            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3*7",
-            "label": "Python/3*7",
+            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 8*5",
+            "label": "Python/8*5",
             "env": {},
             "jobs": [
                 {
                     "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-4cc57039-387a-4682-acb8-2c04f39763be.sh",
+                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-c3e67387-34ab-4df1-890c-20a39496ec0a.sh",
                     "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/3*7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4cc57039-387a-4682-acb8-2c04f39763be.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4cc57039-387a-4682-acb8-2c04f39763be.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4cc57039-387a-4682-acb8-2c04f39763be.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4cc57039-387a-4682-acb8-2c04f39763be.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 3*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4cc57039-387a-4682-acb8-2c04f39763be.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-4cc57039-387a-4682-acb8-2c04f39763be.sh-2.err >&2)\nsync\n",
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/8*5'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 8*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c3e67387-34ab-4df1-890c-20a39496ec0a.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c3e67387-34ab-4df1-890c-20a39496ec0a.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 8*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c3e67387-34ab-4df1-890c-20a39496ec0a.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c3e67387-34ab-4df1-890c-20a39496ec0a.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 8*5 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c3e67387-34ab-4df1-890c-20a39496ec0a.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-c3e67387-34ab-4df1-890c-20a39496ec0a.sh-2.err >&2)\nsync\n",
                     "warmup": false,
                     "results": [
                         {
                             "success": true,
-                            "stdout": "diff 542639.2969694813\ndiff 542639.2969694813\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 3*7, elapsed-time: 0.586421\n1\n",
+                            "stdout": "diff 27676667.44725541\ndiff 27676667.44725541\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 8*5, elapsed-time: 35.340545\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "diff 531584.3977954935\ndiff 531584.3977954935\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 3*7, elapsed-time: 0.589773\n1\n",
+                            "stdout": "diff 31270596.644394323\ndiff 31270596.644394323\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 8*5, elapsed-time: 35.272807\n1\n",
                             "stderr": ""
                         },
                         {
                             "success": true,
-                            "stdout": "diff 520282.19567678194\ndiff 520282.19567678194\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 3*7, elapsed-time: 0.579307\n1\n",
+                            "stdout": "diff 32530746.74292519\ndiff 32530746.74292519\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 8*5, elapsed-time: 34.840377\n1\n",
                             "stderr": ""
                         }
                     ]
                 }
             ]
-        },
-        {
-            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*7",
-            "label": "Python/5*7",
-            "env": {},
-            "jobs": [
-                {
-                    "status": "finished",
-                    "filename": "/home/chris/Documents/bachelor/src/benchmarks/bh-job-b3927b87-33fc-4bb4-8d21-6a4a0cb535f3.sh",
-                    "nruns": 3,
-                    "script": "#!/bin/bash\n\n#SBATCH -J 'Python/5*7'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3927b87-33fc-4bb4-8d21-6a4a0cb535f3.sh-0.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3927b87-33fc-4bb4-8d21-6a4a0cb535f3.sh-0.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3927b87-33fc-4bb4-8d21-6a4a0cb535f3.sh-1.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3927b87-33fc-4bb4-8d21-6a4a0cb535f3.sh-1.err >&2)\nsync\npython /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 5*7 > >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3927b87-33fc-4bb4-8d21-6a4a0cb535f3.sh-2.out) 2> >(tee /home/chris/Documents/bachelor/src/benchmarks/bh-job-b3927b87-33fc-4bb4-8d21-6a4a0cb535f3.sh-2.err >&2)\nsync\n",
-                    "warmup": false,
-                    "results": [
-                        {
-                            "success": true,
-                            "stdout": "diff 56586253.71902699\ndiff 56586253.71902699\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*7, elapsed-time: 61.141210\n1\n",
-                            "stderr": ""
-                        },
-                        {
-                            "success": true,
-                            "stdout": "diff 52271138.44850889\ndiff 52271138.44850889\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*7, elapsed-time: 61.046396\n1\n",
-                            "stderr": ""
-                        },
-                        {
-                            "success": true,
-                            "stdout": "diff 54439094.01469274\ndiff 54439094.01469274\n/home/chris/Documents/bachelor/src/legacy/myownkmeans.py - bohrium: False, size: 5*7, elapsed-time: 61.420676\n1\n",
-                            "stderr": ""
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "cmd": "python /home/chris/Documents/bachelor/src/legacy/myownkmeans.py 6*7",
-            "label": "Python/6*7",
-            "env": {}
         }
     ],
-    "creation_date_utc": "2019-05-27T15:09:11.808226"
+    "creation_date_utc": "2019-05-27T21:33:52.657807"
 }

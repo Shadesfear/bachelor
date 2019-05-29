@@ -53,8 +53,9 @@ class bohrium_kmeans:
 
 
     def init_random_userkernel(self, points):
+        # os.environ["BH_STACK"] = "openmp"
         temp = points.copy()
-        bh.user_kernel.execute(self.kernel_shuffle, [temp])
+        bh.user_kernel.execute(self.kernel_shuffle, [temp], tag="openmp")
 
         if self.verbose:
             print("Initialized {} number of centroids randomly with userkernel".format(str(self.k)))
@@ -78,7 +79,7 @@ class bohrium_kmeans:
 
 
     def init_first_k(self, points):
-        self.centroids = centroids
+        self.centroids = points[:self.k]
         return points[:self.k]
 
 
@@ -179,8 +180,10 @@ class bohrium_kmeans:
             result = bh.zeros(points.shape[0], dtype = bh.int64)
             min_dist = bh.zeros(points.shape[0], dtype = bh.float64)
             distances_transposed = bh.user_kernel.make_behaving(distances.T)
+            print(distances_transposed.shape)
 
             if self.gpu:
+                # os.environ["BH_STACK"] = "opencl"
                 bh.user_kernel.execute(self.kernel_centroids_closest_opencl,
                                        [distances_transposed, result, min_dist],
                                        tag="opencl", param={"global_work_size": [points.shape[0], self.k], "local_work_size": [1, 1]})
@@ -289,6 +292,7 @@ class bohrium_kmeans:
                 centroids = self.init_random_userkernel(points)
 
 
+
         if self.init == "kmeans++":
             print("init: ++")
             centroids = self.init_plus_plus(points)
@@ -298,10 +302,10 @@ class bohrium_kmeans:
 
         iterations = 0
 
+
         if self.verbose:
             print("Done initializing, starting..")
 
-        #while iterations < self.max_iter:
         for iterations in range(self.max_iter):
 
             old_centers = centroids.copy()
@@ -310,18 +314,18 @@ class bohrium_kmeans:
             centroids = self.move_centroids(points, closest, centroids)
             inertia = min_dist.sum()
 
-
-
             x = old_centers - centroids
             x = bh.ravel(x)
 
-                #This is the SKlearn way of exiting.
+            #This is the SKlearn way of exiting.
             if (bh.dot(x, x) <= epsilon):
                 if self.verbose:
                     print("Converged after {} iterations".format(str(iterations)))
 
                 return closest, centroids, iterations, inertia
 
+        if self.verbose:
+            print("Exit after max ({}) iterations".format(str(iterations)))
 
         return closest, centroids, iterations, inertia
 
@@ -329,20 +333,22 @@ def benchmark():
 
     times = bench.args.size[0]
     exp = bench.args.size[1]
+    gp = bench.args.size[2]
+
 
 
     k = 25
+
     bh.random.seed(0)
     np.random.seed(0)
 
-    # points = bh.random.randint(2*10**exp, size=(10**exp, 2))
-    points = bh.random.randint(times*2*10**exp, size=(times * 10**exp, 2), dtype=bh.float64)
-    # points = bh.array(points)
+    points = bh.random.randint(2*times*10**exp, size=(times*10**exp, 2), dtype=bh.float64)
+
+    kmeans = bohrium_kmeans(k, userkernel=True, init="kmeans++", gpu=False, verbose=True)
 
     bh.flush()
     bench.start()
 
-    kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=False, verbose=True)
     kmeans.run(points)
 
     bh.flush()
@@ -362,9 +368,10 @@ if __name__ == "__main__":
     # points = bh.loadtxt("../data/birchgrid.txt")
     # kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=False)
 
+    # points = bh.array(points)
     # clos, cent, ite, iner = kmeans.run(points)
-    # print(iner)
-    # centroids = kmeans.init_plus_plus(points)
+    # # print(iner)
+    # centroids = kmeans.init_random_userkernel(points)
 
     # closest, min_dist = kmeans.centroids_closest(points, centroids)
     # closest, min_dist = kmeans.centroids_closest(points, centroids)
