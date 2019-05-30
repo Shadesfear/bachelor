@@ -79,7 +79,8 @@ showstringspaces=false            %
 %\label{sec:label}
 
 \begin{abstract}
-
+  I implemented a vectorized version of the KMeans algorithm using the Python library Bohrium for automatically paralellizing the operations. This allows for greater performance of the algorithm since the vectorized version is capable of running on the GPU, instead of running sequentially on the CPU. \\ \\
+  Several iterations of the algorithm was implemented, one in Python, one using Numpy, and one using Bohrium. Experimental results show that difference in speeds across the three different implementations, showing how a vectorized version executes faster.
 \end{abstract}
 
 
@@ -105,12 +106,20 @@ showstringspaces=false            %
 This paper is written as part of a Bachelor project at the Niels Bohr Institute University of Copenhagen. The project deals with fast clustering of data. The author is Christopher Toft Carman. Supervised by Brian Vinter, lecturer at University of Copenhagen. Co-supervised by Mads. B. R. Kristensen bla bla bla at University of Copenhagen.
 \section{Background}
 \label{subsec:background}
+Many disciplines in physics now a day require that use of data science to even get a result at all, thus relying on the computer to do the hard work. Thus the field of physics ``Computational Physics'' was born, where numerical analysis is used to solve the difficult physics problems. \\
+The spread of 3D-scans that needs to be segmented, are used in medical image analysis, satellite images, has now gotten so big that the time requirement to process them has exceeded a practical limit, thus we need faster computers or a better way to segment the images. \\
+A use case could as an example be in Plasma Dynamics simulation, where the number of particles increases exponentially, thus requiring a lot of process power. With the use of  high speed clustering, you are able to reduce the number of clusters thus keeping the number of particles at a level that can be processed. \cite{lucas}.\\
+We see a lot of areas in physics that utilizes dig data, thus the performance requirement also increases, thus we must evolve the way we think about computing
 
 \section{Goal}
 \label{subsec:goal}
 The goal of the project is to implement and describe the theory for a vectorized version of the unsupervised machine learning algorithm KMeans using the library Bohrium. Given a dataset the program is able to find a number of centroids that minimizes the internal squared distances to each centroid.
-\section{results}
+\section{Results}
 \label{sec:intro_results}
+I have developed an implementation of the KMeans algorithm written in Python using the library Bohrium, to automatically paralellize the operation with the goal of speeding up execution of the code. \\
+The program supports three different ways of initializing the centroids, and different backends for running the code on the CPU or the GPU, giving the user more power of how they want to run KMeans.\\ To plot the results of the benchmarks conducted in this paper we used the library Benchpress, during the project I was able to submit several pull requests\footnote{Pull request as in git pull request to add to the codebase of the library} to both Bohrium and Benchpress. \\
+All the code can be found in my github repository \href{https://www.github.com/shadesfear/bachelor}{https://www.github.com/shadesfear/bachelor}
+
 
 
 
@@ -125,7 +134,7 @@ The goal of the project is to implement and describe the theory for a vectorized
 \section{K-Means}
 \label{subsec:kmeans}
 
-K-means clustering is a method developed  of partitioning a set of points $X = \{x_1, x_2, ..., x_n\}$ in a d-dimensional space into a set of clusters $S = \{s_1, s_2, ..., s_k\}$, hence the name K-means. The algorithm takes n points and k number of clusters, it returns points split up into these clusters where an assignment has been made for each point to a given cluster. This problem is what is called a NP-hard problem this means that it's computationally hard. KMeans usually is one of the fastest clustering methods, but it suffers that it might converge to a local minimum instead of the sought after global minimum, but there are ways to more or less correct this fault.\cite{lloyd}
+K-means clustering is a method developed for partitioning a set of points $X = \{x_1, x_2, ..., x_n\}$ in a d-dimensional space into a set of clusters $S = \{s_1, s_2, ..., s_k\}$, hence the name K-means. The algorithm takes n points and k number of clusters, it returns points split up into these clusters where an assignment has been made for each point to a given cluster. This problem is what is called a NP-hard problem this means that it's computationally hard. KMeans usually is one of the fastest clustering methods, but it suffers that it might converge to a local minimum instead of the sought after global minimum, but there are ways to more or less correct this fault.\cite{lloyd}
 
 \section{Lloyd's Algorithm}
 \label{subsec:lloyds}
@@ -557,7 +566,7 @@ Another classic example is image segmentation, the task is to cluster the image 
         \includegraphics[width=0.9\textwidth]{images/clustering512.png}
         \caption{Image after clustering}
     \end{subfigure}
-    \caption{Caption place holder}
+    \caption{Two images, one of the original image, and one after running the kmeans clustering with k=3}
 \end{figure}
 To validate the clusters..
 
