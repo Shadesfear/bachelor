@@ -1,6 +1,6 @@
 
 #pragma OPENCL EXTENSION cl_khr_fp64 : enable
-kernel void execute(global long *labels, global long old_labels, global double *points, global double *centroids)
+kernel void execute(global long *labels, global long *old_labels, global double *points, global double *centroids)
 {
 
   int size_labels = 0;
@@ -9,7 +9,7 @@ kernel void execute(global long *labels, global long old_labels, global double *
   int id = get_global_id(0);
 
   int counter = 0;
-  double temp[dim[0]];
+  double temp[dim];
 
   //iter over labels
   for (int j = 0; j < size_labels; j++)
