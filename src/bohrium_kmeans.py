@@ -267,7 +267,7 @@ class bohrium_kmeans:
         if not n:
             n = self.k
 
-        out = bh.zeros_like(centroids, dtype = bh.float(64))
+        out = bh.zeros_like(centroids, dtype = bh.float64)
         old_centroids = bh.zeros_like(labels)
 
         self.kernel_move_centroids_opencl = self.kernel_move_centroids_openc.replace("int size_labels = 0", "int size_labels = " + str(labels.shape[0]))
@@ -277,7 +277,7 @@ class bohrium_kmeans:
         # self.mask = self.mask.replace("int rows = 0", "int rows = " + str(self.k))
         # self.mask = self.mask.replace("int cols = 0", "int cols = " + str(labels.shape[0]))
         # mask2 = bh.zeros(self.k*labels.shape[0], dtype=bh.int64).reshape(self.k,labels.shape[0])
-        bh.user_kernel.execute(self.kernel_move_centroids_openc, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]}))
+        bh.user_kernel.execute(self.kernel_move_centroids_openc, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
 
         # out = bh.array()
         # out = bh.zeros_like(centroids)
@@ -319,8 +319,7 @@ class bohrium_kmeans:
 
         if self.userkernel:
             self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
-            self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_k = 0", "int
- n_k = " + str(self.k))
+            self.kernel_centroids_closest_opencl = self.kernel_centroids_closest_opencl.replace("int n_k = 0", "int n_k = " + str(self.k))
 
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_points = 0", "int n_points = " + str(points.shape[0]))
             self.kernel_centroids_closest = self.kernel_centroids_closest.replace("int n_k = 0", "int n_k = " + str(self.k))

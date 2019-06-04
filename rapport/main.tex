@@ -249,8 +249,6 @@ Bohrium lazily record any array operations that is used, this could as an exampl
 \caption{\label{fig:bohrium_overview}The components that Bohrium are made out of}
 \end{figure}
 
-
-
 \section{Vectorization}
 \label{subsec:vectorization}
 
@@ -507,7 +505,7 @@ Now we will explore the increases in performance in pure Python compared to my v
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\linewidth]{images/python_vs_bohrium1.pdf}
-  \caption{\label{fig:pythonvsbohrium}Runtimes of the KMeans algorithm run on a varying number of points, the notation reads ``multiplier*exponent'', such that Bohrium/5*5 is KMeans using Bohrium with $5*10^5$ number of points, the number of centroids was fixed to be 25.}
+  \caption{\label{fig:pythonvsbohrium}Runtimes of the KMeans algorithm run on a varying number of points, the notation reads ``multiplier*exponent'', such that Bohrium/5*5 is KMeans using Bohrium with $5*10^5$ number of points, the number of centroids was fixed to be 25. \textbf{LOWER IS BETTER}}
 \end{figure}
 
 \section{NumPy VS Bohrium}
@@ -531,7 +529,22 @@ In this section we will look at the performance in  running my implementation of
 
 \section{CPU vs GPU}
 \label{sec:cpugpu}
-When comparing speeds on the CPU compared to the GPU we conduct the test on the machine Nelson, provided by NBI this machine is equipped with the Nvidia 680 graphics, although not the fastest card on the market today, it should provide us with ample computing power for our purposes.
+When comparing speeds on the CPU compared to the GPU we conduct the test on the machine Nelson, provided by the NBI this machine is equipped with the Nvidia 680 graphics card, although not the fastest and newest card on the market today, it should provide us with ample computing power for our purposes. I conducted two experiments, first one is only running the Euclidean distance algorithm on to different sets of points that are randomly generated with increasing number of points for each iteration of the benchmark. The results are depicted in figure \ref{fig:points2}. The Euclidean distance algorithm was written completely in Bohrium, so no userkernels are written for this function, thus the increase in performance is purely from automated parallelization of the code.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{images/euc_function_points2.pdf}
+  \caption{\label{fig:points2}Six runs of the Euclidean Distance algorithm, running three times on the CPU, then three times on the GPU with varying number if points in each set.}
+\end{figure}
+The second experiment that i chose to run is the assignment step of the KMeans algorithm with varying number of centroids $k$, for this step I have written my own userkernel, as a result of this the gain speed from going from the CPU to the GPU is my own manual paralellization of the code first on the CPU using OpenMP and then on the graphics card using OpenCL. The results are portrayed in figure \ref{fig:k5}, the reason for not running the full KMeans algorithm on the graphics card is that the reassignment step of the KMeans algorithm written in pure Bohrium, does not run well on Nelson, this seems to be a bug in how to function are implemented in Bohrium, and the time scope of the project did not allow me to write my own userkernel for the purpose.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{images/cpugpu_k5.pdf}
+  \caption{\label{fig:k5} Histogram depicting ten runs of the assignment step of the KMeans algorithm, five times on the CPU, then 5 times on the GPU, each with a varying number of centroids}
+\end{figure}
+
+
 
 
 
@@ -568,8 +581,11 @@ Another classic example is image segmentation, the task is to cluster the image 
     \end{subfigure}
     \caption{Two images, one of the original image, and one after running the kmeans clustering with k=3}
 \end{figure}
-To validate the clusters..
-
+To validate the segmentation one should really calculate the Jaccard Index or Jaccard similarity coefficient, that basically is a measure of how much two sets are overlapping \cite{jaccard}. Which is basically how we validated the other experiment, the difference is that the Jaccard coefficient is just a more general version of the straight overlap of two sets.  The Jaccard coefficient is given by
+\begin{equation}
+J(A,B) = \frac{|A\cap B|}{|A|+|B|-|A\cap B|}
+\end{equation}
+Where A, and B are the two sets what we want to find the overlap of, and $0\leq J(A,B) \leq 1$. So for our experiment the two sets that we need to find overlap of is A: Our labels after clustering and B: the ``true'' labels. How does one find the True labels the reader might be inclined to ask, well since the image that we used is a generated one, we already know the labels pr default! I wont go into much detail about the calculation, but it can of course be found in the github repository. The Jaccard index of each cluster was found to be x and x and x and. This way we can see that our algorithm works decently.
 
 
 
@@ -583,6 +599,7 @@ I future update for the program is to implement the Elkan's Algorithm that uses 
 
 
 \newpage
-\bibliography{ref,main}
+\bibliographystyle{plain}
+\bibliography{ref}
 
 \end{document}

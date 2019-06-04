@@ -25,4 +25,9 @@ Stuart~P. Lloyd.
 \newblock Least squares quantization in pcm.
 \newblock {\em 1}, 1988.
 
+\bibitem{jaccard}
+Pang-Ning Tan, Michael Steinbach, and Vipin Kumar.
+\newblock {\em Introduction to Data Mining:}.
+\newblock Pearson, 2013.
+
 \end{thebibliography}
