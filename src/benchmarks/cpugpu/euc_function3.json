@@ -1,0 +1,533 @@
+{
+    "creation_date_utc": "2019-05-30T16:00:43.577155", 
+    "cmd_list": [
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/3*100*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-2.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-3.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-3.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-4.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-4.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-5.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-5.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-6.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-6.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-7.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-7.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-8.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-8.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-9.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh-9.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000612258911133 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.008001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000612258911133 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.012001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*0, elapsed-time: 0.000000\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-561a6390-a140-45d0-9217-bf45a720ab2b.sh", 
+                    "nruns": 10
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/3*100*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/4*100*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-2.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-3.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-3.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-4.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-4.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-5.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-5.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-6.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-6.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-7.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-7.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-8.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-8.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-9.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh-9.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000425338745117 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.003999948501586914 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*0, elapsed-time: 0.000000\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a981ae9a-f609-4016-b6b8-3f6df4631148.sh", 
+                    "nruns": 10
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/4*100*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/5*100*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-2.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-3.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-3.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-4.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-4.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-5.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-5.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-6.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-6.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-7.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-7.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-8.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-8.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-9.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh-9.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000425338745117 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.00800013542175293 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.00800013542175293 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.00800013542175293 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.00800013542175293 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*0, elapsed-time: 0.008000\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c0044d6f-2053-446a-8c67-013335c42d8a.sh", 
+                    "nruns": 10
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/5*100*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/6*100*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-2.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-3.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-3.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-4.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-4.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-5.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-5.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-6.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-6.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-7.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-7.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-8.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-8.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-9.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh-9.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.08400392532348633 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.084004\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.08800387382507324 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.088004\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.09600400924682617 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.096004\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.09600424766540527 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.100004\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.1040046215057373 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.104005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.1040046215057373 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.104005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.11200499534606934 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.112005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.12000536918640137 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.120005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.1280055046081543 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.128006\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.13600611686706543 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*0, elapsed-time: 0.136006\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-67ee7eea-5dfc-4dc6-8424-d90b42938bb9.sh", 
+                    "nruns": 10
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/6*100*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/3*100*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-2.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-3.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-3.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-4.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-4.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-5.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-5.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-6.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-6.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-7.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-7.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-8.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-8.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 3*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-9.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh-9.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000425338745117 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000425338745117 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.003999948501586914 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.03200125694274902 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.032001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 3*100*1, elapsed-time: 0.004000\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-4b49f867-8d3a-413b-8cb4-aa618ec2c6f4.sh", 
+                    "nruns": 10
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/3*100*1"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/4*100*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-2.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-3.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-3.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-4.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-4.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-5.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-5.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-6.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-6.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-7.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-7.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-8.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-8.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 4*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-9.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh-9.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000425338745117 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.004000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.000000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 4*100*1, elapsed-time: 0.004000\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-befb8d81-7e55-4012-8050-8e16a3396b3f.sh", 
+                    "nruns": 10
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/4*100*1"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/5*100*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-2.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-3.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-3.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-4.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-4.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-5.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-5.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-6.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-6.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-7.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-7.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-8.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-8.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 5*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-9.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh-9.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000612258911133 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.00800013542175293 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000612258911133 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.012000322341918945 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.012000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000612258911133 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008000\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.00800013542175293 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 5*100*1, elapsed-time: 0.008000\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-bf8f0fad-2ab1-4e8a-b9b9-0705847e7a41.sh", 
+                    "nruns": 10
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/5*100*1"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/6*100*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-2.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-3.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-3.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-4.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-4.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-5.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-5.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-6.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-6.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-7.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-7.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-8.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-8.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 6*100*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-9.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh-9.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.09600448608398438 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.096004\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.10000419616699219 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.100004\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.1040046215057373 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.104005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.11200475692749023 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.112005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.12000536918640137 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.120005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.1280057430267334 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.128006\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.14000606536865234 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.140006\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.1520066261291504 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.152007\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.17200779914855957 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.172008\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.19600868225097656 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 6*100*1, elapsed-time: 0.196009\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-a19eacf8-fbf6-4b49-a6c5-b329618ebc0b.sh", 
+                    "nruns": 10
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/6*100*1"
+        }
+    ]
+}

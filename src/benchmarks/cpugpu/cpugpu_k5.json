@@ -1,0 +1,315 @@
+{
+    "creation_date_utc": "2019-06-04T08:34:08.875850", 
+    "cmd_list": [
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 100*5*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/100*5*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 100*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-d5fb25e3-4a73-4fc9-90ba-135715c76156.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-d5fb25e3-4a73-4fc9-90ba-135715c76156.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 100*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-d5fb25e3-4a73-4fc9-90ba-135715c76156.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-d5fb25e3-4a73-4fc9-90ba-135715c76156.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 100*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-d5fb25e3-4a73-4fc9-90ba-135715c76156.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-d5fb25e3-4a73-4fc9-90ba-135715c76156.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.016000747680664062 seconds to complete.\nFunction \"centroids_closest\" took 0.040001869201660156 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 100*5*0, elapsed-time: 0.040002\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.016000747680664062 seconds to complete.\nFunction \"centroids_closest\" took 0.040001869201660156 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 100*5*0, elapsed-time: 0.040002\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.016000747680664062 seconds to complete.\nFunction \"centroids_closest\" took 0.040001630783081055 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 100*5*0, elapsed-time: 0.040002\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-d5fb25e3-4a73-4fc9-90ba-135715c76156.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/100*5*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 300*5*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/300*5*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 300*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-04ebe25c-41cd-4997-b341-0d0f1766befd.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-04ebe25c-41cd-4997-b341-0d0f1766befd.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 300*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-04ebe25c-41cd-4997-b341-0d0f1766befd.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-04ebe25c-41cd-4997-b341-0d0f1766befd.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 300*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-04ebe25c-41cd-4997-b341-0d0f1766befd.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-04ebe25c-41cd-4997-b341-0d0f1766befd.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0520021915435791 seconds to complete.\nFunction \"centroids_closest\" took 0.12400531768798828 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 300*5*0, elapsed-time: 0.124005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.056002140045166016 seconds to complete.\nFunction \"centroids_closest\" took 0.1320054531097412 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 300*5*0, elapsed-time: 0.132005\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.05600261688232422 seconds to complete.\nFunction \"centroids_closest\" took 0.13600587844848633 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 300*5*0, elapsed-time: 0.136006\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-04ebe25c-41cd-4997-b341-0d0f1766befd.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/300*5*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 500*5*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/500*5*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 500*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-f73a18f5-f547-4efe-9d35-ea8c95be3440.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-f73a18f5-f547-4efe-9d35-ea8c95be3440.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 500*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-f73a18f5-f547-4efe-9d35-ea8c95be3440.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-f73a18f5-f547-4efe-9d35-ea8c95be3440.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 500*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-f73a18f5-f547-4efe-9d35-ea8c95be3440.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-f73a18f5-f547-4efe-9d35-ea8c95be3440.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.10000419616699219 seconds to complete.\nFunction \"centroids_closest\" took 0.27201175689697266 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 500*5*0, elapsed-time: 0.272012\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.1040046215057373 seconds to complete.\nFunction \"centroids_closest\" took 0.2800123691558838 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 500*5*0, elapsed-time: 0.280012\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.10800457000732422 seconds to complete.\nFunction \"centroids_closest\" took 0.29601263999938965 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 500*5*0, elapsed-time: 0.296013\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-f73a18f5-f547-4efe-9d35-ea8c95be3440.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/500*5*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 1000*5*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/1000*5*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1000*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e0ea2923-540a-48e2-8dfc-b7dcc9597060.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e0ea2923-540a-48e2-8dfc-b7dcc9597060.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1000*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e0ea2923-540a-48e2-8dfc-b7dcc9597060.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e0ea2923-540a-48e2-8dfc-b7dcc9597060.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1000*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e0ea2923-540a-48e2-8dfc-b7dcc9597060.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e0ea2923-540a-48e2-8dfc-b7dcc9597060.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.23601007461547852 seconds to complete.\nFunction \"centroids_closest\" took 1.3120574951171875 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1000*5*0, elapsed-time: 1.312057\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.2640116214752197 seconds to complete.\nFunction \"centroids_closest\" took 1.480065107345581 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1000*5*0, elapsed-time: 1.480065\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.3080132007598877 seconds to complete.\nFunction \"centroids_closest\" took 1.7400763034820557 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1000*5*0, elapsed-time: 1.740076\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e0ea2923-540a-48e2-8dfc-b7dcc9597060.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/1000*5*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 1200*5*0", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'CPU/1200*5*0'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1200*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-16f0137c-24c0-41cf-b6cc-a5e138784d2a.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-16f0137c-24c0-41cf-b6cc-a5e138784d2a.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1200*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-16f0137c-24c0-41cf-b6cc-a5e138784d2a.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-16f0137c-24c0-41cf-b6cc-a5e138784d2a.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1200*5*0 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-16f0137c-24c0-41cf-b6cc-a5e138784d2a.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-16f0137c-24c0-41cf-b6cc-a5e138784d2a.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.9640421867370605 seconds to complete.\nFunction \"centroids_closest\" took 4.060178518295288 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1200*5*0, elapsed-time: 4.060179\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 1.1480505466461182 seconds to complete.\nFunction \"centroids_closest\" took -16.6225802898407 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1200*5*0, elapsed-time: -16.622580\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.1040046215057373 seconds to complete.\nFunction \"centroids_closest\" took 0.5800256729125977 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1200*5*0, elapsed-time: 0.580026\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-16f0137c-24c0-41cf-b6cc-a5e138784d2a.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "CPU/1200*5*0"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 100*5*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/100*5*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 100*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-043cfd1e-255d-45eb-a890-bdd4685c3f98.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-043cfd1e-255d-45eb-a890-bdd4685c3f98.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 100*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-043cfd1e-255d-45eb-a890-bdd4685c3f98.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-043cfd1e-255d-45eb-a890-bdd4685c3f98.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 100*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-043cfd1e-255d-45eb-a890-bdd4685c3f98.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-043cfd1e-255d-45eb-a890-bdd4685c3f98.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\nFunction \"centroids_closest\" took 0.012000560760498047 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 100*5*1, elapsed-time: 0.012001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000186920166016 seconds to complete.\nFunction \"centroids_closest\" took 0.012000560760498047 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 100*5*1, elapsed-time: 0.012001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.004000425338745117 seconds to complete.\nFunction \"centroids_closest\" took 0.012000560760498047 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 100*5*1, elapsed-time: 0.012001\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-043cfd1e-255d-45eb-a890-bdd4685c3f98.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/100*5*1"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 300*5*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/300*5*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 300*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-cff23af6-d7e2-457e-af2a-abbc699a125b.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-cff23af6-d7e2-457e-af2a-abbc699a125b.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 300*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-cff23af6-d7e2-457e-af2a-abbc699a125b.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-cff23af6-d7e2-457e-af2a-abbc699a125b.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 300*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-cff23af6-d7e2-457e-af2a-abbc699a125b.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-cff23af6-d7e2-457e-af2a-abbc699a125b.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.008000373840332031 seconds to complete.\nFunction \"centroids_closest\" took 0.03200125694274902 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 300*5*1, elapsed-time: 0.032001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.012000560760498047 seconds to complete.\nFunction \"centroids_closest\" took 0.03600144386291504 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 300*5*1, elapsed-time: 0.036001\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.012000560760498047 seconds to complete.\nFunction \"centroids_closest\" took 0.03600144386291504 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 300*5*1, elapsed-time: 0.036001\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-cff23af6-d7e2-457e-af2a-abbc699a125b.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/300*5*1"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 500*5*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/500*5*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 500*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e60f3b24-5b44-4190-8721-8d4771705500.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e60f3b24-5b44-4190-8721-8d4771705500.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 500*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e60f3b24-5b44-4190-8721-8d4771705500.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e60f3b24-5b44-4190-8721-8d4771705500.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 500*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e60f3b24-5b44-4190-8721-8d4771705500.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e60f3b24-5b44-4190-8721-8d4771705500.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.020000934600830078 seconds to complete.\nFunction \"centroids_closest\" took 0.0520021915435791 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 500*5*1, elapsed-time: 0.052002\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.024000883102416992 seconds to complete.\nFunction \"centroids_closest\" took 0.056002140045166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 500*5*1, elapsed-time: 0.056002\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.020000696182250977 seconds to complete.\nFunction \"centroids_closest\" took 0.056002140045166016 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 500*5*1, elapsed-time: 0.056002\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-e60f3b24-5b44-4190-8721-8d4771705500.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/500*5*1"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 1000*5*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/1000*5*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1000*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-33e77208-f9b6-4bf6-99cf-4db222efc76e.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-33e77208-f9b6-4bf6-99cf-4db222efc76e.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1000*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-33e77208-f9b6-4bf6-99cf-4db222efc76e.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-33e77208-f9b6-4bf6-99cf-4db222efc76e.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1000*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-33e77208-f9b6-4bf6-99cf-4db222efc76e.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-33e77208-f9b6-4bf6-99cf-4db222efc76e.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0520021915435791 seconds to complete.\nFunction \"centroids_closest\" took 0.1280055046081543 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1000*5*1, elapsed-time: 0.128006\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.05600237846374512 seconds to complete.\nFunction \"centroids_closest\" took 0.13600587844848633 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1000*5*1, elapsed-time: 0.136006\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.05600237846374512 seconds to complete.\nFunction \"centroids_closest\" took 0.13600611686706543 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1000*5*1, elapsed-time: 0.136006\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-33e77208-f9b6-4bf6-99cf-4db222efc76e.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/1000*5*1"
+        }, 
+        {
+            "cmd": "python3 /home/cca/bachelor/src/bohrium_kmeans.py 1200*5*1", 
+            "jobs": [
+                {
+                    "status": "finished", 
+                    "warmup": false, 
+                    "script": "#!/bin/bash\n\n#SBATCH -J 'GPU/1200*5*1'\n#SBATCH -o /tmp/bh-slurm-%%j.out\n#SBATCH -e /tmp/bh-slurm-%%j.err\n#SBATCH --nice=0\n\n\n# The runs \npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1200*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c98ac6dc-c255-4305-95da-1e7c581b248f.sh-0.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c98ac6dc-c255-4305-95da-1e7c581b248f.sh-0.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1200*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c98ac6dc-c255-4305-95da-1e7c581b248f.sh-1.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c98ac6dc-c255-4305-95da-1e7c581b248f.sh-1.err >&2)\nsync\npython3 /home/cca/bachelor/src/bohrium_kmeans.py 1200*5*1 > >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c98ac6dc-c255-4305-95da-1e7c581b248f.sh-2.out) 2> >(tee /home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c98ac6dc-c255-4305-95da-1e7c581b248f.sh-2.err >&2)\nsync\n", 
+                    "results": [
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.19200825691223145 seconds to complete.\nFunction \"centroids_closest\" took 0.42001843452453613 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1200*5*1, elapsed-time: 0.420018\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.07200312614440918 seconds to complete.\nFunction \"centroids_closest\" took 0.20000886917114258 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1200*5*1, elapsed-time: 0.200009\n"
+                        }, 
+                        {
+                            "stderr": "", 
+                            "success": true, 
+                            "stdout": "Function \"euclidian_distance\" took 0.0760033130645752 seconds to complete.\nFunction \"centroids_closest\" took 0.2080092430114746 seconds to complete.\n/home/cca/bachelor/src/bohrium_kmeans.py - bohrium: True, size: 1200*5*1, elapsed-time: 0.208009\n"
+                        }
+                    ], 
+                    "filename": "/home/cca/bachelor/src/benchmarks/cpugpu/bh-job-c98ac6dc-c255-4305-95da-1e7c581b248f.sh", 
+                    "nruns": 3
+                }
+            ], 
+            "env": {}, 
+            "label": "GPU/1200*5*1"
+        }
+    ]
+}

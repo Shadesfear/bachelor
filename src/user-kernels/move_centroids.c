@@ -30,12 +30,9 @@ void execute(int64_t *k,
 #pragma omp parallel for
   for (int i = 0; i < k[0]; i++)
   {
-
     int counter = 0;
-
     double temp[dim[0]];
     memset(temp, 0, dim[0]*sizeof(double));
-
     // For each label in closest
     #pragma omp parallel for
     for (int j = 0; j < size_closest[0]; j++)
@@ -43,8 +40,7 @@ void execute(int64_t *k,
       // If point-j belongs to point k
       if (i == closest[j])
       {
-
-	//Populates vect
+	//Populates vectxs
 	double vect[dim[0]];
 	memset(vect, 0, dim[0]*sizeof(double));
 
@@ -56,11 +52,8 @@ void execute(int64_t *k,
 //	  printf("%f \n", vect[p]);
 
 	}
-
 	vector_add(temp, vect, temp, dim[0]);
-
 	counter += 1;
-
       }
     }
 
@@ -75,18 +68,14 @@ void execute(int64_t *k,
 	temp[d] /= counter;
       }
     }
-
     /*
       Looping over each row in
     */
-
       for (int j = 0; j < dim[0]; ++j)
       {
 	centroids[get_index(j, i, dim[0])] = temp[j];
 //	printf("%f\n", centroids[get_index(j, i, dim[0])]);
 
       }
-
-
   }
 }
