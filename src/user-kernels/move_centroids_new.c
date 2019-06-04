@@ -9,14 +9,14 @@ kernel void execute(global long *labels, global long *old_labels, global double 
   int id = get_global_id(0);
 
   int counter = 0;
-  double temp[10] = { 0.0 };
+  double temp[2];
 
   //iter over labels
   for (int j = 0; j < size_labels; j++)
   {
     if (labels[j] == id)
     {
-      double vect[10] = {0.0};
+      double vect[2];
       int row_index = j * dim;
       //memory ?
 
