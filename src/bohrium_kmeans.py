@@ -277,7 +277,7 @@ class bohrium_kmeans:
         # self.mask = self.mask.replace("int rows = 0", "int rows = " + str(self.k))
         # self.mask = self.mask.replace("int cols = 0", "int cols = " + str(labels.shape[0]))
         # mask2 = bh.zeros(self.k*labels.shape[0], dtype=bh.int64).reshape(self.k,labels.shape[0])
-        bh.user_kernel.execute(self.kernel_move_centroids_openc, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
+        bh.user_kernel.execute(self.kernel_move_centroids_opencl, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
 
         # out = bh.array()
         # out = bh.zeros_like(centroids)
