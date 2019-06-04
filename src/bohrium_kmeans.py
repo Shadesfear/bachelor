@@ -283,7 +283,7 @@ class bohrium_kmeans:
         bh.user_kernel.execute(self.kernel_move_centroids_opencl, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
 
 
-        mask2 = (closest == np.arange(k)[:,None])
+        mask2 = (labels == bh.arange(k)[:,None])
         out2 = mask.dot(points)/ mask.sum(1)[:,None]
 
         print(out2)
