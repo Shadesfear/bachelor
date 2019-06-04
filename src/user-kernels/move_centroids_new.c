@@ -1,6 +1,6 @@
 
 #pragma OPENCL EXTENSION cl_khr_fp64 : enable
-kernel void execute(int64_t *labels, int64_t old_labels, double *points, double *centroids)
+kernel void execute(long *labels, long old_labels, double *points, double *centroids)
 {
 
   int size_labels = 0;

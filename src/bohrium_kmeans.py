@@ -268,7 +268,7 @@ class bohrium_kmeans:
             n = self.k
 
         out = bh.zeros_like(centroids, dtype = bh.float64)
-        old_centroids = bh.zeros_like(labels)
+        old_labels = bh.zeros_like(labels)
 
         self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int size_labels = 0", "int size_labels = " + str(labels.shape[0]))
         self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int dim = 0", "int dim = " + str(points.shape[1]))
