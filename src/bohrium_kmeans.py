@@ -272,6 +272,7 @@ class bohrium_kmeans:
 
         # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int size_labels = 0", "int size_labels = " + str(labels.shape[0]))
         # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int dim = 0", "int dim = " + str(points.shape[1]))
+        print(labels.shape[0])
         # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int k = 0", "int k = " + str(self.k))
         # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("dimm", "" + str(points.shape[1]))
 
@@ -422,10 +423,10 @@ if __name__ == "__main__":
 
     points = bh.loadtxt("../data/birchgrid.txt")
     kmeans = bohrium_kmeans(10, userkernel=True)
-    # centroids = kmeans.init_random_userkernel(points)
-    # labels,dist = kmeans.centroids_closest(points, centroids)
+    centroids = kmeans.init_random_userkernel(points)
+    labels,dist = kmeans.centroids_closest(points, centroids)
 
-    # out = kmeans.move_centroids(points, labels,centroids)
-    kmeans.run_plot(points)
+    out = kmeans.move_centroids(points, labels,centroids)
+    # kmeans.run_plot(points)
 
-    print(out)
+    # print(out)

@@ -40,7 +40,7 @@ void execute(int64_t *k,
       // If point-j belongs to point k
       if (i == closest[j])
       {
-	//Populates vectxs
+	//Populates vect
 	double vect[dim[0]];
 	memset(vect, 0, dim[0]*sizeof(double));
 
