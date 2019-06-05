@@ -228,7 +228,7 @@ class bohrium_kmeans:
 
         """
         import matplotlib.pyplot as plt
-        labels, centroids, iterations = self.run(points)
+        labels, centroids, iterations, iner = self.run(points)
 
         points = points.copy2numpy()
         centroids = centroids.copy2numpy()
@@ -270,23 +270,24 @@ class bohrium_kmeans:
         out = bh.zeros_like(centroids, dtype = bh.float64)
         old_labels = bh.zeros_like(labels)
 
-        self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int size_labels = 0", "int size_labels = " + str(labels.shape[0]))
-        self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int dim = 0", "int dim = " + str(points.shape[1]))
-        self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int k = 0", "int k = " + str(self.k))
-        self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("dimm", "" + str(points.shape[1]))
+        # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int size_labels = 0", "int size_labels = " + str(labels.shape[0]))
+        # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int dim = 0", "int dim = " + str(points.shape[1]))
+        # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int k = 0", "int k = " + str(self.k))
+        # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("dimm", "" + str(points.shape[1]))
 
         # self.mask = self.mask.replace("int rows = 0", "int rows = " + str(self.k))
         # self.mask = self.mask.replace("int cols = 0", "int cols = " + str(labels.shape[0]))
         # mask2 = bh.zeros(self.k*labels.shape[0], dtype=bh.int64).reshape(self.k,labels.shape[0])
 
 
-        bh.user_kernel.execute(self.kernel_move_centroids_opencl, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
+        # bh.user_kernel.execute(self.kernel_move_centroids_opencl, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
 
 
-        mask2 = (labels == bh.arange(k)[:,None])
-        out2 = mask.dot(points)/ mask.sum(1)[:,None]
-
+        mask2 = (labels == bh.arange(n)[:,None])
+        out2 = mask2.dot(points) / mask2.sum(1)[:,None]
         print(out2)
+
+        # print(out2)
         # out = bh.array()
         # out = bh.zeros_like(centroids)
         # for i in range(self.k):
@@ -294,10 +295,10 @@ class bohrium_kmeans:
         #     if labels[i] == i:
         #         temp += points[i]
 
-        print(out)
+        # print(out)
 
 
-        return out
+        return out2
 
 
     def scale_data(self, points):
@@ -420,10 +421,11 @@ if __name__ == "__main__":
     # benchmark()
 
     points = bh.loadtxt("../data/birchgrid.txt")
-    kmeans = bohrium_kmeans(3, userkernel=True)
-    centroids = kmeans.init_random_userkernel(points)
-    labels,dist = kmeans.centroids_closest(points, centroids)
+    kmeans = bohrium_kmeans(10, userkernel=True)
+    # centroids = kmeans.init_random_userkernel(points)
+    # labels,dist = kmeans.centroids_closest(points, centroids)
 
-    out = kmeans.move_centroids(points, labels,centroids)
+    # out = kmeans.move_centroids(points, labels,centroids)
+    kmeans.run_plot(points)
 
     print(out)
