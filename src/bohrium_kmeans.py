@@ -270,34 +270,15 @@ class bohrium_kmeans:
         out = bh.zeros_like(centroids, dtype = bh.float64)
         old_labels = bh.zeros_like(labels)
 
-        # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int size_labels = 0", "int size_labels = " + str(labels.shape[0]))
-        # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int dim = 0", "int dim = " + str(points.shape[1]))
-        print(labels.shape[0])
-        # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int k = 0", "int k = " + str(self.k))
-        # self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("dimm", "" + str(points.shape[1]))
+        start = time.time()
+        bh.user_kernel.execute(self.kernel_move_centroids_opencl, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
+        print("kernel: ", time.time() - start)
 
-        # self.mask = self.mask.replace("int rows = 0", "int rows = " + str(self.k))
-        # self.mask = self.mask.replace("int cols = 0", "int cols = " + str(labels.shape[0]))
-        # mask2 = bh.zeros(self.k*labels.shape[0], dtype=bh.int64).reshape(self.k,labels.shape[0])
-
-
-        # bh.user_kernel.execute(self.kernel_move_centroids_opencl, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
-
-
+        start = time.time()
         mask2 = (labels == bh.arange(n)[:,None])
         out2 = mask2.dot(points) / mask2.sum(1)[:,None]
-        print(out2)
 
-        # print(out2)
-        # out = bh.array()
-        # out = bh.zeros_like(centroids)
-        # for i in range(self.k):
-        #     out[i] = points[labels==i].mean(0)
-        #     if labels[i] == i:
-        #         temp += points[i]
-
-        # print(out)
-
+        print(time.time() - start)
 
         return out2
 
@@ -336,6 +317,12 @@ class bohrium_kmeans:
 
             self.kernel_shuffle = self.kernel_shuffle.replace("int rows", "int rows = " + str(points.shape[0]))
             self.kernel_shuffle = self.kernel_shuffle.replace("int cols", "int cols = " + str(points.shape[1]))
+
+            self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int size_labels = 0", "int size_labels = " + str(labels.shape[0]))
+            self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int dim = 0", "int dim = " + str(points.shape[1]))
+            self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("int k = 0", "int k = " + str(self.k))
+            self.kernel_move_centroids_opencl = self.kernel_move_centroids_opencl.replace("dimm", "" + str(points.shape[1]))
+
 
 
     @timeit
