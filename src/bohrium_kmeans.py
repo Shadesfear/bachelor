@@ -267,20 +267,15 @@ class bohrium_kmeans:
         if not n:
             n = self.k
 
-        out = bh.zeros_like(centroids, dtype = bh.float64)
-        old_labels = bh.zeros_like(labels)
 
-        start = time.time()
-        bh.user_kernel.execute(self.kernel_move_centroids_opencl, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
-        print("kernel: ", time.time() - start)
-
-        start = time.time()
-        mask2 = (labels == bh.arange(n)[:,None])
-        out2 = mask2.dot(points) / mask2.sum(1)[:,None]
-
-        print(time.time() - start)
-
-        return out2
+        if self.gpu:
+            out = bh.zeros_like(centroids, dtype = bh.float64)
+            old_labels = bh.zeros_like(labels)
+            bh.user_kernel.execute(self.kernel_move_centroids_opencl, [labels, old_labels, points, out], tag="opencl", param={"global_work_size": [self.k], "local_work_size": [1]})
+        else:
+            mask = (labels == bh.arange(n)[:,None])
+            out = mask2.dot(points) / mask2.sum(1)[:,None]
+        return out
 
 
     def scale_data(self, points):
@@ -400,20 +395,38 @@ def benchmark():
     bench.stop()
     bench.pprint()
 
+def bench_gpu():
+    k = bench.args.size[0]
+    _gpu = bench.args.size[1]
 
+    if _gpu == 0:
+        os.environ["BH_STACK"] = "openmp"
 
+    elif _gpu ==1:
+        os.environ["BH_STACK"] = "opencl"
 
+    bh.random.seed(0)
+    points = bh.random.randint(2*10**5, size=(10**5, 2), dtype=bh.float64)
+    kmeans = bohrium_kmeans(k, userkernel=True, init="random", gpu=_gpu, verbose=True)
+
+    bh.flush()
+    bench.start()
+
+    kmeans.run()
+
+    bench.stop()
+    bench.pprint()
 
 if __name__ == "__main__":
-    # bench = util.Benchmark("kmeans", "k")
-    # benchmark()
+    bench = util.Benchmark("kmeans", "k")
+    bench_gpu()
 
-    points = bh.loadtxt("../data/birchgrid.txt")
-    kmeans = bohrium_kmeans(10, userkernel=True)
-    centroids = kmeans.init_random_userkernel(points)
-    labels,dist = kmeans.centroids_closest(points, centroids)
+    # points = bh.loadtxt("../data/birchgrid.txt")
+    # kmeans = bohrium_kmeans(10, userkernel=True)
+    # centroids = kmeans.init_random_userkernel(points)
+    # labels,dist = kmeans.centroids_closest(points, centroids)
 
-    out = kmeans.move_centroids(points, labels,centroids)
+    # out = kmeans.move_centroids(points, labels,centroids)
     # kmeans.run_plot(points)
 
     # print(out)
