@@ -417,6 +417,28 @@ def bench_gpu():
     bench.stop()
     bench.pprint()
 
+def bench_gpu_points():
+    times = bench.args.size[0]
+    _gpu = bench.args.size[1]
+
+    if _gpu == 0:
+        os.environ["BH_STACK"] = "openmp"
+
+    elif _gpu ==1:
+        os.environ["BH_STACK"] = "opencl"
+
+    bh.random.seed(0)
+    points = bh.random.randint(2*10**times, size=(10**times, 2), dtype=bh.float64)
+    kmeans = bohrium_kmeans(100, userkernel=True, init="random", gpu=_gpu, verbose=True)
+
+    bh.flush()
+    bench.start()
+
+    kmeans.run()
+
+    bench.stop()
+    bench.pprint()
+
 if __name__ == "__main__":
     bench = util.Benchmark("kmeans", "k")
     bench_gpu()
